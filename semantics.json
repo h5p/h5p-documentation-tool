@@ -1,0 +1,42 @@
+[
+  {
+    "name": "taskDescription",
+    "label": "Title",
+    "type": "text",
+    "widget": "html",
+    "description": "Title for the documentation tool.",
+    "enterMode": "p",
+    "tags": [
+      "strong",
+      "em",
+      "u",
+      "a",
+      "ul",
+      "ol",
+      "h2",
+      "h3",
+      "hr"
+    ],
+    "optional": true
+  },
+  {
+    "name": "pagesList",
+    "label": "Elements",
+    "type": "list",
+    "widget": "verticalTabs",
+    "min": 1,
+    "entity": "page",
+    "field":
+    {
+      "name": "page",
+      "type": "library",
+      "label": "Content type",
+      "description": "Library for this slide.",
+      "options": [
+        "H5P.StandardPage 1.0",
+        "H5P.GoalsPage 1.0",
+        "H5P.GoalsAssessmentPage 1.0"
+      ]
+    }
+  }
+]
