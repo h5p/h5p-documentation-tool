@@ -1,0 +1,24 @@
+.h5p-documentation-tool {
+}
+
+.h5p-documentation-tool .h5p-documentation-tool-page-container {
+  height: 300px;
+}
+
+.h5p-documentation-tool .h5p-documentation-tool-page-container .h5p-documentation-tool-page {
+  display: none;
+  position: absolute;
+  top: 0em;
+  left: 0em;
+  width: 100%;
+  height: 300px;
+  overflow: auto;
+}
+
+.h5p-documentation-tool .h5p-documentation-tool-page-container .h5p-documentation-tool-page.current {
+  display: block;
+}
+
+.h5p-documentation-tool .h5p-documentation-tool-footer {
+  display: block;
+}

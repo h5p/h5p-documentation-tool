@@ -35,7 +35,8 @@
       "options": [
         "H5P.StandardPage 1.0",
         "H5P.GoalsPage 1.0",
-        "H5P.GoalsAssessmentPage 1.0"
+        "H5P.GoalsAssessmentPage 1.0",
+        "H5P.DocumentExportPage 1.0"
       ]
     }
   }

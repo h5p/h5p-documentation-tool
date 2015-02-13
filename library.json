@@ -16,6 +16,9 @@
   "preloadedJs": [
     {
       "path": "documentation-tool.js"
+    },
+    {
+      "path": "navigation-menu.js"
     }
   ],
   "editorDependencies": [
@@ -38,6 +41,11 @@
     },
     {
       "machineName": "H5P.GoalsAssessmentPage",
+      "majorVersion": 1,
+      "minorVersion": 0
+    },
+    {
+      "machineName": "H5P.DocumentExportPage",
       "majorVersion": 1,
       "minorVersion": 0
     }

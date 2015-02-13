@@ -7,6 +7,9 @@ var H5P = H5P || {};
 H5P.DocumentationTool = (function ($) {
   // CSS Classes:
   var MAIN_CONTAINER = 'h5p-documentation-tool';
+  var PAGES_CONTAINER = 'h5p-documentation-tool-page-container';
+  var PAGE_INSTANCE = 'h5p-documentation-tool-page';
+  var FOOTER = 'h5p-documentation-tool-footer';
 
   /**
    * Initialize module.
@@ -32,34 +35,129 @@ H5P.DocumentationTool = (function ($) {
    */
   DocumentationTool.prototype.attach = function ($container) {
     var self = this;
-    var pageInstances = [];
-    var goalsList = [];
+    self.pageInstances = [];
+    this.currentPageIndex = 0;
 
     this.$inner = $container.addClass(MAIN_CONTAINER);
 
-    this.params.pagesList.forEach(function (page) {
-      var $pageContainer = $('<div>', {
-      }).appendTo(self.$inner);
+    // Create navigation menu
+    var navigationMenu = new H5P.DocumentationTool.NavigationMenu();
+    navigationMenu.attach($container);
 
-      var pageInstance = H5P.newRunnable(page, self.id);
-      pageInstance.attach($pageContainer);
-      pageInstances.push(pageInstance);
+    // Create pages
+    var $pagesContainer = self.createPages().appendTo(this.$inner);
+    self.$pagesArray = $pagesContainer.children();
+
+    if (this.$inner.children().length) {
+      self.$pagesArray.eq(self.currentPageIndex).addClass('current');
+    }
+
+    var $footer = self.createFooter().appendTo(this.$inner);
+
+  };
+
+  /**
+   * Creates the footer.
+   * @returns {jQuery} $footer Footer element
+   */
+  DocumentationTool.prototype.createFooter = function () {
+    var $footer = $('<div>', {
+      'class': FOOTER
     });
 
-    $('<button>', {
-      'text': 'Page changer'
+    this.$prevButton = this.createNavigationButton(-1).hide().appendTo($footer);
+
+    this.$nextButton = this.createNavigationButton(1).appendTo($footer);
+
+    return $footer;
+  };
+
+  /**
+   * Create navigation button
+   * @param {Number} moveDirection An integer for how many pages the button will move, and in which direction
+   * @returns {*}
+   */
+  DocumentationTool.prototype.createNavigationButton = function (moveDirection) {
+    var self = this;
+    var $navButton = $('<button>', {
+      'text': 'Forward'
     }).click(function () {
-      var assessmentGoals = self.getGoalAssessments(pageInstances);
-      var newGoals = self.getGoals(pageInstances);
+      var assessmentGoals = self.getGoalAssessments(self.pageInstances);
+      var newGoals = self.getGoals(self.pageInstances);
       assessmentGoals.forEach(function (assessmentPage) {
         newGoals = self.mergeGoals(newGoals, assessmentPage);
       });
-      self.insertGoals(pageInstances, newGoals);
-    }).appendTo(self.$inner);
+      self.setGoals(self.pageInstances, newGoals);
+
+      var allInputs = self.getDocumentExportInputs(self.pageInstances);
+      self.setDocumentExportOutputs(self.pageInstances, allInputs);
+
+      self.movePage(self.currentPageIndex + moveDirection);
+    });
+
+    return $navButton;
+  };
+
+  /**
+   * Populate container and array with page instances.
+   * @returns {jQuery} Container
+   */
+  DocumentationTool.prototype.createPages = function () {
+    var self = this;
+
+    var $pagesContainer = $('<div>', {
+      'class': PAGES_CONTAINER
+    });
+
+    this.params.pagesList.forEach(function (page) {
+      var $pageInstance = $('<div>', {
+        'class': PAGE_INSTANCE
+      }).appendTo($pagesContainer);
+
+      var singlePage = H5P.newRunnable(page, self.id);
+      if (singlePage instanceof H5P.DocumentExportPage) {
+        singlePage.setTitle(self.params.taskDescription);
+      }
+      singlePage.attach($pageInstance);
+      self.pageInstances.push(singlePage);
+    });
+
+    return $pagesContainer;
+  };
+
+  /**
+   * Moves the documentation tool to the specified page
+   * @param {Number} toPage Move to this page index
+   */
+  DocumentationTool.prototype.movePage = function (toPage) {
+    // Invalid value
+    if ((toPage + 1 > this.$pagesArray.length) || (toPage < 0)) {
+      return;
+    }
+
+    // Remove next button at end slide
+    if (toPage + 1 === this.$pagesArray.length) {
+      this.$nextButton.hide();
+    } else {
+      this.$nextButton.show();
+    }
+
+    // Remove prev button at first slide
+    if (toPage === 0) {
+      this.$prevButton.hide();
+    } else {
+      this.$prevButton.show();
+    }
+
+    this.$pagesArray.eq(this.currentPageIndex).removeClass('current');
+    this.currentPageIndex = toPage;
+    this.$pagesArray.eq(this.currentPageIndex).addClass('current');
   };
 
   /**
    * Merge assessment goals and newly created goals
+   *
+   * @returns {Array} newGoals Merged goals list with updated assessments
    */
   DocumentationTool.prototype.mergeGoals = function (newGoals, assessmentGoals) {
     // Not an assessment page
@@ -67,7 +165,7 @@ H5P.DocumentationTool = (function ($) {
       return newGoals;
     }
     newGoals.forEach(function (goalPage, pageIndex) {
-      goalPage.forEach(function (goalInstance, instanceIndex) {
+      goalPage.forEach(function (goalInstance) {
         var result = $.grep(assessmentGoals[pageIndex], function (assessmentInstance) {
           return assessmentInstance.goalId() === goalInstance.goalId();
         });
@@ -79,6 +177,12 @@ H5P.DocumentationTool = (function ($) {
     return newGoals;
   };
 
+  /**
+   * Gets goals assessments from all goals assessment pages and returns update goals list.
+   *
+   * @param {Array} pageInstances Array of pages contained within the documentation tool
+   * @returns {Array} goals Updated goals list
+   */
   DocumentationTool.prototype.getGoalAssessments = function (pageInstances) {
     var goals = [];
     pageInstances.forEach(function (page) {
@@ -92,11 +196,27 @@ H5P.DocumentationTool = (function ($) {
   };
 
   /**
+   * Retrieves all input fields from the documentation tool
+   * @returns {Array} inputArray Array containing all inputs of the documentation tool
+   */
+  DocumentationTool.prototype.getDocumentExportInputs = function (pageInstances) {
+    var inputArray = [];
+    pageInstances.forEach(function (page) {
+      var pageInstanceInput = [];
+      if (page instanceof H5P.StandardPage) {
+        pageInstanceInput = page.getInputArray();
+      }
+      inputArray.push(pageInstanceInput);
+    });
+
+    return inputArray;
+  };
+
+  /**
    * Gets goals from all goal pages and returns updated goals list.
    *
    * @param {Array} pageInstances Array containing all pages.
-   *
-   * @returns {Array} goals
+   * @returns {Array} goals Updated goals list.
    */
   DocumentationTool.prototype.getGoals = function (pageInstances) {
     var goals = [];
@@ -112,13 +232,25 @@ H5P.DocumentationTool = (function ($) {
 
   /**
    * Insert goals to all goal assessment pages.
-   *
+   * @param {Array} pageInstances Page instances
    * @param {Array} goals Array of goals.
    */
-  DocumentationTool.prototype.insertGoals = function (pageInstances, goals) {
+  DocumentationTool.prototype.setGoals = function (pageInstances, goals) {
     pageInstances.forEach(function (page) {
       if (page instanceof H5P.GoalsAssessmentPage) {
         page.updateAssessmentGoals(goals);
+      }
+    });
+  };
+
+  /**
+   * Sets the output for all document export pages
+   * @param {Array} inputs Array of input strings
+   */
+  DocumentationTool.prototype.setDocumentExportOutputs  = function (pageInstances, inputs) {
+    pageInstances.forEach(function (page) {
+      if (page instanceof H5P.DocumentExportPage) {
+        page.updateOutputFields(inputs);
       }
     });
   };
