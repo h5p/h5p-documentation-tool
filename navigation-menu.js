@@ -1,4 +1,5 @@
 var H5P = H5P || {};
+H5P.DocumentationTool = H5P.DocumentationTool || {};
 
 /**
  * Naivgation Menu module
@@ -12,13 +13,9 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
    * @param {Number} id Content identification
    * @returns {Object} NavigationMenu NavigationMenu instance
    */
-  function NavigationMenu(params, id) {
+  function NavigationMenu(docTool) {
     this.$ = $(this);
-    this.id = id;
-
-    // Set default behavior.
-    this.params = $.extend({}, {
-    }, params);
+    this.docTool = docTool;
   }
 
   /**
@@ -27,11 +24,41 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
    * @param {jQuery} $container The container which will be appended to.
    */
   NavigationMenu.prototype.attach = function ($container) {
-    $('<div/>', {
+    var self = this;
+    var $navigationMenu = $('<div/>', {
       'class': 'h5p-navigation-menu'
-    }).appendTo($container);
+    }).prependTo($container);
+
+    this.docTool.pageInstances.forEach(function (page, pageIndex) {
+      var pageTitle = '';
+
+      // Try to get page title
+      try {
+        pageTitle = page.getTitle();
+      } catch (e) {
+        throw new Error('Page does not have a getTitle() function - ' + e);
+      }
+
+      // Create page entry
+      $('<div/>', {
+        'class': 'h5p-navigation-menu-entry',
+        'html': pageTitle,
+        'role': 'button',
+        'tabindex': '0'
+      }).click(function () {
+        self.docTool.movePage(pageIndex);
+      }).keydown(function (e) {
+        var keyPressed = e.which;
+        // 32 - space
+        if (keyPressed === 32) {
+          $(this).click();
+          e.preventDefault();
+        }
+        $(this).focus();
+      }).appendTo($navigationMenu);
+    });
   };
 
   return NavigationMenu;
 
-})(H5P.jQuery);
+}(H5P.jQuery));

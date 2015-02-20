@@ -4,7 +4,7 @@ var H5P = H5P || {};
  * Documentation tool module
  * @external {jQuery} $ H5P.jQuery
  */
-H5P.DocumentationTool = (function ($) {
+H5P.DocumentationTool = (function ($, NavigationMenu) {
   // CSS Classes:
   var MAIN_CONTAINER = 'h5p-documentation-tool';
   var PAGES_CONTAINER = 'h5p-documentation-tool-page-container';
@@ -35,25 +35,29 @@ H5P.DocumentationTool = (function ($) {
    */
   DocumentationTool.prototype.attach = function ($container) {
     var self = this;
-    self.pageInstances = [];
+    this.pageInstances = [];
     this.currentPageIndex = 0;
 
     this.$inner = $container.addClass(MAIN_CONTAINER);
 
-    // Create navigation menu
-    var navigationMenu = new H5P.DocumentationTool.NavigationMenu();
-    navigationMenu.attach($container);
+    this.$mainContent = $('<div/>', {
+      'class': 'h5p-documentation-tool-main-content'
+    }).appendTo(this.$inner);
 
     // Create pages
-    var $pagesContainer = self.createPages().appendTo(this.$inner);
+    var $pagesContainer = self.createPages().appendTo(this.$mainContent);
     self.$pagesArray = $pagesContainer.children();
+
+    // Create navigation menu
+    var navigationMenu = new NavigationMenu(self);
+    navigationMenu.attach(this.$mainContent);
 
     if (this.$inner.children().length) {
       self.$pagesArray.eq(self.currentPageIndex).addClass('current');
     }
 
     var $footer = self.createFooter().appendTo(this.$inner);
-
+    self.resize();
   };
 
   /**
@@ -65,9 +69,14 @@ H5P.DocumentationTool = (function ($) {
       'class': FOOTER
     });
 
-    this.$prevButton = this.createNavigationButton(-1).hide().appendTo($footer);
+    this.$prevButton = this.createNavigationButton(-1)
+      .hide()
+      .addClass('h5p-previous-button')
+      .appendTo($footer);
 
-    this.$nextButton = this.createNavigationButton(1).appendTo($footer);
+    this.$nextButton = this.createNavigationButton(1)
+      .addClass('h5p-next-button')
+      .appendTo($footer);
 
     return $footer;
   };
@@ -79,8 +88,14 @@ H5P.DocumentationTool = (function ($) {
    */
   DocumentationTool.prototype.createNavigationButton = function (moveDirection) {
     var self = this;
+    var navigationText = 'Forward';
+    if (moveDirection === -1) {
+      navigationText = 'Backwards';
+    }
     var $navButton = $('<button>', {
-      'text': 'Forward'
+      'text': navigationText,
+      'role': 'button',
+      'tabindex': '0'
     }).click(function () {
       var assessmentGoals = self.getGoalAssessments(self.pageInstances);
       var newGoals = self.getGoals(self.pageInstances);
@@ -93,6 +108,14 @@ H5P.DocumentationTool = (function ($) {
       self.setDocumentExportOutputs(self.pageInstances, allInputs);
 
       self.movePage(self.currentPageIndex + moveDirection);
+    }).keydown(function (e) {
+      var keyPressed = e.which;
+      // 32 - space
+      if (keyPressed === 32) {
+        $(this).click();
+        e.preventDefault();
+      }
+      $(this).focus();
     });
 
     return $navButton;
@@ -132,7 +155,7 @@ H5P.DocumentationTool = (function ($) {
   DocumentationTool.prototype.movePage = function (toPage) {
     // Invalid value
     if ((toPage + 1 > this.$pagesArray.length) || (toPage < 0)) {
-      return;
+      throw new Error('invalid parameter for movePage(): ' + toPage);
     }
 
     // Remove next button at end slide
@@ -259,7 +282,17 @@ H5P.DocumentationTool = (function ($) {
    * Resize function for responsiveness.
    */
   DocumentationTool.prototype.resize = function () {
+    var neededHeight = 300;
+    // Get initial height for all pages.
+    this.$mainContent.css('height', 'initial');
+    this.$pagesArray.each(function () {
+      var pageInitialHeight = $(this).height();
+      if (pageInitialHeight > neededHeight) {
+        neededHeight = pageInitialHeight;
+      }
+    });
+    this.$mainContent.css('height', neededHeight + 'px');
   };
 
   return DocumentationTool;
-})(H5P.jQuery);
+}(H5P.jQuery, H5P.DocumentationTool.NavigationMenu));

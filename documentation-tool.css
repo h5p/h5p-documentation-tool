@@ -2,17 +2,12 @@
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-page-container {
-  height: 300px;
+  display: inline-block;
+  width: 80%;
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-page-container .h5p-documentation-tool-page {
   display: none;
-  position: absolute;
-  top: 0em;
-  left: 0em;
-  width: 100%;
-  height: 300px;
-  overflow: auto;
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-page-container .h5p-documentation-tool-page.current {
@@ -21,4 +16,41 @@
 
 .h5p-documentation-tool .h5p-documentation-tool-footer {
   display: block;
+}
+
+/* ------------------------ Navigation Menu ------------------------------------------ */
+
+.h5p-documentation-tool .h5p-navigation-menu {
+  display: inline-block;
+  width: 20%;
+
+  vertical-align: top;
+  font-size: 0.8em;
+}
+
+.h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry {
+  width: 95%;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  cursor: pointer;
+}
+
+.h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry > p {
+  margin: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* ---------------------------- Documentation Tool Buttons ------------------------------- */
+
+.h5p-documentation-tool .h5p-documentation-tool-footer .h5p-previous-button {
+  float: left;
+}
+
+.h5p-documentation-tool .h5p-documentation-tool-footer .h5p-next-button {
+  float: right;
 }
