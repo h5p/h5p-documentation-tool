@@ -3,21 +3,14 @@
     "name": "taskDescription",
     "label": "Title",
     "type": "text",
-    "widget": "html",
     "description": "Title for the documentation tool.",
-    "enterMode": "p",
-    "tags": [
-      "strong",
-      "em",
-      "u",
-      "a",
-      "ul",
-      "ol",
-      "h2",
-      "h3",
-      "hr"
-    ],
     "optional": true
+  },
+  {
+    "name": "navMenuLabel",
+    "label": "Label for navigation menu",
+    "type": "text",
+    "default": "Documentation tool"
   },
   {
     "name": "pagesList",

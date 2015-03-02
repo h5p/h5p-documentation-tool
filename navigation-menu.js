@@ -13,9 +13,10 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
    * @param {Number} id Content identification
    * @returns {Object} NavigationMenu NavigationMenu instance
    */
-  function NavigationMenu(docTool) {
+  function NavigationMenu(docTool, navMenuLabel) {
     this.$ = $(this);
     this.docTool = docTool;
+    this.navMenuLabel = navMenuLabel;
   }
 
   /**
@@ -28,6 +29,11 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
     var $navigationMenu = $('<div/>', {
       'class': 'h5p-navigation-menu'
     }).prependTo($container);
+
+    $('<div>', {
+      'class': 'h5p-navigation-menu-header',
+      'html': self.navMenuLabel
+    }).appendTo($navigationMenu);
 
     this.docTool.pageInstances.forEach(function (page, pageIndex) {
       var pageTitle = '';
@@ -44,7 +50,7 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
         'class': 'h5p-navigation-menu-entry',
         'html': pageTitle,
         'role': 'button',
-        'tabindex': '0'
+        'tabindex': '1'
       }).click(function () {
         self.docTool.movePage(pageIndex);
       }).keydown(function (e) {

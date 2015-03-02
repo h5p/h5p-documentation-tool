@@ -24,6 +24,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu) {
     // Set default behavior.
     this.params = $.extend({}, {
       taskDescription: 'Documentation Tool',
+      navMenuLabel: "Documentation Tool",
       pagesList: []
     }, params);
   }
@@ -49,14 +50,13 @@ H5P.DocumentationTool = (function ($, NavigationMenu) {
     self.$pagesArray = $pagesContainer.children();
 
     // Create navigation menu
-    var navigationMenu = new NavigationMenu(self);
+    var navigationMenu = new NavigationMenu(self, this.params.navMenuLabel);
     navigationMenu.attach(this.$mainContent);
 
     if (this.$inner.children().length) {
       self.$pagesArray.eq(self.currentPageIndex).addClass('current');
     }
 
-    var $footer = self.createFooter().appendTo(this.$inner);
     self.resize();
   };
 
@@ -71,11 +71,9 @@ H5P.DocumentationTool = (function ($, NavigationMenu) {
 
     this.$prevButton = this.createNavigationButton(-1)
       .hide()
-      .addClass('h5p-previous-button')
       .appendTo($footer);
 
     this.$nextButton = this.createNavigationButton(1)
-      .addClass('h5p-next-button')
       .appendTo($footer);
 
     return $footer;
@@ -88,14 +86,14 @@ H5P.DocumentationTool = (function ($, NavigationMenu) {
    */
   DocumentationTool.prototype.createNavigationButton = function (moveDirection) {
     var self = this;
-    var navigationText = 'Forward';
+    var navigationText = 'prev';
     if (moveDirection === -1) {
-      navigationText = 'Backwards';
+      navigationText = 'next';
     }
-    var $navButton = $('<button>', {
-      'text': navigationText,
+    var $navButton = $('<div>', {
+      'class': 'h5p-navigation-button-' + navigationText,
       'role': 'button',
-      'tabindex': '0'
+      'tabindex': '1'
     }).click(function () {
       var assessmentGoals = self.getGoalAssessments(self.pageInstances);
       var newGoals = self.getGoals(self.pageInstances);
@@ -142,6 +140,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu) {
         singlePage.setTitle(self.params.taskDescription);
       }
       singlePage.attach($pageInstance);
+      self.createFooter().appendTo($pageInstance);
       self.pageInstances.push(singlePage);
     });
 

@@ -1,13 +1,28 @@
 .h5p-documentation-tool {
 }
 
+.h5p-documentation-tool .h5p-documentation-tool-main-content {
+  margin-bottom: 1.75em;
+  min-height: 400px;
+  background-color: #EEEEEE;
+}
+
 .h5p-documentation-tool .h5p-documentation-tool-page-container {
   display: inline-block;
   width: 80%;
+  height: 100%;
+  color: #626262;
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-page-container .h5p-documentation-tool-page {
   display: none;
+  /*overflow: hidden; */
+  height: 100%;
+  max-width: 800px;
+}
+
+.h5p-documentation-tool .h5p-documentation-tool-page-container .h5p-documentation-tool-page > * {
+  padding: 0.5em 1em;
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-page-container .h5p-documentation-tool-page.current {
@@ -16,26 +31,65 @@
 
 .h5p-documentation-tool .h5p-documentation-tool-footer {
   display: block;
+  position: relative;
 }
 
 /* ------------------------ Navigation Menu ------------------------------------------ */
 
 .h5p-documentation-tool .h5p-navigation-menu {
   display: inline-block;
-  width: 20%;
+  max-width: 224px;
+  height: 100%;
 
   vertical-align: top;
+  padding: 0.5em 0;
+  background-color: #FFFFFF;
+  color: #888888;
   font-size: 0.8em;
 }
 
+.h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-header {
+  padding: 0.1em 1em 2em
+}
+
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry {
-  width: 95%;
+  padding: 1em 1em 1em 4em;
 
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 
   cursor: pointer;
+}
+
+.h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry:before {
+  content: "";
+  position: absolute;
+  left: 2em;
+  margin-top: 0.65em;
+  height: 10px;
+  width: 10px;
+
+  background: #888888;
+  border-radius: 100%;
+
+  box-shadow: 0 0 0px 5px #E8E8E8;
+}
+
+.h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry:after {
+  content: '';
+  position: absolute;
+  left: 2.3em;
+  margin-top: 0.5em;
+  z-index: -1;
+
+  height: 4em;
+  width: 2px;
+  background: #E8E8E8;
+}
+
+.h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry:last-child:after {
+  display: none;
 }
 
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry > p {
@@ -47,10 +101,25 @@
 
 /* ---------------------------- Documentation Tool Buttons ------------------------------- */
 
-.h5p-documentation-tool .h5p-documentation-tool-footer .h5p-previous-button {
+.h5p-documentation-tool .h5p-documentation-tool-footer .h5p-navigation-button-prev {
   float: left;
 }
 
-.h5p-documentation-tool .h5p-documentation-tool-footer .h5p-next-button {
+.h5p-documentation-tool .h5p-documentation-tool-footer .h5p-navigation-button-next {
   float: right;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  radius: 50%;
+  background-color: #1A73D9;
+}
+
+.h5p-documentation-tool .h5p-documentation-tool-footer .h5p-navigation-button-next:before {
+  font-family: "H5PFontAwesome4";
+  content: "\f105";
+  color: #FFFFFF;
+  font-size: 28px;
+  position: relative;
+  right: -0.375em;
+  top: 0.085em;
 }
