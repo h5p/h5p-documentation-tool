@@ -1,0 +1,66 @@
+/* ------------------------ Navigation Menu ------------------------------------------ */
+
+.h5p-documentation-tool .h5p-navigation-menu {
+  display: block;
+  max-width: 224px;
+  vertical-align: top;
+  padding: 0.5em 0.5em;
+  background-color: #FFFFFF;
+  color: #888888;
+  font-size: 0.8em;
+}
+
+/* --------------------------- Header ---------------------------------------------- */
+
+.h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-header {
+  padding: 0.1em 1em 2em
+}
+
+/* ----------------------------- Entries -------------------------------------------- */
+.h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry {
+  padding: 1em 1em 1em 4em;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  cursor: pointer;
+}
+
+.h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry:before {
+  content: "";
+  position: absolute;
+  left: 2em;
+  margin-top: 0.65em;
+  z-index: 2;
+
+  height: 10px;
+  width: 10px;
+
+  background: #888888;
+  border-radius: 100%;
+  box-shadow: 0 0 0px 5px #E8E8E8;
+}
+
+.h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry:after {
+  content: '';
+  position: absolute;
+  left: 2.35em;
+  margin-top: 0.5em;
+  z-index: 1;
+
+  height: 4em;
+  width: 2px;
+  background: #E8E8E8;
+}
+
+.h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry:last-child:after {
+  display: none;
+}
+
+.h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry > p {
+  margin: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

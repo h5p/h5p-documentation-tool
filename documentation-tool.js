@@ -69,11 +69,12 @@ H5P.DocumentationTool = (function ($, NavigationMenu) {
       'class': FOOTER
     });
 
-    this.$prevButton = this.createNavigationButton(-1)
-      .hide()
+    // Next page button
+    this.createNavigationButton(1)
       .appendTo($footer);
 
-    this.$nextButton = this.createNavigationButton(1)
+    // Previous page button
+    this.createNavigationButton(-1)
       .appendTo($footer);
 
     return $footer;
@@ -86,25 +87,15 @@ H5P.DocumentationTool = (function ($, NavigationMenu) {
    */
   DocumentationTool.prototype.createNavigationButton = function (moveDirection) {
     var self = this;
-    var navigationText = 'prev';
+    var navigationText = 'next';
     if (moveDirection === -1) {
-      navigationText = 'next';
+      navigationText = 'prev';
     }
     var $navButton = $('<div>', {
       'class': 'h5p-navigation-button-' + navigationText,
       'role': 'button',
       'tabindex': '1'
     }).click(function () {
-      var assessmentGoals = self.getGoalAssessments(self.pageInstances);
-      var newGoals = self.getGoals(self.pageInstances);
-      assessmentGoals.forEach(function (assessmentPage) {
-        newGoals = self.mergeGoals(newGoals, assessmentPage);
-      });
-      self.setGoals(self.pageInstances, newGoals);
-
-      var allInputs = self.getDocumentExportInputs(self.pageInstances);
-      self.setDocumentExportOutputs(self.pageInstances, allInputs);
-
       self.movePage(self.currentPageIndex + moveDirection);
     }).keydown(function (e) {
       var keyPressed = e.which;
@@ -152,23 +143,20 @@ H5P.DocumentationTool = (function ($, NavigationMenu) {
    * @param {Number} toPage Move to this page index
    */
   DocumentationTool.prototype.movePage = function (toPage) {
+    var self = this;
+
+    var assessmentGoals = self.getGoalAssessments(self.pageInstances);
+    var newGoals = self.getGoals(self.pageInstances);
+    assessmentGoals.forEach(function (assessmentPage) {
+      newGoals = self.mergeGoals(newGoals, assessmentPage);
+    });
+    self.setGoals(self.pageInstances, newGoals);
+
+    var allInputs = self.getDocumentExportInputs(self.pageInstances);
+    this.setDocumentExportOutputs(self.pageInstances, allInputs);
     // Invalid value
     if ((toPage + 1 > this.$pagesArray.length) || (toPage < 0)) {
       throw new Error('invalid parameter for movePage(): ' + toPage);
-    }
-
-    // Remove next button at end slide
-    if (toPage + 1 === this.$pagesArray.length) {
-      this.$nextButton.hide();
-    } else {
-      this.$nextButton.show();
-    }
-
-    // Remove prev button at first slide
-    if (toPage === 0) {
-      this.$prevButton.hide();
-    } else {
-      this.$prevButton.show();
     }
 
     this.$pagesArray.eq(this.currentPageIndex).removeClass('current');
@@ -281,13 +269,16 @@ H5P.DocumentationTool = (function ($, NavigationMenu) {
    * Resize function for responsiveness.
    */
   DocumentationTool.prototype.resize = function () {
+    // Static padding at bottom of the page
+    var staticPadding = 10;
+    // Minimum height of documentation tool
     var neededHeight = 300;
     // Get initial height for all pages.
     this.$mainContent.css('height', 'initial');
     this.$pagesArray.each(function () {
       var pageInitialHeight = $(this).height();
-      if (pageInitialHeight > neededHeight) {
-        neededHeight = pageInitialHeight;
+      if (pageInitialHeight + staticPadding > neededHeight) {
+        neededHeight = pageInitialHeight + staticPadding;
       }
     });
     this.$mainContent.css('height', neededHeight + 'px');

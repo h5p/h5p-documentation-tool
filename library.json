@@ -10,6 +10,9 @@
   "machineName": "H5P.DocumentationTool",
   "preloadedCss": [
     {
+      "path": "navigation-menu.css"
+    },
+    {
       "path": "documentation-tool.css"
     }
   ],
