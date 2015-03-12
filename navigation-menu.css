@@ -54,13 +54,21 @@
   background: #E8E8E8;
 }
 
+/* Do not display the navigation menu "chain" for last child */
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry:last-child:after {
   display: none;
 }
 
+/* Ignore paragraph browser margins */
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry > p {
   margin: 0;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+/* Current entry */
+.h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry.current:before {
+  background: #FFF;
+  box-shadow: 0 0 0 5px #575757;
 }

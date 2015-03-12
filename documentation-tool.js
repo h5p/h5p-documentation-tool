@@ -57,6 +57,8 @@ H5P.DocumentationTool = (function ($, NavigationMenu) {
       self.$pagesArray.eq(self.currentPageIndex).addClass('current');
     }
 
+    this.navigationMenu = navigationMenu;
+
     self.resize();
   };
 
@@ -91,21 +93,12 @@ H5P.DocumentationTool = (function ($, NavigationMenu) {
     if (moveDirection === -1) {
       navigationText = 'prev';
     }
-    var $navButton = $('<div>', {
-      'class': 'h5p-navigation-button-' + navigationText,
-      'role': 'button',
-      'tabindex': '1'
-    }).click(function () {
-      self.movePage(self.currentPageIndex + moveDirection);
-    }).keydown(function (e) {
-      var keyPressed = e.which;
-      // 32 - space
-      if (keyPressed === 32) {
-        $(this).click();
-        e.preventDefault();
-      }
-      $(this).focus();
-    });
+
+    var $navButton = H5P.JoubelUI.createSimpleRoundedButton()
+      .addClass('h5p-navigation-button-' + navigationText)
+      .click(function () {
+        self.movePage(self.currentPageIndex + moveDirection);
+      });
 
     return $navButton;
   };
@@ -162,6 +155,9 @@ H5P.DocumentationTool = (function ($, NavigationMenu) {
     this.$pagesArray.eq(this.currentPageIndex).removeClass('current');
     this.currentPageIndex = toPage;
     this.$pagesArray.eq(this.currentPageIndex).addClass('current');
+
+    // Update navigation menu
+    this.navigationMenu.updateNavigationMenu(this.currentPageIndex);
   };
 
   /**
@@ -177,7 +173,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu) {
     newGoals.forEach(function (goalPage, pageIndex) {
       goalPage.forEach(function (goalInstance) {
         var result = $.grep(assessmentGoals[pageIndex], function (assessmentInstance) {
-          return assessmentInstance.goalId() === goalInstance.goalId();
+          return assessmentInstance.getUniqueId() === goalInstance.getUniqueId();
         });
         if (result.length) {
           goalInstance.goalAnswer(result[0].goalAnswer());

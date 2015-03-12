@@ -39,12 +39,10 @@
 
 .h5p-documentation-tool .h5p-documentation-tool-footer .h5p-navigation-button-prev,
 .h5p-documentation-tool .h5p-documentation-tool-footer .h5p-navigation-button-next {
-  cursor: pointer;
   float: right;
+  padding: 0;
   width: 30px;
   height: 30px;
-  border-radius: 50%;
-  background-color: #1A73D9;
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-footer .h5p-navigation-button-prev:before,

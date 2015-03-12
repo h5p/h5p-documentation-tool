@@ -35,6 +35,10 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
       'html': self.navMenuLabel
     }).appendTo($navigationMenu);
 
+    var $navigationMenuEntries = $('<div>', {
+      'class': 'h5p-navigation-menu-entries'
+    }).appendTo($navigationMenu);
+
     this.docTool.pageInstances.forEach(function (page, pageIndex) {
       var pageTitle = '';
 
@@ -46,9 +50,10 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
       }
 
       // Create page entry
-      $('<div/>', {
+      var $navigationMenuEntry = $('<div/>', {
         'class': 'h5p-navigation-menu-entry',
         'html': pageTitle,
+        'title': pageTitle,
         'role': 'button',
         'tabindex': '1'
       }).click(function () {
@@ -61,7 +66,24 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
           e.preventDefault();
         }
         $(this).focus();
-      }).appendTo($navigationMenu);
+      }).appendTo($navigationMenuEntries);
+
+      // Add current class to the first item
+      if (pageIndex === 0) {
+        $navigationMenuEntry.addClass('current');
+      }
+    });
+
+    this.$navigationMenuEntries = $navigationMenuEntries;
+  };
+
+  NavigationMenu.prototype.updateNavigationMenu = function (currentPageIndex) {
+    this.$navigationMenuEntries.children().each(function (entryIndex) {
+      if (currentPageIndex === entryIndex) {
+        $(this).addClass('current');
+      } else {
+        $(this).removeClass('current');
+      }
     });
   };
 
