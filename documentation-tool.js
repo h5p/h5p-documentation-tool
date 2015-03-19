@@ -265,7 +265,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu) {
    * Resize function for responsiveness.
    */
   DocumentationTool.prototype.resize = function () {
-    // Static padding at bottom of the page
+/*    // Static padding at bottom of the page
     var staticPadding = 10;
     // Minimum height of documentation tool
     var neededHeight = 300;
@@ -277,7 +277,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu) {
         neededHeight = pageInitialHeight + staticPadding;
       }
     });
-    this.$mainContent.css('height', neededHeight + 'px');
+    this.$mainContent.css('height', neededHeight + 'px');*/
   };
 
   return DocumentationTool;

@@ -16,7 +16,12 @@
     "name": "pagesList",
     "label": "Elements",
     "type": "list",
-    "widget": "verticalTabs",
+    "widgets": [
+      {
+        "name": "VerticalTabs",
+        "label": "Default"
+      }
+    ],
     "min": 1,
     "entity": "page",
     "field":
