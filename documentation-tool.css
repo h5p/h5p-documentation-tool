@@ -17,9 +17,11 @@
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-page-container .h5p-documentation-tool-page {
-  display: none;
+  display: block;
   height: 100%;
   max-width: 800px;
+  visibility: hidden;
+  position: absolute;
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-page-container .h5p-documentation-tool-page > * {
@@ -27,7 +29,8 @@
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-page-container .h5p-documentation-tool-page.current {
-  display: block;
+  visibility: visible;
+  position: relative;
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-footer {

@@ -72,3 +72,61 @@
   background: #FFF;
   box-shadow: 0 0 0 5px #575757;
 }
+
+/* -------------------------- Responsive layout ------------------------------*/
+
+.h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-navigation-menu .h5p-navigation-menu-header span {
+  display: none;
+}
+
+.h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-navigation-menu {
+  width: 50px;
+}
+
+.h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-navigation-menu .h5p-navigation-menu-entry {
+  text-overflow: clip;
+}
+
+.h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-navigation-menu .h5p-navigation-menu-entry span {
+  visibility: hidden;
+}
+
+.h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-navigation-menu .h5p-navigation-menu-header {
+  padding: 0.5em 1em;
+  cursor: pointer;
+}
+
+.h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-navigation-menu .h5p-navigation-menu-header:before {
+  font-family: "H5PFontAwesome4";
+  content: "\f0c9";
+  font-size: 2em;
+}
+
+/* ---------------------- Responsive layout expanded -------------------------*/
+
+.h5p-documentation-tool .h5p-documentation-tool-main-content.responsive.expanded .h5p-navigation-menu {
+  position: absolute;
+  width: initial;
+  max-width: 80%;
+  z-index: 1;
+  height: calc(100% - 1em);
+  padding-right: 2.5em;
+  background-color: #FAFAFA;
+}
+
+.h5p-documentation-tool .h5p-documentation-tool-main-content.responsive.expanded .h5p-navigation-menu .h5p-navigation-menu-header span {
+  display: inline-block;
+  position: relative;
+  margin-left: 1em;
+  font-size: 1.3em;
+  bottom: 0.2em;
+}
+
+.h5p-documentation-tool .h5p-documentation-tool-main-content.responsive.expanded .h5p-navigation-menu .h5p-navigation-menu-entry span {
+  visibility: visible;
+}
+
+.h5p-documentation-tool .h5p-documentation-tool-main-content.responsive.expanded .h5p-navigation-menu .h5p-navigation-menu-header:before {
+  color: #ccc;
+}
+
