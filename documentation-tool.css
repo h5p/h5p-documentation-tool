@@ -1,4 +1,5 @@
 .h5p-documentation-tool {
+  font-size: 16px;
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content {
@@ -54,7 +55,7 @@
   font-size: 24px;
   position: relative;
   right: -0.375em;
-  top: 0.085em;
+  line-height: 28px;
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-footer .h5p-navigation-button-prev {

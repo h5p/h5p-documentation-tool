@@ -4,7 +4,7 @@ var H5P = H5P || {};
  * Documentation tool module
  * @external {jQuery} $ H5P.jQuery
  */
-H5P.DocumentationTool = (function ($, NavigationMenu) {
+H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI) {
   // CSS Classes:
   var MAIN_CONTAINER = 'h5p-documentation-tool';
   var PAGES_CONTAINER = 'h5p-documentation-tool-page-container';
@@ -94,7 +94,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu) {
       navigationText = 'prev';
     }
 
-    var $navButton = H5P.JoubelUI.createSimpleRoundedButton()
+    var $navButton = JoubelUI.createSimpleRoundedButton()
       .addClass('h5p-navigation-button-' + navigationText)
       .click(function () {
         self.movePage(self.currentPageIndex + moveDirection);
@@ -281,4 +281,4 @@ H5P.DocumentationTool = (function ($, NavigationMenu) {
   };
 
   return DocumentationTool;
-}(H5P.jQuery, H5P.DocumentationTool.NavigationMenu));
+}(H5P.jQuery, H5P.DocumentationTool.NavigationMenu, H5P.JoubelUI));
