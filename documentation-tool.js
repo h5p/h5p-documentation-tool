@@ -284,13 +284,14 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI) {
   };
 
   /**
-   * Resizes documentation tool height depending on task height
+   * Sets same minimum height on every page,
+   * corresponding to the greatest height of all pages
    */
   DocumentationTool.prototype.adjustDocumentationToolHeight = function () {
     // Static padding at bottom of the page
     var staticPadding = 10;
     // Minimum height of documentation tool
-    var neededHeight = 300;
+    var neededHeight = 500;
     // Get initial height for all pages.
     this.$mainContent.css('min-height', 'initial');
     this.$pagesArray.each(function () {

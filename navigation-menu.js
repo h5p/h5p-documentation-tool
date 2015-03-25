@@ -110,6 +110,7 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
     var self = this;
     if (isEnabled) {
       // Bind click to expand navigation menu
+      this.$navigationMenuHeader.unbind('click');
       this.$navigationMenuHeader.click(function () {
         self.$documentationToolContaner.toggleClass('expanded');
       });
