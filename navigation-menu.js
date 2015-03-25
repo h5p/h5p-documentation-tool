@@ -26,14 +26,19 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
    */
   NavigationMenu.prototype.attach = function ($container) {
     var self = this;
+    this.$documentationToolContaner = $container;
+
     var $navigationMenu = $('<div/>', {
       'class': 'h5p-navigation-menu'
     }).prependTo($container);
 
-    $('<div>', {
-      'class': 'h5p-navigation-menu-header',
-      'html': self.navMenuLabel
+    var $navigationMenuHeader = $('<div>', {
+      'class': 'h5p-navigation-menu-header'
     }).appendTo($navigationMenu);
+
+    $('<span>', {
+      'html': self.navMenuLabel
+    }).appendTo($navigationMenuHeader);
 
     var $navigationMenuEntries = $('<div>', {
       'class': 'h5p-navigation-menu-entries'
@@ -52,7 +57,6 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
       // Create page entry
       var $navigationMenuEntry = $('<div/>', {
         'class': 'h5p-navigation-menu-entry',
-        'html': pageTitle,
         'title': pageTitle,
         'role': 'button',
         'tabindex': '1'
@@ -66,7 +70,12 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
           e.preventDefault();
         }
         $(this).focus();
-      }).appendTo($navigationMenuEntries);
+      }).data('pageTitle', pageTitle)
+        .appendTo($navigationMenuEntries);
+
+      $('<span>', {
+        'html': pageTitle
+      }).appendTo($navigationMenuEntry);
 
       // Add current class to the first item
       if (pageIndex === 0) {
@@ -74,9 +83,15 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
       }
     });
 
+    this.$navigationMenuHeader = $navigationMenuHeader;
+    this.$navigationMenu = $navigationMenu;
     this.$navigationMenuEntries = $navigationMenuEntries;
   };
 
+  /**
+   * Updates current navigation menu entry with proper style
+   * @param {Number} currentPageIndex Current page index
+   */
   NavigationMenu.prototype.updateNavigationMenu = function (currentPageIndex) {
     this.$navigationMenuEntries.children().each(function (entryIndex) {
       if (currentPageIndex === entryIndex) {
@@ -85,6 +100,27 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
         $(this).removeClass('current');
       }
     });
+  };
+
+  /**
+   * Toggle responsive layout on or off
+   * @param {boolean} isEnabled True to enable responsive layout
+   */
+  NavigationMenu.prototype.setResponsiveLayout = function (isEnabled) {
+    var self = this;
+    if (isEnabled) {
+      // Bind click to expand navigation menu
+      this.$navigationMenuHeader.click(function () {
+        self.$documentationToolContaner.toggleClass('expanded');
+      });
+      // Add responsive class
+      this.$documentationToolContaner.addClass('responsive');
+    } else {
+      // Remove click action and remove responsive classes
+      this.$navigationMenuHeader.unbind('click');
+      this.$documentationToolContaner.removeClass('expanded');
+      this.$documentationToolContaner.removeClass('responsive');
+    }
   };
 
   return NavigationMenu;

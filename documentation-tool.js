@@ -265,19 +265,42 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI) {
    * Resize function for responsiveness.
    */
   DocumentationTool.prototype.resize = function () {
-/*    // Static padding at bottom of the page
+    // Width calculations
+    this.adjustDocumentationToolWidth();
+
+    // Height calculations
+    this.adjustDocumentationToolHeight();
+  };
+
+  /**
+   * Resizes navigation menu depending on task width
+   */
+  DocumentationTool.prototype.adjustDocumentationToolWidth = function () {
+    // Show responsive design when width relative to font size is less than static threshold
+    var staticResponsiveLayoutThreshold = 34;
+    var relativeWidthOfContainer = this.$inner.width() / parseInt(this.$inner.css('font-size'), 10);
+    var responsiveLayoutRequirement = relativeWidthOfContainer < staticResponsiveLayoutThreshold;
+    this.navigationMenu.setResponsiveLayout(responsiveLayoutRequirement);
+  };
+
+  /**
+   * Resizes documentation tool height depending on task height
+   */
+  DocumentationTool.prototype.adjustDocumentationToolHeight = function () {
+    // Static padding at bottom of the page
     var staticPadding = 10;
     // Minimum height of documentation tool
     var neededHeight = 300;
     // Get initial height for all pages.
-    this.$mainContent.css('height', 'initial');
+    this.$mainContent.css('min-height', 'initial');
     this.$pagesArray.each(function () {
-      var pageInitialHeight = $(this).height();
+      // Get initial height of page element.
+      var pageInitialHeight = $(this).children().eq(0).height();
       if (pageInitialHeight + staticPadding > neededHeight) {
         neededHeight = pageInitialHeight + staticPadding;
       }
     });
-    this.$mainContent.css('height', neededHeight + 'px');*/
+    this.$mainContent.css('min-height', neededHeight + 'px');
   };
 
   return DocumentationTool;
