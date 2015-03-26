@@ -7,18 +7,17 @@
   padding: 0.5em 0.5em;
   background-color: #FFFFFF;
   color: #888888;
-  font-size: 0.8em;
 }
 
 /* --------------------------- Header ---------------------------------------------- */
 
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-header {
-  padding: 0.1em 1em 2em
+  padding: 0.1em 1em 0.75em;
 }
 
 /* ----------------------------- Entries -------------------------------------------- */
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry {
-  padding: 1em 1em 1em 4em;
+  padding: 1em 1em 1em 2.75em;
 
   overflow: hidden;
   white-space: nowrap;
@@ -27,10 +26,15 @@
   cursor: pointer;
 }
 
+.h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry span {
+  position: relative;
+  top: 0.2em;
+}
+
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry:before {
   content: "";
   position: absolute;
-  left: 2em;
+  left: 1.5em;
   margin-top: 0.65em;
   z-index: 2;
 
@@ -45,7 +49,7 @@
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry:after {
   content: '';
   position: absolute;
-  left: 2.35em;
+  left: 1.75em;
   margin-top: 0.5em;
   z-index: 1;
 
@@ -80,11 +84,20 @@
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-navigation-menu {
-  width: 50px;
+  width: 30px;
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-navigation-menu .h5p-navigation-menu-entry {
   text-overflow: clip;
+  padding-right: 0;
+}
+
+.h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-navigation-menu .h5p-navigation-menu-entry:before {
+  left: 1em;
+}
+
+.h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-navigation-menu .h5p-navigation-menu-entry:after {
+  left: 1.3em;
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-navigation-menu .h5p-navigation-menu-entry span {
@@ -92,7 +105,7 @@
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-navigation-menu .h5p-navigation-menu-header {
-  padding: 0.5em 1em;
+  padding: 0.5em 0;
   cursor: pointer;
 }
 
@@ -103,6 +116,10 @@
 }
 
 /* ---------------------- Responsive layout expanded -------------------------*/
+/* Margin left equal to the width of navigation menu unexpanded + padding */
+.h5p-documentation-tool .h5p-documentation-tool-main-content.responsive.expanded .h5p-documentation-tool-page-container {
+  margin-left: calc(30px + 1em);
+}
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive.expanded .h5p-navigation-menu {
   position: absolute;
@@ -118,7 +135,7 @@
   display: inline-block;
   position: relative;
   margin-left: 1em;
-  font-size: 1.3em;
+  font-size: 1.2em;
   bottom: 0.2em;
 }
 
