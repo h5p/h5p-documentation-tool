@@ -35,6 +35,14 @@
   position: relative;
 }
 
+.h5p-documentation-tool .h5p-documentation-tool-page-container .h5p-documentation-tool-page * {
+  visibility: hidden;
+}
+
+.h5p-documentation-tool .h5p-documentation-tool-page-container .h5p-documentation-tool-page.current * {
+  visibility: visible;
+}
+
 .h5p-documentation-tool .h5p-documentation-tool-footer {
   display: block;
   position: relative;
@@ -48,6 +56,7 @@
   padding: 0;
   width: 30px;
   height: 30px;
+  line-height: 24px;
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-footer .h5p-navigation-button-prev:before,
