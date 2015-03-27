@@ -11,7 +11,7 @@
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-page-container {
-  display: inline-block;
+  display: table-cell;
   min-height: 500px;
   width: 100%;
   max-width: 600px;
