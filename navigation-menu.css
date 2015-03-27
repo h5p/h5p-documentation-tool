@@ -84,7 +84,7 @@
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-navigation-menu {
-  width: 30px;
+  width: 32px;
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-navigation-menu .h5p-navigation-menu-entry {
@@ -118,7 +118,7 @@
 /* ---------------------- Responsive layout expanded -------------------------*/
 /* Margin left equal to the width of navigation menu unexpanded + padding */
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive.expanded .h5p-documentation-tool-page-container {
-  margin-left: calc(30px + 1em);
+  margin-left: calc(32px + 1em);
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive.expanded .h5p-navigation-menu {
