@@ -133,9 +133,9 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI) {
 
   /**
    * Moves the documentation tool to the specified page
-   * @param {Number} toPage Move to this page index
+   * @param {Number} toPageIndex Move to this page index
    */
-  DocumentationTool.prototype.movePage = function (toPage) {
+  DocumentationTool.prototype.movePage = function (toPageIndex) {
     var self = this;
 
     var assessmentGoals = self.getGoalAssessments(self.pageInstances);
@@ -145,15 +145,15 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI) {
     });
 
     // Update page depending on what page type it is
-    self.updatePage(toPage, newGoals);
+    self.updatePage(toPageIndex, newGoals);
 
     // Invalid value
-    if ((toPage + 1 > this.$pagesArray.length) || (toPage < 0)) {
-      throw new Error('invalid parameter for movePage(): ' + toPage);
+    if ((toPageIndex + 1 > this.$pagesArray.length) || (toPageIndex < 0)) {
+      throw new Error('invalid parameter for movePage(): ' + toPageIndex);
     }
 
     this.$pagesArray.eq(this.currentPageIndex).removeClass('current');
-    this.currentPageIndex = toPage;
+    this.currentPageIndex = toPageIndex;
     this.$pagesArray.eq(this.currentPageIndex).addClass('current');
 
     // Update navigation menu
@@ -162,15 +162,16 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI) {
 
   /**
    * Update page depending on what type of page it is
-   * @param {Object} toPage Page object that will be updated
+   * @param {Object} toPageIndex Page object that will be updated
    * @param {Array} newGoals Array containing updated goals
    */
-  DocumentationTool.prototype.updatePage = function (toPage, newGoals) {
+  DocumentationTool.prototype.updatePage = function (toPageIndex, newGoals) {
     var self = this;
+    var pageInstance = self.pageInstances[toPageIndex];
 
-    if (toPage instanceof H5P.GoalsAssessmentPage) {
+    if (pageInstance instanceof H5P.GoalsAssessmentPage) {
       self.setGoals(self.pageInstances, newGoals);
-    } else if (toPage instanceof H5P.DocumentExportPage) {
+    } else if (pageInstance instanceof H5P.DocumentExportPage) {
       var allInputs = self.getDocumentExportInputs(self.pageInstances);
       self.setDocumentExportOutputs(self.pageInstances, allInputs);
     }

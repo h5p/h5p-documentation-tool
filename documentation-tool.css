@@ -38,6 +38,7 @@
 
 .h5p-documentation-tool .h5p-documentation-tool-page-container .h5p-documentation-tool-page * {
   visibility: hidden;
+  transition: visibility 0s;
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-page-container .h5p-documentation-tool-page.current * {
