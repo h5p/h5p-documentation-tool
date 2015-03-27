@@ -143,10 +143,10 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI) {
     assessmentGoals.forEach(function (assessmentPage) {
       newGoals = self.mergeGoals(newGoals, assessmentPage);
     });
-    self.setGoals(self.pageInstances, newGoals);
 
-    var allInputs = self.getDocumentExportInputs(self.pageInstances);
-    this.setDocumentExportOutputs(self.pageInstances, allInputs);
+    // Update page depending on what page type it is
+    self.updatePage(toPage, newGoals);
+
     // Invalid value
     if ((toPage + 1 > this.$pagesArray.length) || (toPage < 0)) {
       throw new Error('invalid parameter for movePage(): ' + toPage);
@@ -158,6 +158,22 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI) {
 
     // Update navigation menu
     this.navigationMenu.updateNavigationMenu(this.currentPageIndex);
+  };
+
+  /**
+   * Update page depending on what type of page it is
+   * @param {Object} toPage Page object that will be updated
+   * @param {Array} newGoals Array containing updated goals
+   */
+  DocumentationTool.prototype.updatePage = function (toPage, newGoals) {
+    var self = this;
+
+    if (toPage instanceof H5P.GoalsAssessmentPage) {
+      self.setGoals(self.pageInstances, newGoals);
+    } else if (toPage instanceof H5P.DocumentExportPage) {
+      var allInputs = self.getDocumentExportInputs(self.pageInstances);
+      self.setDocumentExportOutputs(self.pageInstances, allInputs);
+    }
   };
 
   /**
@@ -267,9 +283,6 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI) {
   DocumentationTool.prototype.resize = function () {
     // Width calculations
     this.adjustDocumentationToolWidth();
-
-    // Height calculations
-    this.adjustDocumentationToolHeight();
   };
 
   /**
@@ -281,27 +294,6 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI) {
     var relativeWidthOfContainer = this.$inner.width() / parseInt(this.$inner.css('font-size'), 10);
     var responsiveLayoutRequirement = relativeWidthOfContainer < staticResponsiveLayoutThreshold;
     this.navigationMenu.setResponsiveLayout(responsiveLayoutRequirement);
-  };
-
-  /**
-   * Sets same minimum height on every page,
-   * corresponding to the greatest height of all pages
-   */
-  DocumentationTool.prototype.adjustDocumentationToolHeight = function () {
-    // Static padding at bottom of the page
-    var staticPadding = 10;
-    // Minimum height of documentation tool
-    var neededHeight = 500;
-    // Get initial height for all pages.
-    this.$mainContent.css('min-height', 'initial');
-    this.$pagesArray.each(function () {
-      // Get initial height of page element.
-      var pageInitialHeight = $(this).children().eq(0).height();
-      if (pageInitialHeight + staticPadding > neededHeight) {
-        neededHeight = pageInitialHeight + staticPadding;
-      }
-    });
-    this.$mainContent.css('min-height', neededHeight + 'px');
   };
 
   return DocumentationTool;
