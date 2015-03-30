@@ -291,7 +291,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI) {
    */
   DocumentationTool.prototype.adjustDocumentationToolWidth = function () {
     // Show responsive design when width relative to font size is less than static threshold
-    var staticResponsiveLayoutThreshold = 34;
+    var staticResponsiveLayoutThreshold = 40;
     var relativeWidthOfContainer = this.$inner.width() / parseInt(this.$inner.css('font-size'), 10);
     var responsiveLayoutRequirement = relativeWidthOfContainer < staticResponsiveLayoutThreshold;
     this.navigationMenu.setResponsiveLayout(responsiveLayoutRequirement);
