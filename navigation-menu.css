@@ -6,7 +6,7 @@
   vertical-align: top;
   padding: 0.5em 0.5em;
   background-color: #f7f7f7;
-  color: #888888;
+  color: #666;
   font-size: 0.875em;
 }
 
@@ -42,9 +42,9 @@
   height: 10px;
   width: 10px;
 
-  background: #888888;
+  background: #888;
   border-radius: 100%;
-  box-shadow: 0 0 0px 5px #E8E8E8;
+  box-shadow: 0 0 0px 5px #e8e8e8;
 }
 
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry:after {
@@ -74,12 +74,12 @@
 
 /* Current entry */
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry.current:before {
-  background: #FFF;
-  box-shadow: 0 0 0 5px #555;
+  background: #fff;
+  box-shadow: 0 0 0 5px #666;
 }
 
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry.current {
-  color:  #555;
+  color:  #333;
 }
 
 /* -------------------------- Responsive layout ------------------------------*/
