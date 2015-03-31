@@ -62,6 +62,7 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
         'tabindex': '1'
       }).click(function () {
         self.docTool.movePage(pageIndex);
+        $(this).blur();
       }).keydown(function (e) {
         var keyPressed = e.which;
         // 32 - space
@@ -69,7 +70,6 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
           $(this).click();
           e.preventDefault();
         }
-        $(this).focus();
       }).data('pageTitle', pageTitle)
         .appendTo($navigationMenuEntries);
 

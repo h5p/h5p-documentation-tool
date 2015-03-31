@@ -2,12 +2,16 @@
   font-size: 16px;
 }
 
+.h5p-documentation-tool :active {
+  outline: none;
+}
+
 .h5p-documentation-tool .h5p-documentation-tool-main-content {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  background-color: #EEEEEE;
+  background-color: #fff;
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-page-container {
@@ -51,6 +55,7 @@
 }
 
 /* ---------------------------- Documentation Tool Buttons ------------------------------- */
+/* Rounded button css in 'H5P.JoubelUI' library */
 
 .h5p-documentation-tool .h5p-documentation-tool-footer .h5p-navigation-button-prev,
 .h5p-documentation-tool .h5p-documentation-tool-footer .h5p-navigation-button-next {
@@ -70,6 +75,12 @@
   position: relative;
   right: -0.375em;
   line-height: 28px;
+}
+
+/* Active state */
+.h5p-documentation-tool .h5p-documentation-tool-footer .h5p-navigation-button-prev:active:before,
+.h5p-documentation-tool .h5p-documentation-tool-footer .h5p-navigation-button-next:active:before {
+  top: 2px;
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-footer .h5p-navigation-button-prev {
