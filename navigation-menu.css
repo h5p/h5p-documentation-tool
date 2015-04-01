@@ -4,7 +4,7 @@
   display: table-cell;
   max-width: 224px;
   vertical-align: top;
-  padding: 0.5em 0.5em;
+  padding: 8px 8px;
   background-color: #f7f7f7;
   color: #666;
   font-size: 0.875em;
@@ -101,6 +101,8 @@
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-navigation-menu {
   width: 32px;
+  position: absolute;
+  height: calc(100% - 16px);
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-navigation-menu .h5p-navigation-menu-entry {
@@ -123,7 +125,7 @@
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-navigation-menu .h5p-navigation-menu-header {
   padding: 0.75em 0 0.5em 0;
   cursor: pointer;
-  text-align: center;
+  margin-left: 7px;
 }
 
 /* Hover effect header */
@@ -138,10 +140,6 @@
 }
 
 /* ---------------------- Responsive layout expanded -------------------------*/
-/* Margin left equal to the width of navigation menu unexpanded + padding */
-.h5p-documentation-tool .h5p-documentation-tool-main-content.responsive.expanded .h5p-documentation-tool-page-container {
-  margin-left: 45px;
-}
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive.expanded .h5p-navigation-menu {
   position: absolute;
@@ -167,6 +165,7 @@
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive.expanded .h5p-navigation-menu .h5p-navigation-menu-header {
   color: #ccc;
+  margin-left: 7px;
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive.expanded .h5p-navigation-menu .h5p-navigation-menu-header span {
