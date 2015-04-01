@@ -13,12 +13,13 @@
 /* --------------------------- Header ---------------------------------------------- */
 
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-header {
-  padding: 0.6em 1em 0.75em;
+  padding: 0.85em 1em 0.75em;
 }
 
 /* ----------------------------- Entries -------------------------------------------- */
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry {
-  padding: 1em 1em 1em 3.25em;
+  padding: 0em 1em 0em 3.25em;
+  margin: 2em 0em;
 
   overflow: hidden;
   white-space: nowrap;
@@ -44,7 +45,7 @@
 
   background: #888;
   border-radius: 100%;
-  box-shadow: 0 0 0px 5px #e8e8e8;
+  box-shadow: 0 0 0px 5px #ddd;
 }
 
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry:after {
@@ -56,7 +57,7 @@
 
   height: 4em;
   width: 2px;
-  background: #E8E8E8;
+  background: #ddd;
 }
 
 /* Do not display the navigation menu "chain" for last child */
@@ -79,6 +80,16 @@
 }
 
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry.current {
+  color:  #333;
+}
+
+/* Hover entry */
+.h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry:hover:before {
+  background: #fff;
+  box-shadow: 0 0 0 5px #666;
+}
+
+.h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry:hover {
   color:  #333;
 }
 
@@ -110,14 +121,20 @@
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-navigation-menu .h5p-navigation-menu-header {
-  padding: 0.5em 0;
+  padding: 0.75em 0 0.5em 0;
   cursor: pointer;
+  text-align: center;
+}
+
+/* Hover effect header */
+.h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-navigation-menu .h5p-navigation-menu-header:hover {
+  color: #333;
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-navigation-menu .h5p-navigation-menu-header:before {
   font-family: "H5PFontAwesome4";
   content: "\f0c9";
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 /* ---------------------- Responsive layout expanded -------------------------*/
@@ -141,14 +158,22 @@
   position: relative;
   margin-left: 1em;
   font-size: 1.2em;
-  bottom: 0.2em;
+  bottom: 0.1em;
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive.expanded .h5p-navigation-menu .h5p-navigation-menu-entry span {
   visibility: visible;
 }
 
-.h5p-documentation-tool .h5p-documentation-tool-main-content.responsive.expanded .h5p-navigation-menu .h5p-navigation-menu-header:before {
+.h5p-documentation-tool .h5p-documentation-tool-main-content.responsive.expanded .h5p-navigation-menu .h5p-navigation-menu-header {
   color: #ccc;
 }
 
+.h5p-documentation-tool .h5p-documentation-tool-main-content.responsive.expanded .h5p-navigation-menu .h5p-navigation-menu-header span {
+  color: #666;
+}
+
+.h5p-documentation-tool .h5p-documentation-tool-main-content.responsive.expanded .h5p-navigation-menu .h5p-navigation-menu-header:hover,
+.h5p-documentation-tool .h5p-documentation-tool-main-content.responsive.expanded .h5p-navigation-menu .h5p-navigation-menu-header:hover span {
+  color: #333;
+}
