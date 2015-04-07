@@ -59,7 +59,7 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
         'class': 'h5p-navigation-menu-entry',
         'title': pageTitle,
         'role': 'button',
-        'tabindex': '1'
+        'tabindex': '0'
       }).click(function () {
         self.docTool.movePage(pageIndex);
         $(this).blur();
