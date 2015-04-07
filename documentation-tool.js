@@ -177,9 +177,10 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI) {
       var allRequiredInputsAreFilled = self.checkIfAllRequiredInputsAreFilled(self.pageInstances);
       self.setRequiredInputsFilled(self.pageInstances, allRequiredInputsAreFilled);
 
-      // Get all input field values
+      // Get all input fields, goals and goal assessments
       var allInputs = self.getDocumentExportInputs(self.pageInstances);
       self.setDocumentExportOutputs(self.pageInstances, allInputs);
+      self.setDocumentExportGoals(self.pageInstances, newGoals);
     }
   };
 
@@ -297,6 +298,18 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI) {
     pageInstances.forEach(function (page) {
       if (page instanceof H5P.DocumentExportPage) {
         page.updateOutputFields(inputs);
+      }
+    });
+  };
+
+  /**
+   * Sets the output for all document export pages
+   * @param {Array} inputs Array of input strings
+   */
+  DocumentationTool.prototype.setDocumentExportGoals  = function (pageInstances, newGoals) {
+    pageInstances.forEach(function (page) {
+      if (page instanceof H5P.DocumentExportPage) {
+        page.updateExportableGoals(newGoals);
       }
     });
   };
