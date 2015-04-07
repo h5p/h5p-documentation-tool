@@ -21,7 +21,6 @@
   max-width: 600px;
   color: #333;
   padding-bottom: 1em;
-  margin-left: 48px;
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-page-container .h5p-documentation-tool-page {
@@ -104,3 +103,10 @@
 .h5p-documentation-tool .h5p-documentation-tool-page:last-child .h5p-documentation-tool-footer .h5p-navigation-button-next {
   display: none;
 }
+
+
+/* ---------------------------- Responsive view ----------------------------- */
+.h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-documentation-tool-page-container {
+  margin-left: 48px;
+}
+
