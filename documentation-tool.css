@@ -29,6 +29,7 @@
   max-width: 800px;
   visibility: hidden;
   position: absolute;
+  margin-bottom: 3em;
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-page-container .h5p-documentation-tool-page > * {
@@ -51,7 +52,8 @@
 
 .h5p-documentation-tool .h5p-documentation-tool-footer {
   display: block;
-  position: relative;
+  position: absolute;
+  right: 0;
 }
 
 /* ---------------------------- Documentation Tool Buttons ------------------------------- */
