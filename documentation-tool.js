@@ -172,6 +172,12 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI) {
     if (pageInstance instanceof H5P.GoalsAssessmentPage) {
       self.setGoals(self.pageInstances, newGoals);
     } else if (pageInstance instanceof H5P.DocumentExportPage) {
+
+      // Check if all required input fields are filled
+      var allRequiredInputsAreFilled = self.checkIfAllRequiredInputsAreFilled(self.pageInstances);
+      self.setRequiredInputsFilled(self.pageInstances, allRequiredInputsAreFilled);
+
+      // Get all input field values
       var allInputs = self.getDocumentExportInputs(self.pageInstances);
       self.setDocumentExportOutputs(self.pageInstances, allInputs);
     }
@@ -236,6 +242,23 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI) {
   };
 
   /**
+   * Checks if all required inputs are filled
+   * @returns {boolean} True if all required inputs are filled
+   */
+  DocumentationTool.prototype.checkIfAllRequiredInputsAreFilled = function (pageInstances) {
+    var allRequiredInputsAreFilled = true;
+    pageInstances.forEach(function (page) {
+      if (page instanceof H5P.StandardPage) {
+        if (!page.requiredInputsIsFilled()) {
+          allRequiredInputsAreFilled = false;
+        }
+      }
+    });
+
+    return allRequiredInputsAreFilled;
+  };
+
+  /**
    * Gets goals from all goal pages and returns updated goals list.
    *
    * @param {Array} pageInstances Array containing all pages.
@@ -274,6 +297,18 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI) {
     pageInstances.forEach(function (page) {
       if (page instanceof H5P.DocumentExportPage) {
         page.updateOutputFields(inputs);
+      }
+    });
+  };
+
+  /**
+   * Sets the required inputs filled boolean in all document export pages
+   * @param {boolean} isRequiredInputsFilled True if all required inputs are filled
+   */
+  DocumentationTool.prototype.setRequiredInputsFilled  = function (pageInstances, isRequiredInputsFilled) {
+    pageInstances.forEach(function (page) {
+      if (page instanceof H5P.DocumentExportPage) {
+        page.updateRequiredInputsFilled(isRequiredInputsFilled);
       }
     });
   };
