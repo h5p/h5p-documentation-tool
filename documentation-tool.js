@@ -158,6 +158,22 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI) {
 
     // Update navigation menu
     this.navigationMenu.updateNavigationMenu(this.currentPageIndex);
+
+    // Scroll to top
+    this.scrollToTop();
+  };
+
+  /**
+   * Scroll to top if changing page and below y position is above threshold
+   */
+  DocumentationTool.prototype.scrollToTop = function () {
+    var staticScrollToTopPadding = 90;
+    var yPositionThreshold = 75;
+
+    // Scroll to top of content type if above y threshold
+    if ($(window).scrollTop() - $(this.$inner).offset().top > yPositionThreshold) {
+      $(window).scrollTop(this.$inner.offset().top - staticScrollToTopPadding);
+    }
   };
 
   /**
