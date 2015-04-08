@@ -30,6 +30,8 @@
   visibility: hidden;
   position: absolute;
   margin-bottom: 3em;
+  top: 0;
+  overflow: hidden;
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-page-container .h5p-documentation-tool-page > * {
