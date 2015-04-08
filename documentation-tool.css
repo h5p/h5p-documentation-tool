@@ -54,7 +54,8 @@
 
 .h5p-documentation-tool .h5p-documentation-tool-footer {
   display: block;
-  position: absolute;
+  position: relative;
+  height: 2.25em;
   right: 0;
 }
 
@@ -63,7 +64,8 @@
 
 .h5p-documentation-tool .h5p-documentation-tool-footer .h5p-navigation-button-prev,
 .h5p-documentation-tool .h5p-documentation-tool-footer .h5p-navigation-button-next {
-  float: right;
+  position: absolute;
+  right: 1em;
   padding: 0;
   width: 30px;
   height: 30px;
@@ -88,7 +90,7 @@
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-footer .h5p-navigation-button-prev {
-  margin-right: 1.5em;
+  margin-right: 3em;
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-footer .h5p-navigation-button-next:before {
