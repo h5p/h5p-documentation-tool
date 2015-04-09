@@ -98,11 +98,6 @@
   right: -0.5em;
 }
 
-/* Remove margin for prev button on last page */
-.h5p-documentation-tool .h5p-documentation-tool-page:last-child .h5p-documentation-tool-footer .h5p-navigation-button-prev {
-  margin-right: 0em;
-}
-
 /* Do not show prev button for first page or next button for last page */
 .h5p-documentation-tool .h5p-documentation-tool-page:first-child .h5p-documentation-tool-footer .h5p-navigation-button-prev,
 .h5p-documentation-tool .h5p-documentation-tool-page:last-child .h5p-documentation-tool-footer .h5p-navigation-button-next {
