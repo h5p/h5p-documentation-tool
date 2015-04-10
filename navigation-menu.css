@@ -14,18 +14,18 @@
 
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-header {
   padding: 0.85em 1em 0.75em;
+  margin-bottom: 2em;
 }
 
 /* ----------------------------- Entries -------------------------------------------- */
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry {
-  padding: 0em 1em 0em 3.25em;
-  margin: 2em 0em;
+  padding: 0 1em 2em 3.25em;
 
   overflow: hidden;
-  white-space: nowrap;
   text-overflow: ellipsis;
 
   cursor: pointer;
+  position: relative;
 }
 
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry span {
@@ -51,6 +51,9 @@
   content: '';
   position: absolute;
   left: 28px;
+  bottom: 0;
+  top: -4px;
+
   margin-top: 8px;
   z-index: 1;
 
