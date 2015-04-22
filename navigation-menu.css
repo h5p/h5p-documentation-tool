@@ -108,16 +108,18 @@
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-navigation-menu .h5p-navigation-menu-entry {
-  text-overflow: clip;
   padding-right: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-navigation-menu .h5p-navigation-menu-entry:before {
-  left: 16px;
+  left: 8px;
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-navigation-menu .h5p-navigation-menu-entry:after {
-  left: 20px;
+  left: 12px;
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-navigation-menu .h5p-navigation-menu-entry span {
