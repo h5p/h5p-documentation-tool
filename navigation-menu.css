@@ -30,14 +30,15 @@
 
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry span {
   position: relative;
+  top: -2px;
 }
 
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry:before {
   content: "";
   position: absolute;
   left: 24px;
-  margin-top: 7px;
-  z-index: 2;
+  top: 5px;
+  z-index: 1;
 
   height: 10px;
   width: 10px;
@@ -52,12 +53,11 @@
   position: absolute;
   left: 28px;
   bottom: 0;
-  top: -4px;
 
-  margin-top: 8px;
+  top: 20px;
   z-index: 1;
 
-  height: 4em;
+  height: 100%;
   width: 2px;
   background: #ddd;
 }
