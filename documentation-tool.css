@@ -2,6 +2,10 @@
   font-size: 16px;
 }
 
+.h5p-documentation-tool * {
+  box-sizing: content-box;
+}
+
 .h5p-documentation-tool :active {
   outline: none;
 }
