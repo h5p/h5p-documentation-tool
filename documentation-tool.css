@@ -2,8 +2,13 @@
   font-size: 16px;
 }
 
+/* Fix for box sizing themes */
 .h5p-documentation-tool * {
   box-sizing: content-box;
+}
+
+.h5p-documentation-tool .joubel-exportable-area {
+  box-sizing: border-box;
 }
 
 .h5p-documentation-tool :active {
