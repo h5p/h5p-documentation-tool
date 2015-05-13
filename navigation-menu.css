@@ -1,7 +1,6 @@
 /* ------------------------ Navigation Menu ------------------------------------------ */
 
 .h5p-documentation-tool .h5p-navigation-menu {
-  display: table-cell;
   max-width: 224px;
   vertical-align: top;
   padding: 7px 8px;
