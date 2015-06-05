@@ -4,7 +4,7 @@ var H5P = H5P || {};
  * Documentation tool module
  * @external {jQuery} $ H5P.jQuery
  */
-H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI) {
+H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher) {
   // CSS Classes:
   var MAIN_CONTAINER = 'h5p-documentation-tool';
   var PAGES_CONTAINER = 'h5p-documentation-tool-page-container';
@@ -27,7 +27,12 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI) {
       navMenuLabel: "Documentation Tool",
       pagesList: []
     }, params);
+
+    EventDispatcher.call(this);
   }
+
+  DocumentationTool.prototype = Object.create(EventDispatcher.prototype);
+  DocumentationTool.prototype.constructor = DocumentationTool;
 
   /**
    * Attach function called by H5P framework to insert H5P content into page.
@@ -362,4 +367,4 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI) {
   };
 
   return DocumentationTool;
-}(H5P.jQuery, H5P.DocumentationTool.NavigationMenu, H5P.JoubelUI));
+}(H5P.jQuery, H5P.DocumentationTool.NavigationMenu, H5P.JoubelUI, H5P.EventDispatcher));
