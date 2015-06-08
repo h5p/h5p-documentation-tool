@@ -23,6 +23,10 @@
   background-color: #fff;
 }
 
+.h5p-documentation-tool .h5p-documentation-tool-main-content:before {
+  content: none;
+}
+
 .h5p-documentation-tool .h5p-documentation-tool-page-container {
   min-height: 500px;
   width: 100%;
