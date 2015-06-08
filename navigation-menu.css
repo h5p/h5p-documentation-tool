@@ -103,7 +103,7 @@
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-navigation-menu {
   width: 32px;
   position: absolute;
-  height: calc(100% - 0.875em);
+  height: calc(100% - 14px);
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-navigation-menu .h5p-navigation-menu-entry {
