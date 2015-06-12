@@ -254,10 +254,12 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
     var inputArray = [];
     pageInstances.forEach(function (page) {
       var pageInstanceInput = [];
+      var title = '';
       if (page instanceof H5P.StandardPage) {
         pageInstanceInput = page.getInputArray();
+        title = page.getTitle();
       }
-      inputArray.push(pageInstanceInput);
+      inputArray.push({inputArray: pageInstanceInput, title: title});
     });
 
     return inputArray;
@@ -328,9 +330,16 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
    * @param {Array} inputs Array of input strings
    */
   DocumentationTool.prototype.setDocumentExportGoals  = function (pageInstances, newGoals) {
+    var assessmentPageTitle = '';
+    pageInstances.forEach(function (page) {
+      if (page instanceof H5P.GoalsAssessmentPage) {
+        assessmentPageTitle = page.getTitle();
+      }
+    });
+
     pageInstances.forEach(function (page) {
       if (page instanceof H5P.DocumentExportPage) {
-        page.updateExportableGoals(newGoals);
+        page.updateExportableGoals({inputArray: newGoals, title: assessmentPageTitle});
       }
     });
   };
