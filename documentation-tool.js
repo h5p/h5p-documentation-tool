@@ -126,7 +126,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
 
       var singlePage = H5P.newRunnable(page, self.id);
       if (singlePage instanceof H5P.DocumentExportPage) {
-        singlePage.setTitle(self.params.taskDescription);
+        singlePage.setExportTitle(self.params.taskDescription);
       }
       singlePage.attach($pageInstance);
       self.createFooter().appendTo($pageInstance);
