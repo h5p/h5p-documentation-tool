@@ -16,7 +16,7 @@
       ],
       "entity": "Element",
       "field": {
-        "label": "Innholdstype",
+        "label": "Innhaldstype",
         "description": "Bibliotek som brukes for dette elementet."
       }
     }
