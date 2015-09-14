@@ -3,14 +3,9 @@
     "name": "taskDescription",
     "label": "Title",
     "type": "text",
+    "default": "Documentation tool",
     "description": "Title for the documentation tool.",
     "optional": true
-  },
-  {
-    "name": "navMenuLabel",
-    "label": "Label for navigation menu",
-    "type": "text",
-    "default": "Documentation tool"
   },
   {
     "name": "pagesList",
