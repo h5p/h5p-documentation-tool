@@ -31,10 +31,10 @@
       "label": "Content type",
       "description": "Library for this slide.",
       "options": [
-        "H5P.StandardPage 1.0",
-        "H5P.GoalsPage 1.0",
-        "H5P.GoalsAssessmentPage 1.0",
-        "H5P.DocumentExportPage 1.0"
+        "H5P.StandardPage 1.1",
+        "H5P.GoalsPage 1.1",
+        "H5P.GoalsAssessmentPage 1.1",
+        "H5P.DocumentExportPage 1.1"
       ]
     }
   }
