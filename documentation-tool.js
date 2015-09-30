@@ -24,9 +24,12 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
     // Set default behavior.
     this.params = $.extend({}, {
       taskDescription: 'Documentation Tool',
-      navMenuLabel: "Documentation Tool",
       pagesList: []
     }, params);
+
+    if (params.taskDescription === undefined && params.navMenuLabel !== undefined) {
+      this.params.taskDescription = params.navMenuLabel;
+    }
 
     EventDispatcher.call(this);
   }
@@ -55,7 +58,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
     self.$pagesArray = $pagesContainer.children();
 
     // Create navigation menu
-    var navigationMenu = new NavigationMenu(self, this.params.navMenuLabel);
+    var navigationMenu = new NavigationMenu(self, this.params.taskDescription);
     navigationMenu.attach(this.$mainContent);
 
     if (this.$inner.children().length) {

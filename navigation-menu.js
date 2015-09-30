@@ -14,9 +14,15 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
    * @returns {Object} NavigationMenu NavigationMenu instance
    */
   function NavigationMenu(docTool, navMenuLabel) {
+    var self = this;
     this.$ = $(this);
     this.docTool = docTool;
     this.navMenuLabel = navMenuLabel;
+
+    // Hide menu if body is clicked
+    $('body').click(function () {
+      self.$documentationToolContaner.removeClass('expanded');
+    });
   }
 
   /**
@@ -113,6 +119,7 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
       this.$navigationMenuHeader.unbind('click');
       this.$navigationMenuHeader.click(function () {
         self.$documentationToolContaner.toggleClass('expanded');
+        return false;
       });
       // Add responsive class
       this.$documentationToolContaner.addClass('responsive');
