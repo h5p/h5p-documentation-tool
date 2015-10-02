@@ -146,6 +146,11 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
   DocumentationTool.prototype.movePage = function (toPageIndex) {
     var self = this;
 
+    // Invalid value
+    if ((toPageIndex + 1 > this.$pagesArray.length) || (toPageIndex < 0)) {
+      return;
+    }
+
     var assessmentGoals = self.getGoalAssessments(self.pageInstances);
     var newGoals = self.getGoals(self.pageInstances);
     assessmentGoals.forEach(function (assessmentPage) {
@@ -155,10 +160,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
     // Update page depending on what page type it is
     self.updatePage(toPageIndex, newGoals);
 
-    // Invalid value
-    if ((toPageIndex + 1 > this.$pagesArray.length) || (toPageIndex < 0)) {
-      throw new Error('invalid parameter for movePage(): ' + toPageIndex);
-    }
+
 
     this.$pagesArray.eq(this.currentPageIndex).removeClass('current');
     this.currentPageIndex = toPageIndex;
