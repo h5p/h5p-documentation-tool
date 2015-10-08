@@ -6,7 +6,7 @@
       "description": "Tittel for dokumentasjonsverktøyet"
     },
     {
-      "label": "Innhaldselementer",
+      "label": "Innhaldselement",
       "widgets": [
         {
           "label": "Default"
@@ -15,7 +15,7 @@
       "entity": "Element",
       "field": {
         "label": "Innhaldstype",
-        "description": "Bibliotek som brukes for dette elementet."
+        "description": "Bibliotek som vert brukt for dette elementet."
       }
     }
   ]
