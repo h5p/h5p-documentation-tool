@@ -8,6 +8,7 @@
   "author": "Joubel AS",
   "license": "MIT",
   "machineName": "H5P.DocumentationTool",
+  "embedTypes": ["iframe"],
   "preloadedCss": [
     {
       "path": "navigation-menu.css"
