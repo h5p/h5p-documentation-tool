@@ -3,7 +3,6 @@
 .h5p-documentation-tool .h5p-navigation-menu {
   max-width: 224px;
   vertical-align: top;
-  padding: 7px 8px;
   background-color: #f7f7f7;
   color: #666;
   font-size: 0.875em;
@@ -12,13 +11,13 @@
 /* --------------------------- Header ---------------------------------------------- */
 
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-header {
-  padding: 0.85em 1em 0.75em;
-  margin-bottom: 2em;
+  padding: 0.85em 1em 0;
+  margin-bottom: 1em;
 }
 
 /* ----------------------------- Entries -------------------------------------------- */
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry {
-  padding: 0 1em 2em 3.25em;
+  padding: 0 1em 1em 3em;
 
   overflow: hidden;
   text-overflow: ellipsis;
@@ -29,13 +28,13 @@
 
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry span {
   position: relative;
-  top: -2px;
+  top: -1px;
 }
 
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry:before {
   content: "";
   position: absolute;
-  left: 24px;
+  left: 20px;
   top: 5px;
   z-index: 1;
 
@@ -43,14 +42,14 @@
   width: 10px;
 
   background: #888;
-  border-radius: 100%;
+  border-radius: 50%;
   box-shadow: 0 0 0px 5px #ddd;
 }
 
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry:after {
   content: '';
   position: absolute;
-  left: 28px;
+  left: 24px;
   bottom: 0;
 
   top: 20px;
@@ -103,7 +102,8 @@
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-navigation-menu {
   width: 32px;
   position: absolute;
-  height: calc(100% - 14px);
+  height: 100%;
+  border-right: 1px solid #eee;
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-navigation-menu .h5p-navigation-menu-entry {
@@ -114,11 +114,11 @@
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-navigation-menu .h5p-navigation-menu-entry:before {
-  left: 8px;
+  left: 11px;
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-navigation-menu .h5p-navigation-menu-entry:after {
-  left: 12px;
+  left: 15px;
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-navigation-menu .h5p-navigation-menu-entry span {
@@ -128,7 +128,7 @@
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-navigation-menu .h5p-navigation-menu-header {
   padding: 0.75em 0 0.5em 0;
   cursor: pointer;
-  margin-left: 5px;
+  margin-left: 7px;
 }
 
 /* Hover effect header */
@@ -149,9 +149,7 @@
   width: auto;
   max-width: 80%;
   z-index: 1;
-  height: calc(100% - 1em);
-  padding-right: 2.5em;
-  background-color: #FAFAFA;
+  padding-right: 1em;
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive.expanded .h5p-navigation-menu .h5p-navigation-menu-header span {
@@ -168,7 +166,6 @@
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive.expanded .h5p-navigation-menu .h5p-navigation-menu-header {
   color: #ccc;
-  margin-left: 5px;
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive.expanded .h5p-navigation-menu .h5p-navigation-menu-header span {
