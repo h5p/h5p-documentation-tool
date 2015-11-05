@@ -134,6 +134,10 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
       singlePage.attach($pageInstance);
       self.createFooter().appendTo($pageInstance);
       self.pageInstances.push(singlePage);
+
+      singlePage.on('resize', function () {
+        self.trigger('resize');
+      });
     });
 
     return $pagesContainer;
