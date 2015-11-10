@@ -18,6 +18,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
    * @returns {Object} DocumentationTool DocumentationTool instance
    */
   function DocumentationTool(params, id) {
+    var self = this;
     this.$ = $(this);
     this.id = id;
 
@@ -32,6 +33,8 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
     }
 
     EventDispatcher.call(this);
+
+    this.on('resize', self.resize, self);
   }
 
   DocumentationTool.prototype = Object.create(EventDispatcher.prototype);
@@ -67,7 +70,9 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
 
     this.navigationMenu = navigationMenu;
 
-    self.resize();
+    setTimeout(function () {
+      self.trigger('resize');
+    }, 0);
   };
 
   /**
@@ -173,18 +178,25 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
 
     // Scroll to top
     this.scrollToTop();
+
+    setTimeout(function () {
+      self.trigger('resize');
+    }, 0);
   };
 
   /**
    * Scroll to top if changing page and below y position is above threshold
    */
   DocumentationTool.prototype.scrollToTop = function () {
+    if (!window.frameElement) {
+      return;
+    }
     var staticScrollToTopPadding = 90;
     var yPositionThreshold = 75;
 
     // Scroll to top of content type if above y threshold
-    if ($(window).scrollTop() - $(this.$inner).offset().top > yPositionThreshold) {
-      $(window).scrollTop(this.$inner.offset().top - staticScrollToTopPadding);
+    if ($(window.top).scrollTop() - $(window.frameElement).offset().top > yPositionThreshold) {
+      $(window.top).scrollTop($(window.frameElement).offset().top - staticScrollToTopPadding);
     }
   };
 
