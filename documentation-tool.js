@@ -188,15 +188,21 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
    * Scroll to top if changing page and below y position is above threshold
    */
   DocumentationTool.prototype.scrollToTop = function () {
-    if (!window.frameElement) {
-      return;
-    }
-    var staticScrollToTopPadding = 90;
-    var yPositionThreshold = 75;
+    // Wrap this code inside try/catch since if this is embedded
+    // iframe is not allowed to talk to parent.
+    try {
+      if (!window.frameElement) {
+        return;
+      }
+      var staticScrollToTopPadding = 90;
+      var yPositionThreshold = 75;
 
-    // Scroll to top of content type if above y threshold
-    if ($(window.top).scrollTop() - $(window.frameElement).offset().top > yPositionThreshold) {
-      $(window.top).scrollTop($(window.frameElement).offset().top - staticScrollToTopPadding);
+      // Scroll to top of content type if above y threshold
+      if ($(window.top).scrollTop() - $(window.frameElement).offset().top > yPositionThreshold) {
+        $(window.top).scrollTop($(window.frameElement).offset().top - staticScrollToTopPadding);
+      }
+    } catch (err) {
+      // Swallow error - do nothing
     }
   };
 
