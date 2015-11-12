@@ -380,7 +380,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
         parseFloat(this.navigationMenu.$navigationMenuHeader.css('margin-bottom'));
     var entriesHeight = this.navigationMenu.$navigationMenuEntries.get(0).getBoundingClientRect().height;
     var minHeight = headerHeight + entriesHeight;
-    this.$inner.css('min-height', minHeight + 'px');
+    this.$mainContent.css('min-height', minHeight + 'px');
   };
 
   /**
