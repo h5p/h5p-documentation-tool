@@ -70,9 +70,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
 
     this.navigationMenu = navigationMenu;
 
-    setTimeout(function () {
-      self.trigger('resize');
-    }, 0);
+    self.resize();
   };
 
   /**
@@ -178,31 +176,18 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
 
     // Scroll to top
     this.scrollToTop();
-
-    setTimeout(function () {
-      self.trigger('resize');
-    }, 0);
   };
 
   /**
    * Scroll to top if changing page and below y position is above threshold
    */
   DocumentationTool.prototype.scrollToTop = function () {
-    // Wrap this code inside try/catch since if this is embedded
-    // iframe is not allowed to talk to parent.
-    try {
-      if (!window.frameElement) {
-        return;
-      }
-      var staticScrollToTopPadding = 90;
-      var yPositionThreshold = 75;
+    var staticScrollToTopPadding = 90;
+    var yPositionThreshold = 75;
 
-      // Scroll to top of content type if above y threshold
-      if ($(window.top).scrollTop() - $(window.frameElement).offset().top > yPositionThreshold) {
-        $(window.top).scrollTop($(window.frameElement).offset().top - staticScrollToTopPadding);
-      }
-    } catch (err) {
-      // Swallow error - do nothing
+    // Scroll to top of content type if above y threshold
+    if ($(window).scrollTop() - $(this.$inner).offset().top > yPositionThreshold) {
+      $(window).scrollTop(this.$inner.offset().top - staticScrollToTopPadding);
     }
   };
 
@@ -383,6 +368,19 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
   DocumentationTool.prototype.resize = function () {
     // Width calculations
     this.adjustDocumentationToolWidth();
+    this.adjustNavBarHeight();
+  };
+
+  /**
+   * Adjusts navigation menu minimum height
+   */
+  DocumentationTool.prototype.adjustNavBarHeight = function () {
+    var headerHeight = this.navigationMenu.$navigationMenuHeader.get(0).getBoundingClientRect().height +
+        parseFloat(this.navigationMenu.$navigationMenuHeader.css('margin-top')) +
+        parseFloat(this.navigationMenu.$navigationMenuHeader.css('margin-bottom'));
+    var entriesHeight = this.navigationMenu.$navigationMenuEntries.get(0).getBoundingClientRect().height;
+    var minHeight = headerHeight + entriesHeight;
+    this.$inner.css('min-height', minHeight + 'px');
   };
 
   /**
