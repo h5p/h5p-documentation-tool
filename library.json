@@ -2,8 +2,8 @@
   "title": "Documentation Tool",
   "description": "Documentation tool for educational assessment.",
   "majorVersion": 1,
-  "minorVersion": 1,
-  "patchVersion": 1,
+  "minorVersion": 2,
+  "patchVersion": 0,
   "runnable": 1,
   "author": "Joubel AS",
   "license": "MIT",
@@ -40,7 +40,7 @@
     {
       "machineName": "H5P.GoalsPage",
       "majorVersion": 1,
-      "minorVersion": 1
+      "minorVersion": 2
     },
     {
       "machineName": "H5P.GoalsAssessmentPage",
