@@ -28,21 +28,19 @@
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-page-container {
+  position: relative;
   min-height: 500px;
   width: 100%;
   max-width: 600px;
   color: #333;
-  padding-bottom: 1em;
+  padding-bottom: 1.5em;
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-page-container .h5p-documentation-tool-page {
   display: block;
   height: 100%;
-  max-width: 800px;
-  visibility: hidden;
-  position: absolute;
-  top: 0;
-  overflow: hidden;
+  margin-bottom: 1em;
+  display: none;
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-page-container .h5p-documentation-tool-page > * {
@@ -50,8 +48,7 @@
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-page-container .h5p-documentation-tool-page.current {
-  visibility: visible;
-  position: relative;
+  display: block;
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-page-container .h5p-documentation-tool-page * {
@@ -64,9 +61,11 @@
 
 .h5p-documentation-tool .h5p-documentation-tool-footer {
   display: block;
-  position: relative;
+  position: absolute;
   height: 2.25em;
+  left: 0;
   right: 0;
+  bottom: 0;
 }
 
 /* ---------------------------- Documentation Tool Buttons ------------------------------- */
@@ -109,15 +108,28 @@
   right: -0.5em;
 }
 
-/* Do not show prev button for first page or next button for last page */
+/* Disable prev button for first page and next button for last page */
 .h5p-documentation-tool .h5p-documentation-tool-page:first-child .h5p-documentation-tool-footer .h5p-navigation-button-prev,
 .h5p-documentation-tool .h5p-documentation-tool-page:last-child .h5p-documentation-tool-footer .h5p-navigation-button-next {
-  display: none;
+  background-color: #ccc;
+  cursor: default;
+}
+.h5p-documentation-tool .h5p-documentation-tool-page:first-child .h5p-documentation-tool-footer .h5p-navigation-button-prev:active:before,
+.h5p-documentation-tool .h5p-documentation-tool-page:last-child .h5p-documentation-tool-footer .h5p-navigation-button-next:active:before {
+  top: 0;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.h5p-documentation-tool .h5p-documentation-tool-page:last-child .h5p-documentation-tool-footer .h5p-navigation-button-next:active,
+.h5p-documentation-tool .h5p-documentation-tool-page:first-child .h5p-documentation-tool-footer .h5p-navigation-button-prev:active {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
 }
 
 
 /* ---------------------------- Responsive view ----------------------------- */
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-documentation-tool-page-container {
-  margin-left: 48px;
+  margin-left: 2.2em;
 }
-
