@@ -1,0 +1,24 @@
+{
+  "semantics": [
+    {
+      "label": "Titel",
+      "default": "Dokumentationstool",
+      "description": "Titel für das Dokumentationstool.",
+    },
+    {
+      "label": "Elemente",
+      "widgets": [
+        {
+          "label": "Standard"
+        }
+      ],
+      "field":
+      {
+        "label": "Inhaltstyp",
+        "description": "Bibliothek für diese Folie.",
+        "options": [
+          
+        ]
+      }
+    }
+  ]
