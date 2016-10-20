@@ -3,7 +3,7 @@
     {
       "label": "Titel",
       "default": "Dokumentationstool",
-      "description": "Titel für das Dokumentationstool.",
+      "description": "Titel für das Dokumentationstool."
     },
     {
       "label": "Elemente",
