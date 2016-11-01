@@ -23,7 +23,7 @@
     {
       "name": "page",
       "type": "library",
-      "label": "Content type",
+      "label": "Page type",
       "description": "Library for this slide.",
       "options": [
         "H5P.StandardPage 1.1",
