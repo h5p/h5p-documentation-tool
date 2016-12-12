@@ -2,6 +2,7 @@
   {
     "name": "taskDescription",
     "label": "Title",
+    "importance":"high",
     "type": "text",
     "default": "Documentation tool",
     "description": "Title for the documentation tool.",
@@ -10,6 +11,7 @@
   {
     "name": "pagesList",
     "label": "Elements",
+    "importance":"high",
     "type": "list",
     "widgets": [
       {
@@ -24,6 +26,7 @@
       "name": "page",
       "type": "library",
       "label": "Page type",
+      "importance":"high",
       "description": "Library for this slide.",
       "options": [
         "H5P.StandardPage 1.1",
