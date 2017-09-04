@@ -3,12 +3,14 @@
   "description": "Documentation tool for educational assessment.",
   "majorVersion": 1,
   "minorVersion": 5,
-  "patchVersion": 1,
+  "patchVersion": 2,
   "runnable": 1,
   "author": "Joubel",
   "license": "MIT",
   "machineName": "H5P.DocumentationTool",
-  "embedTypes": ["iframe"],
+  "embedTypes": [
+    "iframe"
+  ],
   "preloadedCss": [
     {
       "path": "navigation-menu.css"
