@@ -47,7 +47,8 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
     }).appendTo($navigationMenuHeader);
 
     var $navigationMenuEntries = $('<div>', {
-      'class': 'h5p-navigation-menu-entries'
+      'class': 'h5p-navigation-menu-entries',
+      role: 'menubar'
     }).appendTo($navigationMenu);
 
     this.docTool.pageInstances.forEach(function (page, pageIndex) {
@@ -64,15 +65,14 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
       var $navigationMenuEntry = $('<div/>', {
         'class': 'h5p-navigation-menu-entry',
         'title': pageTitle,
-        'role': 'button',
+        'role': 'menuitem',
         'tabindex': '0'
       }).click(function () {
         self.docTool.movePage(pageIndex);
-        $(this).blur();
       }).keydown(function (e) {
         var keyPressed = e.which;
-        // 32 - space
-        if (keyPressed === 32) {
+        // 32 - space, 13 - enter
+        if ([32, 13].indexOf(keyPressed) !== -1) {
           $(this).click();
           e.preventDefault();
         }

@@ -174,6 +174,10 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
     // Update navigation menu
     this.navigationMenu.updateNavigationMenu(this.currentPageIndex);
 
+    // Invoke focus on page instance if it exists
+    var pageInstance = self.pageInstances[toPageIndex];
+    pageInstance.focus && pageInstance.focus();
+
     // Scroll to top
     this.scrollToTop();
   };
