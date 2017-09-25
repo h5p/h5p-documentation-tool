@@ -4,6 +4,8 @@
 
 /* Resets buttons styling */
 .h5p-documentation-tool button:not(.h5p-core-button) {
+  font-family: Sans-Serif;
+  font-size: 1em;
   background: none;
   border: 0;
   overflow: visible;
