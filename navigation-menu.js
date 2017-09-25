@@ -67,17 +67,11 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
         'title': pageTitle,
         'role': 'menuitem',
         'tabindex': '0'
-      }).click(function () {
+      }).appendTo($navigationMenuEntries);
+
+      H5P.JoubelUI.handleButtonClick($navigationMenuEntry, function () {
         self.docTool.movePage(pageIndex);
-      }).keydown(function (e) {
-        var keyPressed = e.which;
-        // 32 - space, 13 - enter
-        if ([32, 13].indexOf(keyPressed) !== -1) {
-          $(this).click();
-          e.preventDefault();
-        }
-      }).data('pageTitle', pageTitle)
-        .appendTo($navigationMenuEntries);
+      });
 
       $('<span>', {
         'html': pageTitle
@@ -87,6 +81,7 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
       if (pageIndex === 0) {
         $navigationMenuEntry.addClass('current');
       }
+
     });
 
     this.$navigationMenuHeader = $navigationMenuHeader;

@@ -2,6 +2,21 @@
   font-size: 16px;
 }
 
+/* Resets buttons styling */
+.h5p-documentation-tool button:not(.h5p-core-button) {
+  background: none;
+  border: 0;
+  overflow: visible;
+  padding: 0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+}
+.h5p-documentation-tool button::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
 /* Fix for box sizing themes */
 .h5p-documentation-tool * {
   box-sizing: content-box;
@@ -9,10 +24,6 @@
 
 .h5p-documentation-tool .joubel-exportable-area {
   box-sizing: border-box;
-}
-
-.h5p-documentation-tool :active {
-  outline: none;
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content {
@@ -27,36 +38,45 @@
   content: none;
 }
 
-.h5p-documentation-tool .h5p-documentation-tool-page-container {
+.h5p-standalone.h5p-documentation-tool {
+  max-width: 75em;
+}
+
+.h5p-documentation-tool-page-container {
   position: relative;
   min-height: 500px;
   width: 100%;
-  max-width: 600px;
   color: #333;
   padding-bottom: 1.5em;
 }
 
-.h5p-documentation-tool .h5p-documentation-tool-page-container .h5p-documentation-tool-page {
+.h5p-documentation-tool-page-container .h5p-documentation-tool-page {
   display: block;
   height: 100%;
   margin-bottom: 1em;
   display: none;
 }
 
-.h5p-documentation-tool .h5p-documentation-tool-page-container .h5p-documentation-tool-page > * {
+.h5p-documentation-tool-page-container .h5p-documentation-tool-page > * {
   padding: 0.5em 1em;
 }
 
-.h5p-documentation-tool .h5p-documentation-tool-page-container .h5p-documentation-tool-page.current {
+.h5p-documentation-tool-page-container .h5p-documentation-tool-page.current {
   display: block;
 }
 
-.h5p-documentation-tool .h5p-documentation-tool-page-container .h5p-documentation-tool-page * {
+.h5p-documentation-tool-page-container .h5p-documentation-tool-page * {
   visibility: hidden;
 }
 
-.h5p-documentation-tool .h5p-documentation-tool-page-container .h5p-documentation-tool-page.current * {
+.h5p-documentation-tool-page-container .h5p-documentation-tool-page.current * {
   visibility: visible;
+}
+
+/* Make things untabbable when export page is open */
+.h5p-documentation-tool-main-content.hidden .h5p-navigation-menu,
+.h5p-documentation-tool-main-content.hidden .h5p-documentation-tool-page.current * {
+  visibility: hidden;
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-footer {
@@ -68,11 +88,10 @@
   bottom: 0;
 }
 
-/* ---------------------------- Documentation Tool Buttons ------------------------------- */
-/* Rounded button css in 'H5P.JoubelUI' library */
+/* ------ Documentation Tool Buttons --------------- */
+/* Rounded button css in 'H5P.JoubelUI' library      */
 
-.h5p-documentation-tool .h5p-documentation-tool-footer .h5p-navigation-button-prev,
-.h5p-documentation-tool .h5p-documentation-tool-footer .h5p-navigation-button-next {
+.h5p-documentation-tool .h5p-documentation-tool-nav-button {
   position: absolute;
   right: 1em;
   padding: 0;
@@ -81,8 +100,7 @@
   line-height: 24px;
 }
 
-.h5p-documentation-tool .h5p-documentation-tool-footer .h5p-navigation-button-prev:before,
-.h5p-documentation-tool .h5p-documentation-tool-footer .h5p-navigation-button-next:before {
+.h5p-documentation-tool-nav-button:before {
   font-family: "H5PFontAwesome4";
   content: "\f104";
   color: #FFFFFF;
@@ -93,41 +111,26 @@
 }
 
 /* Active state */
-.h5p-documentation-tool .h5p-documentation-tool-footer .h5p-navigation-button-prev:active:before,
-.h5p-documentation-tool .h5p-documentation-tool-footer .h5p-navigation-button-next:active:before {
+.h5p-documentation-tool-nav-button:active:before {
   top: 2px;
 }
 
-.h5p-documentation-tool .h5p-documentation-tool-footer .h5p-navigation-button-prev {
+.h5p-documentation-tool-nav-button.prev {
   margin-right: 3em;
 }
 
-.h5p-documentation-tool .h5p-documentation-tool-footer .h5p-navigation-button-next:before {
+.h5p-documentation-tool-nav-button.next:before {
   content: "\f105";
   color: #FFFFFF;
   right: -0.5em;
 }
 
 /* Disable prev button for first page and next button for last page */
-.h5p-documentation-tool .h5p-documentation-tool-page:first-child .h5p-documentation-tool-footer .h5p-navigation-button-prev,
-.h5p-documentation-tool .h5p-documentation-tool-page:last-child .h5p-documentation-tool-footer .h5p-navigation-button-next {
+.h5p-documentation-tool-nav-button[aria-disabled="true"] {
   background-color: #ccc;
   cursor: default;
+  pointer-events: none;
 }
-.h5p-documentation-tool .h5p-documentation-tool-page:first-child .h5p-documentation-tool-footer .h5p-navigation-button-prev:active:before,
-.h5p-documentation-tool .h5p-documentation-tool-page:last-child .h5p-documentation-tool-footer .h5p-navigation-button-next:active:before {
-  top: 0;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-}
-.h5p-documentation-tool .h5p-documentation-tool-page:last-child .h5p-documentation-tool-footer .h5p-navigation-button-next:active,
-.h5p-documentation-tool .h5p-documentation-tool-page:first-child .h5p-documentation-tool-footer .h5p-navigation-button-prev:active {
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-}
-
 
 /* ---------------------------- Responsive view ----------------------------- */
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-documentation-tool-page-container {

@@ -19,6 +19,23 @@
         "label": "Type de contenu",
         "description": "Bibliothèque de contenu possible pour cet élément."
       }
+    },
+    {
+      "label": "Localize documentation tool buttons",
+      "fields": [
+        {
+          "label": "Previous button label",
+          "default": "Previous"
+        },
+        {
+          "label": "Next button label",
+          "default": "Next"
+        },
+        {
+          "label": "Close button label",
+          "default": "Close"
+        }
+      ]
     }
   ]
 }
