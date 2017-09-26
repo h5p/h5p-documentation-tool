@@ -81,6 +81,32 @@
   visibility: hidden;
 }
 
+
+/* Page header */
+.h5p-documentation-tool-page .page-header {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  justify-content: space-between;
+  padding: 0.5em 0;
+}
+
+.h5p-documentation-tool-page .page-title {
+  font-size: 18px;
+  color: #333;
+}
+
+.h5p-documentation-tool-page .page-help-text {
+  color: #1a73d9;
+  cursor: pointer;
+  font-size: 0.8em;
+}
+
+.h5p-documentation-tool-page .page-help-text:hover {
+  color: #1a4773;
+}
+
 .h5p-documentation-tool .h5p-documentation-tool-footer {
   display: block;
   position: absolute;
