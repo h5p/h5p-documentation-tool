@@ -38,7 +38,7 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
       'class': 'h5p-navigation-menu'
     }).prependTo($container);
 
-    var $navigationMenuHeader = $('<div>', {
+    var $navigationMenuHeader = $('<button>', {
       'class': 'h5p-navigation-menu-header'
     }).appendTo($navigationMenu);
 
@@ -69,8 +69,9 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
         'tabindex': '0'
       }).appendTo($navigationMenuEntries);
 
-      H5P.JoubelUI.handleButtonClick($navigationMenuEntry, function () {
-        self.docTool.movePage(pageIndex);
+      H5P.JoubelUI.handleButtonClick($navigationMenuEntry, function (event) {
+        self.$documentationToolContaner.removeClass('expanded');
+        self.docTool.movePage(pageIndex, event);
       });
 
       $('<span>', {

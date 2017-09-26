@@ -103,24 +103,24 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
    */
   DocumentationTool.prototype.createNavigationButton = function (moveDirection, enabled) {
     var self = this;
-    var navigationText = 'next';
+    var type = 'next';
     var navigationLabel = this.params.l10n.nextLabel;
     if (moveDirection === -1) {
-      navigationText = 'prev';
+      type = 'prev';
       navigationLabel = this.params.l10n.previousLabel;
     }
 
-    var $navButton = JoubelUI.createSimpleRoundedButton()
-      .addClass('h5p-documentation-tool-nav-button ' + navigationText)
-      .attr('aria-disabled', !enabled)
-      .attr('title', navigationLabel)
-      .click(function () {
-        self.movePage(self.currentPageIndex + moveDirection);
-      });
+    var $navButton = $('<div>', {
+      'class': 'joubel-simple-rounded-button h5p-documentation-tool-nav-button ' + type,
+      'title': navigationLabel,
+      'aria-disabled': !enabled,
+      'tabindex': enabled ? 0 : undefined,
+      'html': '<span class="joubel-simple-rounded-button-text"></span>'
+    });
 
-    if (!enabled) {
-      $navButton.removeAttr('tabindex');
-    }
+    H5P.JoubelUI.handleButtonClick($navButton, function (event) {
+      self.movePage(self.currentPageIndex + moveDirection, event);
+    });
 
     return $navButton;
   };
@@ -169,23 +169,25 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
   /**
    * Remove tabindex for main content.
    */
-  DocumentationTool.prototype.untabablize = function () {
-    var self = this;
+  DocumentationTool.prototype.untabalize = function () {
     // Make all other elements in container not tabbable. When dialog is open,
     // it's like the elements behind does not exist.
-    self.$tabbables = self.$mainContent.find('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]').each(function () {
+    this.$tabbables = this.$mainContent.find('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]').each(function () {
       var $tabbable = $(this);
       // Store current tabindex, so we can set it back when dialog closes
       $tabbable.data('tabindex', $tabbable.attr('tabindex'));
       // Make it non tabbable
       $tabbable.attr('tabindex', '-1');
     });
+
+    // Make sure container is not seen by e.g. screenreaders
+    this.$mainContent.attr('aria-hidden', true);
   };
 
   /**
    * Set back tabindex for main container.
    */
-  DocumentationTool.prototype.tabablize = function () {
+  DocumentationTool.prototype.tabalize = function () {
     if (this.$tabbables) {
       this.$tabbables.each(function () {
         var $element = $(this);
@@ -199,6 +201,8 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
         }
       });
     }
+
+    this.$mainContent.removeAttr('aria-hidden');
   };
 
   /**
@@ -209,15 +213,15 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
   DocumentationTool.prototype.showHelpDialog = function (event) {
     var self = this;
 
-    self.untabablize();
+    self.untabalize();
 
     var helpTextDialog = new H5P.JoubelUI.createHelpTextDialog(event.data.title, event.data.helpText, self.params.closeLabel);
 
     // Handle closing of the dialog
     helpTextDialog.on('closed', function () {
       // Set focus back on the page
-      self.tabablize();
-      self.getCurrentPage().focus();
+      self.tabalize();
+      self.getCurrentPage().$helpButton.focus();
     });
 
     this.$inner.append(helpTextDialog.getElement());
@@ -243,7 +247,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
    * Moves the documentation tool to the specified page
    * @param {Number} toPageIndex Move to this page index
    */
-  DocumentationTool.prototype.movePage = function (toPageIndex) {
+  DocumentationTool.prototype.movePage = function (toPageIndex, event) {
     var self = this;
 
     // Invalid value
@@ -271,11 +275,15 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
     this.scrollToTop();
 
     // Invoke focus on page instance if it exists
+    // Focus only if event triggering this is a key event
+    if (event.originalEvent && !(event.originalEvent instanceof MouseEvent) ) {
+      var pageInstance = self.pageInstances[toPageIndex];
+      setTimeout(function () {
+        pageInstance.focus && pageInstance.focus();
+      }, 0);
+    }
 
-    var pageInstance = self.pageInstances[toPageIndex];
-    setTimeout(function () {
-      pageInstance.focus && pageInstance.focus();
-    }, 0);
+    self.trigger('resize');
   };
 
   /**
