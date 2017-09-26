@@ -1,0 +1,24 @@
+{
+  "semantics": [
+    {
+      "label": "Otsikko",
+      "description": "Tämän asiakirjan otsikko"
+    },
+    {
+      "label": "Menun otsikko"
+    },
+    {
+      "label": "Osat",
+      "widgets": [
+        {
+          "label": "Oletus"
+        }
+      ],
+      "entity": "Osa",
+      "field": {
+        "label": "Sisällön muoto",
+        "description": "Vaihtoehdot sisällölle"
+      }
+    }
+  ]
+}
