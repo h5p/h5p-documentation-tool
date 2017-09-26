@@ -3,7 +3,7 @@
 }
 
 /* Resets buttons styling */
-.h5p-documentation-tool button:not(.h5p-core-button) {
+.h5p-documentation-tool-main-content button {
   font-family: Sans-Serif;
   font-size: 1em;
   background: none;
