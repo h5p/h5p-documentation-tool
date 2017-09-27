@@ -2,10 +2,8 @@
   "semantics": [
     {
       "label": "Otsikko",
-      "description": "Asiakirjan otsikko"
-    },
-    {
-      "label": "Menun otsikko"
+      "default": "Projektityöskentelyn dokumentointi ja arviointi",
+      "description": "Kokonaisuuden otsikko"
     },
     {
       "label": "Osat",
@@ -14,10 +12,10 @@
           "label": "Default"
         }
       ],
-      "entity": "Osa",
+      "entity": "Sivu",
       "field": {
-        "label": "Sisällön muoto",
-        "description": "Vaihtoehdot sisällölle"
+        "label": "Sivun muoto",
+        "description": "Vaihtoehdot sivun muodolle"
       }
     },
     {
