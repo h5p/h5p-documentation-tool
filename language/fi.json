@@ -2,7 +2,7 @@
   "semantics": [
     {
       "label": "Otsikko",
-      "description": "Tämän asiakirjan otsikko"
+      "description": "Asiakirjan otsikko"
     },
     {
       "label": "Menun otsikko"
@@ -11,7 +11,7 @@
       "label": "Osat",
       "widgets": [
         {
-          "label": "Oletus"
+          "label": "Default"
         }
       ],
       "entity": "Osa",
@@ -19,6 +19,23 @@
         "label": "Sisällön muoto",
         "description": "Vaihtoehdot sisällölle"
       }
+    },
+    {
+      "label": "Omat tekstit",
+      "fields": [
+        {
+          "label": "Painikkeen Edellinen teksti",
+          "default": "Edellinen"
+        },
+        {
+          "label": "Painikkeen Seuraava teksti",
+          "default": "Seuraava"
+        },
+        {
+          "label": "Painikkeen Sulje teksti",
+          "default": "Sulje"
+        }
+      ]
     }
   ]
 }
