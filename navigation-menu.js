@@ -38,7 +38,7 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
       'class': 'h5p-navigation-menu'
     }).prependTo($container);
 
-    var $navigationMenuHeader = $('<div>', {
+    var $navigationMenuHeader = $('<button>', {
       'class': 'h5p-navigation-menu-header'
     }).appendTo($navigationMenu);
 
@@ -47,7 +47,8 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
     }).appendTo($navigationMenuHeader);
 
     var $navigationMenuEntries = $('<div>', {
-      'class': 'h5p-navigation-menu-entries'
+      'class': 'h5p-navigation-menu-entries',
+      role: 'menubar'
     }).appendTo($navigationMenu);
 
     this.docTool.pageInstances.forEach(function (page, pageIndex) {
@@ -64,20 +65,14 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
       var $navigationMenuEntry = $('<div/>', {
         'class': 'h5p-navigation-menu-entry',
         'title': pageTitle,
-        'role': 'button',
+        'role': 'menuitem',
         'tabindex': '0'
-      }).click(function () {
-        self.docTool.movePage(pageIndex);
-        $(this).blur();
-      }).keydown(function (e) {
-        var keyPressed = e.which;
-        // 32 - space
-        if (keyPressed === 32) {
-          $(this).click();
-          e.preventDefault();
-        }
-      }).data('pageTitle', pageTitle)
-        .appendTo($navigationMenuEntries);
+      }).appendTo($navigationMenuEntries);
+
+      H5P.DocumentationTool.handleButtonClick($navigationMenuEntry, function (event) {
+        self.$documentationToolContaner.removeClass('expanded');
+        self.docTool.movePage(pageIndex, event);
+      });
 
       $('<span>', {
         'html': pageTitle
@@ -87,6 +82,7 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
       if (pageIndex === 0) {
         $navigationMenuEntry.addClass('current');
       }
+
     });
 
     this.$navigationMenuHeader = $navigationMenuHeader;

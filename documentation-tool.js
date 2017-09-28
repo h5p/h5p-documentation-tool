@@ -25,7 +25,12 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
     // Set default behavior.
     this.params = $.extend({}, {
       taskDescription: 'Documentation Tool',
-      pagesList: []
+      pagesList: [],
+      l10n: {
+        nextLabel: 'Next',
+        previousLabel: 'Previous',
+        closeLabel: 'Close'
+      }
     }, params);
 
     if (params.taskDescription === undefined && params.navMenuLabel !== undefined) {
@@ -39,6 +44,26 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
 
   DocumentationTool.prototype = Object.create(EventDispatcher.prototype);
   DocumentationTool.prototype.constructor = DocumentationTool;
+
+  /**
+   * Make a non-button element behave as a button. I.e handle enter and space
+   * keydowns as click
+   *
+   * @param  {H5P.jQuery} $element The "button" element
+   * @param  {Function} callback
+   */
+  DocumentationTool.handleButtonClick = function ($element, callback) {
+    $element.click(function (event) {
+      callback.call($(this), event);
+    });
+    $element.keydown(function (event) {
+      // 32 - space, 13 - enter
+      if ([32, 13].indexOf(event.which) !== -1) {
+        event.preventDefault();
+        callback.call($(this), event);
+      }
+    });
+  };
 
   /**
    * Attach function called by H5P framework to insert H5P content into page.
@@ -77,18 +102,16 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
    * Creates the footer.
    * @returns {jQuery} $footer Footer element
    */
-  DocumentationTool.prototype.createFooter = function () {
+  DocumentationTool.prototype.createFooter = function (enablePrevious, enableNext) {
     var $footer = $('<div>', {
       'class': FOOTER
     });
 
     // Next page button
-    this.createNavigationButton(1)
-      .appendTo($footer);
+    this.createNavigationButton(1, enableNext).appendTo($footer);
 
     // Previous page button
-    this.createNavigationButton(-1)
-      .appendTo($footer);
+    this.createNavigationButton(-1, enablePrevious).appendTo($footer);
 
     return $footer;
   };
@@ -98,18 +121,26 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
    * @param {Number} moveDirection An integer for how many pages the button will move, and in which direction
    * @returns {*}
    */
-  DocumentationTool.prototype.createNavigationButton = function (moveDirection) {
+  DocumentationTool.prototype.createNavigationButton = function (moveDirection, enabled) {
     var self = this;
-    var navigationText = 'next';
+    var type = 'next';
+    var navigationLabel = this.params.l10n.nextLabel;
     if (moveDirection === -1) {
-      navigationText = 'prev';
+      type = 'prev';
+      navigationLabel = this.params.l10n.previousLabel;
     }
 
-    var $navButton = JoubelUI.createSimpleRoundedButton()
-      .addClass('h5p-navigation-button-' + navigationText)
-      .click(function () {
-        self.movePage(self.currentPageIndex + moveDirection);
-      });
+    var $navButton = $('<div>', {
+      'class': 'joubel-simple-rounded-button h5p-documentation-tool-nav-button ' + type,
+      'title': navigationLabel,
+      'aria-disabled': !enabled,
+      'tabindex': enabled ? 0 : undefined,
+      'html': '<span class="joubel-simple-rounded-button-text"></span>'
+    });
+
+    DocumentationTool.handleButtonClick($navButton, function (event) {
+      self.movePage(self.currentPageIndex + moveDirection, event);
+    });
 
     return $navButton;
   };
@@ -125,7 +156,11 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
       'class': PAGES_CONTAINER
     });
 
-    this.params.pagesList.forEach(function (page) {
+    var numPages = this.params.pagesList.length;
+
+    for (var i = 0; i < numPages; i++) {
+      var page = this.params.pagesList[i];
+
       var $pageInstance = $('<div>', {
         'class': PAGE_INSTANCE
       }).appendTo($pagesContainer);
@@ -135,22 +170,104 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
         singlePage.setExportTitle(self.params.taskDescription);
       }
       singlePage.attach($pageInstance);
-      self.createFooter().appendTo($pageInstance);
+      self.createFooter(i !== 0, i < (numPages - 1)).appendTo($pageInstance);
       self.pageInstances.push(singlePage);
 
       singlePage.on('resize', function () {
         self.trigger('resize');
       });
-    });
+
+      singlePage.on('export-page-opened', self.hide, self);
+      singlePage.on('export-page-closed', self.show, self);
+
+      singlePage.on('open-help-dialog', self.showHelpDialog, self);
+    }
 
     return $pagesContainer;
+  };
+
+  /**
+   * Remove tabindex for main content.
+   */
+  DocumentationTool.prototype.untabalize = function () {
+    // Make all other elements in container not tabbable. When dialog is open,
+    // it's like the elements behind does not exist.
+    this.$tabbables = this.$mainContent.find('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]').each(function () {
+      var $tabbable = $(this);
+      // Store current tabindex, so we can set it back when dialog closes
+      $tabbable.data('tabindex', $tabbable.attr('tabindex'));
+      // Make it non tabbable
+      $tabbable.attr('tabindex', '-1');
+    });
+
+    // Make sure container is not seen by e.g. screenreaders
+    this.$mainContent.attr('aria-hidden', true);
+  };
+
+  /**
+   * Set back tabindex for main container.
+   */
+  DocumentationTool.prototype.tabalize = function () {
+    if (this.$tabbables) {
+      this.$tabbables.each(function () {
+        var $element = $(this);
+        var tabindex = $element.data('tabindex');
+        if (tabindex !== undefined) {
+          $element.attr('tabindex', tabindex);
+          $element.removeData('tabindex');
+        }
+        else {
+          $element.removeAttr('tabindex');
+        }
+      });
+    }
+
+    this.$mainContent.removeAttr('aria-hidden');
+  };
+
+  /**
+   * Show help dialog
+   *
+   * @param  {Object} event
+   */
+  DocumentationTool.prototype.showHelpDialog = function (event) {
+    var self = this;
+
+    self.untabalize();
+
+    var helpTextDialog = new H5P.JoubelUI.createHelpTextDialog(event.data.title, event.data.helpText, self.params.closeLabel);
+
+    // Handle closing of the dialog
+    helpTextDialog.on('closed', function () {
+      // Set focus back on the page
+      self.tabalize();
+      self.getCurrentPage().$helpButton.focus();
+    });
+
+    this.$inner.append(helpTextDialog.getElement());
+
+    helpTextDialog.focus();
+  };
+
+  /**
+   * Hide me
+   */
+  DocumentationTool.prototype.hide = function () {
+    this.$mainContent.addClass('hidden');
+  };
+
+  /**
+   * Show me
+   */
+  DocumentationTool.prototype.show = function () {
+    this.$mainContent.removeClass('hidden');
   };
 
   /**
    * Moves the documentation tool to the specified page
    * @param {Number} toPageIndex Move to this page index
    */
-  DocumentationTool.prototype.movePage = function (toPageIndex) {
+  DocumentationTool.prototype.movePage = function (toPageIndex, event) {
     var self = this;
 
     // Invalid value
@@ -176,6 +293,25 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
 
     // Scroll to top
     this.scrollToTop();
+
+    // Invoke focus on page instance if it exists
+    // Focus only if event triggering this is a key event
+    if (event.originalEvent && !(event.originalEvent instanceof MouseEvent) ) {
+      var pageInstance = self.pageInstances[toPageIndex];
+      setTimeout(function () {
+        pageInstance.focus && pageInstance.focus();
+      }, 0);
+    }
+
+    self.trigger('resize');
+  };
+
+  /**
+   * Get current page instance
+   * @return {Object} The page instance
+   */
+  DocumentationTool.prototype.getCurrentPage = function () {
+    return this.pageInstances[this.currentPageIndex];
   };
 
   /**

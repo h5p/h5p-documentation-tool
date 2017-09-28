@@ -34,5 +34,36 @@
         "H5P.DocumentExportPage 1.2"
       ]
     }
+  },
+  {
+    "label": "Localize documentation tool buttons",
+    "name": "i10n",
+    "type": "group",
+    "common": true,
+    "collapsed": true,
+    "importance": "low",
+    "fields": [
+      {
+        "label": "Previous button label",
+        "name": "previousLabel",
+        "type": "text",
+        "default": "Previous",
+        "importance": "low"
+      },
+      {
+        "label": "Next button label",
+        "name": "nextLabel",
+        "type": "text",
+        "default": "Next",
+        "importance": "low"
+      },
+      {
+        "label": "Close button label",
+        "name": "closeLabel",
+        "type": "text",
+        "default": "Close",
+        "importance": "low"
+      }
+    ]
   }
 ]
