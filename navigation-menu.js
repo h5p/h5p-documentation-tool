@@ -69,7 +69,7 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
         'tabindex': '0'
       }).appendTo($navigationMenuEntries);
 
-      H5P.JoubelUI.handleButtonClick($navigationMenuEntry, function (event) {
+      H5P.DocumentationTool.handleButtonClick($navigationMenuEntry, function (event) {
         self.$documentationToolContaner.removeClass('expanded');
         self.docTool.movePage(pageIndex, event);
       });

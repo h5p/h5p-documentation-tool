@@ -46,6 +46,26 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
   DocumentationTool.prototype.constructor = DocumentationTool;
 
   /**
+   * Make a non-button element behave as a button. I.e handle enter and space
+   * keydowns as click
+   *
+   * @param  {H5P.jQuery} $element The "button" element
+   * @param  {Function} callback
+   */
+  DocumentationTool.handleButtonClick = function ($element, callback) {
+    $element.click(function (event) {
+      callback.call($(this), event);
+    });
+    $element.keydown(function (event) {
+      // 32 - space, 13 - enter
+      if ([32, 13].indexOf(event.which) !== -1) {
+        event.preventDefault();
+        callback.call($(this), event);
+      }
+    });
+  };
+
+  /**
    * Attach function called by H5P framework to insert H5P content into page.
    *
    * @param {jQuery} $container The container which will be appended to.
@@ -118,7 +138,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
       'html': '<span class="joubel-simple-rounded-button-text"></span>'
     });
 
-    H5P.JoubelUI.handleButtonClick($navButton, function (event) {
+    DocumentationTool.handleButtonClick($navButton, function (event) {
       self.movePage(self.currentPageIndex + moveDirection, event);
     });
 
