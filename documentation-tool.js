@@ -176,6 +176,8 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
 
     // Scroll to top
     this.scrollToTop();
+
+    self.trigger('resize');
   };
 
   /**
