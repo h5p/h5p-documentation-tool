@@ -202,7 +202,6 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
 
     // Make sure container and all content within it is not seen by screenreaders
     this.$mainContent.attr('aria-hidden', true);
-    this.$mainContent.find('*').attr('aria-hidden', true);
   };
 
   /**
@@ -224,7 +223,6 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
     }
 
     this.$mainContent.removeAttr('aria-hidden');
-    this.$mainContent.find('*').removeAttr('aria-hidden', true);
   };
 
   /**
