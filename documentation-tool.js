@@ -200,8 +200,9 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
       $tabbable.attr('tabindex', '-1');
     });
 
-    // Make sure container is not seen by e.g. screenreaders
+    // Make sure container and all content within it is not seen by screenreaders
     this.$mainContent.attr('aria-hidden', true);
+    this.$mainContent.find('*').attr('aria-hidden', true);
   };
 
   /**
@@ -223,6 +224,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
     }
 
     this.$mainContent.removeAttr('aria-hidden');
+    this.$mainContent.find('*').removeAttr('aria-hidden', true);
   };
 
   /**
@@ -235,7 +237,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
 
     self.untabalize();
 
-    var helpTextDialog = new H5P.JoubelUI.createHelpTextDialog(event.data.title, event.data.helpText, self.params.closeLabel);
+    var helpTextDialog = new H5P.JoubelUI.createHelpTextDialog(event.data.title, event.data.helpText, self.params.l10n.closeLabel);
 
     // Handle closing of the dialog
     helpTextDialog.on('closed', function () {
