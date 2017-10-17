@@ -294,12 +294,12 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
     // Scroll to top
     this.scrollToTop();
 
-    // Invoke focus on page instance if it exists
-    // Focus only if event triggering this is a key event
-    if (event.originalEvent && !(event.originalEvent instanceof MouseEvent) ) {
-      var pageInstance = self.pageInstances[toPageIndex];
+    // Set focus on the new page after navigating to it
+    var pageInstance = self.pageInstances[toPageIndex];
+    if (pageInstance.focus) {
+      // Trigger focus on text tick
       setTimeout(function () {
-        pageInstance.focus && pageInstance.focus();
+        pageInstance.focus();
       }, 0);
     }
 
