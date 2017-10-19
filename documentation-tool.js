@@ -200,7 +200,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
       $tabbable.attr('tabindex', '-1');
     });
 
-    // Make sure container is not seen by e.g. screenreaders
+    // Make sure container and all content within it is not seen by screenreaders
     this.$mainContent.attr('aria-hidden', true);
   };
 
@@ -235,7 +235,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
 
     self.untabalize();
 
-    var helpTextDialog = new H5P.JoubelUI.createHelpTextDialog(event.data.title, event.data.helpText, self.params.closeLabel);
+    var helpTextDialog = new H5P.JoubelUI.createHelpTextDialog(event.data.title, event.data.helpText, self.params.l10n.closeLabel);
 
     // Handle closing of the dialog
     helpTextDialog.on('closed', function () {
@@ -294,12 +294,12 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
     // Scroll to top
     this.scrollToTop();
 
-    // Invoke focus on page instance if it exists
-    // Focus only if event triggering this is a key event
-    if (event.originalEvent && !(event.originalEvent instanceof MouseEvent) ) {
-      var pageInstance = self.pageInstances[toPageIndex];
+    // Set focus on the new page after navigating to it
+    var pageInstance = self.pageInstances[toPageIndex];
+    if (pageInstance.focus) {
+      // Trigger focus on text tick
       setTimeout(function () {
-        pageInstance.focus && pageInstance.focus();
+        pageInstance.focus();
       }, 0);
     }
 

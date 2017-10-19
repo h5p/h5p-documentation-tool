@@ -8,6 +8,12 @@ H5P.DocumentationTool = H5P.DocumentationTool || {};
 H5P.DocumentationTool.NavigationMenu = (function ($) {
 
   /**
+   * @private
+   * @type {number}
+   */
+  var numInstances = 0;
+
+  /**
    * Initialize module.
    * @param {Object} params Behavior settings
    * @param {Number} id Content identification
@@ -23,6 +29,8 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
     $('body').click(function () {
       self.$documentationToolContaner.removeClass('expanded');
     });
+
+    numInstances++;
   }
 
   /**
@@ -38,8 +46,10 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
       'class': 'h5p-navigation-menu'
     }).prependTo($container);
 
-    var $navigationMenuHeader = $('<button>', {
-      'class': 'h5p-navigation-menu-header'
+    var menuHeaderId = 'h5p-navigation-menu-' + numInstances;
+    var $navigationMenuHeader = $('<div>', {
+      'class': 'h5p-navigation-menu-header',
+      'id': menuHeaderId
     }).appendTo($navigationMenu);
 
     $('<span>', {
@@ -48,7 +58,8 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
 
     var $navigationMenuEntries = $('<div>', {
       'class': 'h5p-navigation-menu-entries',
-      role: 'menubar'
+      role: 'menu',
+      'aria-labelledby': menuHeaderId
     }).appendTo($navigationMenu);
 
     this.docTool.pageInstances.forEach(function (page, pageIndex) {
@@ -64,7 +75,6 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
       // Create page entry
       var $navigationMenuEntry = $('<div/>', {
         'class': 'h5p-navigation-menu-entry',
-        'title': pageTitle,
         'role': 'menuitem',
         'tabindex': '0'
       }).appendTo($navigationMenuEntries);
