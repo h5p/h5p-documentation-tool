@@ -3,7 +3,7 @@
   "description": "Documentation tool for educational assessment.",
   "majorVersion": 1,
   "minorVersion": 5,
-  "patchVersion": 4,
+  "patchVersion": 5,
   "runnable": 1,
   "author": "Joubel",
   "license": "MIT",
