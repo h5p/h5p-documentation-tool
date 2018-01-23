@@ -37,7 +37,6 @@
   },
   {
     "name": "behaviour",
-    "state": "new",
     "type": "group",
     "importance": "low",
     "label": "Behavioural Settings",

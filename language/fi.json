@@ -19,6 +19,14 @@
       }
     },
     {
+      "label": "Behavioural Settings",
+      "fields": [
+        {
+          "label": "Enable submitting of documents"
+        }
+      ]
+    },
+    {
       "label": "Omat tekstit",
       "fields": [
         {
