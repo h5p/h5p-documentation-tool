@@ -140,9 +140,6 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
 
     DocumentationTool.handleButtonClick($navButton, function (event) {
       self.movePage(self.currentPageIndex + moveDirection, event);
-      var progressedEvent = self.createXAPIEventTemplate('progressed');
-      progressedEvent.data.statement.object.definition.extensions['http://id.tincanapi.com/extension/ending-point'] = self.currentPageIndex + moveDirection - 1;
-      self.trigger(progressedEvent);
     });
 
     return $navButton;
@@ -187,6 +184,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
       singlePage.on('export-page-closed', self.show, self);
       singlePage.on('open-help-dialog', self.showHelpDialog, self);
       singlePage.on('submitted', function() {
+        self.triggerAnsweredEvents();
         self.triggerXAPI('completed');
       });
     }
@@ -310,6 +308,11 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
         pageInstance.focus();
       }, 0);
     }
+
+    // Trigger xAPI event
+    var progressedEvent = self.createXAPIEventTemplate('progressed');
+    progressedEvent.data.statement.object.definition.extensions['http://id.tincanapi.com/extension/ending-point'] = toPageIndex;
+    self.trigger(progressedEvent);
 
     self.trigger('resize');
   };
@@ -563,7 +566,10 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
     definition.description = {
       'en-US': ''
     };
-
+    definition.extensions: {
+      'https://h5p.org/x-api/h5p-machine-name': 'H5P.DocumentationTool'
+    };
+    
     return definition;
   };
 
