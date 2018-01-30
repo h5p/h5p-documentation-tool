@@ -566,7 +566,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
     definition.description = {
       'en-US': ''
     };
-    definition.extensions: {
+    definition.extensions = {
       'https://h5p.org/x-api/h5p-machine-name': 'H5P.DocumentationTool'
     };
 
