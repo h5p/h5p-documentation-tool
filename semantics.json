@@ -36,20 +36,6 @@
     }
   },
   {
-    "name": "behaviour",
-    "type": "group",
-    "importance": "low",
-    "label": "Behavioural Settings",
-    "fields": [
-      {
-        "name": "enableSubmit",
-        "type": "boolean",
-        "label": "Enable submitting of documents",
-        "default": true
-      }
-    ]
-  },
-  {
     "label": "Localize documentation tool buttons",
     "name": "i10n",
     "type": "group",

@@ -170,7 +170,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
       });
       if (singlePage.libraryInfo.machineName === 'H5P.DocumentExportPage') {
         singlePage.setExportTitle(self.params.taskDescription);
-        singlePage.setSumbitEnabled(true);
+        singlePage.setSumbitEnabled(H5PIntegration.reportingIsEnabled);
       }
       singlePage.attach($pageInstance);
       self.createFooter(i !== 0, i < (numPages - 1)).appendTo($pageInstance);
