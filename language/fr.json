@@ -19,14 +19,6 @@
       }
     },
     {
-      "label": "Behavioural Settings",
-      "fields": [
-        {
-          "label": "Enable submitting of documents"
-        }
-      ]
-    },
-    {
       "label": "Localize documentation tool buttons",
       "fields": [
         {
