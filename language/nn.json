@@ -1,11 +1,6 @@
 {
   "semantics": [
     {
-      "label": "Tittel",
-      "default": "Dokumentasjonsverktøy",
-      "description": "Tittel for dokumentasjonsverktøyet"
-    },
-    {
       "label": "Innhaldselement",
       "widgets": [
         {

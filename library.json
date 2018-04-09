@@ -2,12 +2,16 @@
   "title": "Documentation Tool",
   "description": "Documentation tool for educational assessment.",
   "majorVersion": 1,
-  "minorVersion": 5,
-  "patchVersion": 5,
+  "minorVersion": 6,
+  "patchVersion": 0,
   "runnable": 1,
   "author": "Joubel",
   "license": "MIT",
   "machineName": "H5P.DocumentationTool",
+  "coreApi": {
+    "majorVersion": 1,
+    "minorVersion": 15
+  },
   "embedTypes": [
     "iframe"
   ],

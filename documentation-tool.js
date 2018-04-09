@@ -17,14 +17,17 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
    * @param {Number} id Content identification
    * @returns {Object} DocumentationTool DocumentationTool instance
    */
-  function DocumentationTool(params, id) {
+  function DocumentationTool(params, id, extras) {
+    console.log(params, extras);
     var self = this;
     this.$ = $(this);
     this.id = id;
 
+    this.extras = extras;
+
     // Set default behavior.
     this.params = $.extend({}, {
-      taskDescription: 'Documentation Tool',
+      taskDescription: this.getTitle(),
       pagesList: [],
       l10n: {
         nextLabel: 'Next',
@@ -613,6 +616,15 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
       statement: xAPIEvent.data.statement,
       children: this.getXAPIDataFromChildren()
     };
+  };
+
+  /**
+   * Get the content type title.
+   *
+   * @return {string} title.
+   */
+  DocumentationTool.prototype.getTitle = function () {
+    return (this.extras.metadata && this.extras.metadata.title) ? this.extras.metadata.title : 'Documentation Tool';
   };
 
   return DocumentationTool;
