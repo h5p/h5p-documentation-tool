@@ -18,7 +18,6 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
    * @returns {Object} DocumentationTool DocumentationTool instance
    */
   function DocumentationTool(params, id, extras) {
-    console.log(params, extras);
     var self = this;
     this.$ = $(this);
     this.id = id;
