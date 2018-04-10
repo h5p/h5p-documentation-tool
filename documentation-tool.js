@@ -26,7 +26,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
 
     // Set default behavior.
     this.params = $.extend({}, {
-      taskDescription: this.getTitle(),
+      taskDescription: (this.extras.metadata && this.extras.metadata.title) ? this.extras.metadata.title : 'Documentation Tool',
       pagesList: [],
       l10n: {
         nextLabel: 'Next',
@@ -623,7 +623,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
    * @return {string} title.
    */
   DocumentationTool.prototype.getTitle = function () {
-    return (this.extras.metadata && this.extras.metadata.title) ? this.extras.metadata.title : 'Documentation Tool';
+    return H5P.createTitle((this.extras.metadata && this.extras.metadata.title) ? this.extras.metadata.title : 'Documentation Tool');
   };
 
   return DocumentationTool;
