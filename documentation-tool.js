@@ -73,6 +73,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
    * @param {jQuery} $container The container which will be appended to.
    */
   DocumentationTool.prototype.attach = function ($container) {
+  
     var self = this;
     this.pageInstances = [];
     this.currentPageIndex = 0;
