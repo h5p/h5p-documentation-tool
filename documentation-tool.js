@@ -15,9 +15,10 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
    * Initialize module.
    * @param {Object} params Behavior settings
    * @param {Number} id Content identification
+   * @param {Object} contentData Task specific content data
    * @returns {Object} DocumentationTool DocumentationTool instance
    */
-  function DocumentationTool(params, id) {
+  function DocumentationTool(params, id, contentData) {
     var self = this;
     this.$ = $(this);
     this.id = id;
@@ -37,9 +38,37 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
       this.params.taskDescription = params.navMenuLabel;
     }
 
+    if (contentData !== undefined && contentData.previousState !== undefined) {
+      this.previousState = contentData.previousState;
+    }
+
     EventDispatcher.call(this);
 
     this.on('resize', self.resize, self);
+
+    /**
+     * Implements resume (save content state)
+     *
+     * @method getCurrentState
+     * @public
+     * @returns [array] array containing input fields state
+     */
+    self.getCurrentState = function() {
+      var inputs = this.getDocumentExportInputs(this.pageInstances),
+          state = [];
+
+      inputs.forEach(function (data, index) {
+        state[index] = [];
+
+        if ($.isArray(data.inputArray)) {
+          state[index] = $.map(data.inputArray, function (input) {
+            return input.value || '';
+          });
+        }
+      });
+
+      return state;
+    };
   }
 
   DocumentationTool.prototype = Object.create(EventDispatcher.prototype);
@@ -188,6 +217,9 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
         self.triggerXAPI('completed');
       });
     }
+
+    // Set previous state values to input fields.
+    this.setDocumentExportInputs(this.pageInstances, this.previousState);
 
     return $pagesContainer;
   };
@@ -418,6 +450,34 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
     });
 
     return inputArray;
+  };
+
+  /**
+   * Sets previously saved state values to all input fields.
+   * @param pageInstances
+   * @param inputsState
+   */
+  DocumentationTool.prototype.setDocumentExportInputs  = function (pageInstances, inputsState) {
+    if (!$.isArray(inputsState) || !inputsState.length) {
+      return;
+    }
+
+    pageInstances.forEach(function (page, index) {
+      var state = inputsState[index],
+          inputIndex = 0;
+
+      if (page.libraryInfo.machineName === 'H5P.StandardPage') {
+        page.pageInstances.forEach(function (instance, index) {
+          if (instance.libraryInfo.machineName === 'H5P.TextInputField' && instance.$inputField !== undefined) {
+            if (!instance.$inputField.val() && state[inputIndex]) {
+              instance.$inputField.val(state[inputIndex]);
+            }
+
+            inputIndex++;
+          }
+        });
+      }
+    });
   };
 
   /**
