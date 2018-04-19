@@ -165,9 +165,12 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
         'class': PAGE_INSTANCE
       }).appendTo($pagesContainer);
 
-      var singlePage = H5P.newRunnable(page, self.id);
+      var singlePage = H5P.newRunnable(page, self.id, undefined, undefined, {
+        parent: self // Set the parent for xapi context
+      });
       if (singlePage.libraryInfo.machineName === 'H5P.DocumentExportPage') {
         singlePage.setExportTitle(self.params.taskDescription);
+        singlePage.setSumbitEnabled(H5PIntegration.reportingIsEnabled);
       }
       singlePage.attach($pageInstance);
       self.createFooter(i !== 0, i < (numPages - 1)).appendTo($pageInstance);
@@ -179,8 +182,11 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
 
       singlePage.on('export-page-opened', self.hide, self);
       singlePage.on('export-page-closed', self.show, self);
-
       singlePage.on('open-help-dialog', self.showHelpDialog, self);
+      singlePage.on('submitted', function() {
+        self.triggerAnsweredEvents();
+        self.triggerXAPI('completed');
+      });
     }
 
     return $pagesContainer;
@@ -302,6 +308,11 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
         pageInstance.focus();
       }, 0);
     }
+
+    // Trigger xAPI event
+    var progressedEvent = self.createXAPIEventTemplate('progressed');
+    progressedEvent.data.statement.object.definition.extensions['http://id.tincanapi.com/extension/ending-point'] = toPageIndex;
+    self.trigger(progressedEvent);
 
     self.trigger('resize');
   };
@@ -528,6 +539,80 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
     var relativeWidthOfContainer = this.$inner.width() / parseInt(this.$inner.css('font-size'), 10);
     var responsiveLayoutRequirement = relativeWidthOfContainer < staticResponsiveLayoutThreshold;
     this.navigationMenu.setResponsiveLayout(responsiveLayoutRequirement);
+  };
+
+  /**
+   * Triggers an 'answered' xAPI event for all inputs
+   * We do this because we can only trigger answered events once per submission
+   * therefore, we have to trigger all of them simultaneously with one function.
+   */
+  DocumentationTool.prototype.triggerAnsweredEvents = function () {
+    this.pageInstances.forEach(function(page) {
+      if (page.triggerAnsweredEvents) {
+        page.triggerAnsweredEvents();
+      }
+    });
+  };
+
+  /**
+   * Generate xAPI object definition used in xAPI statements.
+   * @return {Object}
+   */
+  DocumentationTool.prototype.getxAPIDefinition = function () {
+    var definition = {};
+
+    definition.interactionType = 'compound';
+    definition.type = 'http://adlnet.gov/expapi/activities/cmi.interaction';
+    definition.description = {
+      'en-US': ''
+    };
+    definition.extensions = {
+      'https://h5p.org/x-api/h5p-machine-name': 'H5P.DocumentationTool'
+    };
+
+    return definition;
+  };
+
+  /**
+   * Add the question itself to the definition part of an xAPIEvent
+   */
+  DocumentationTool.prototype.addQuestionToXAPI = function (xAPIEvent) {
+    var definition = xAPIEvent.getVerifiedStatementValue(['object', 'definition']);
+    $.extend(definition, this.getxAPIDefinition());
+  };
+
+  /**
+   * Get xAPI data from sub content types
+   *
+   * @param {Object} metaContentType
+   * @returns {array}
+   */
+  DocumentationTool.prototype.getXAPIDataFromChildren = function () {
+
+    var children = [];
+
+    this.pageInstances.forEach(function(page) {
+      if (page.getXAPIData) {
+        children.push(page.getXAPIData());
+      }
+    });
+
+    return children;
+  };
+
+  /**
+   * Get xAPI data.
+   * Contract used by report rendering engine.
+   *
+   * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-6}
+   */
+  DocumentationTool.prototype.getXAPIData = function () {
+    var xAPIEvent = this.createXAPIEventTemplate('answered');
+    this.addQuestionToXAPI(xAPIEvent);
+    return {
+      statement: xAPIEvent.data.statement,
+      children: this.getXAPIDataFromChildren()
+    };
   };
 
   return DocumentationTool;

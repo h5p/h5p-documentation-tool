@@ -2,10 +2,8 @@
   "semantics": [
     {
       "label": "Titre",
+      "default": "Documentation tool",
       "description": "Titre pour cette documentation"
-    },
-    {
-      "label": "Titre du menu de navigation"
     },
     {
       "label": "Eléments",
@@ -14,10 +12,10 @@
           "label": "Default"
         }
       ],
-      "entity": "Element",
+      "entity": "page",
       "field": {
-        "label": "Type de contenu",
-        "description": "Bibliothèque de contenu possible pour cet élément."
+        "label": "Page type",
+        "description": "Library for this slide."
       }
     },
     {

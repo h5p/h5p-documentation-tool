@@ -5,7 +5,7 @@ H5P.DocumentationTool = H5P.DocumentationTool || {};
  * Naivgation Menu module
  * @external {jQuery} $ H5P.jQuery
  */
-H5P.DocumentationTool.NavigationMenu = (function ($) {
+H5P.DocumentationTool.NavigationMenu = (function ($, EventDispatcher) {
 
   /**
    * @private
@@ -20,6 +20,7 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
    * @returns {Object} NavigationMenu NavigationMenu instance
    */
   function NavigationMenu(docTool, navMenuLabel) {
+    EventDispatcher.call(this);
     var self = this;
     this.$ = $(this);
     this.docTool = docTool;
@@ -32,6 +33,9 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
 
     numInstances++;
   }
+
+  NavigationMenu.prototype = Object.create(EventDispatcher.prototype);
+  NavigationMenu.prototype.constructor = NavigationMenu;
 
   /**
    * Attach function called by H5P framework to insert H5P content into page.
@@ -82,6 +86,9 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
       H5P.DocumentationTool.handleButtonClick($navigationMenuEntry, function (event) {
         self.$documentationToolContaner.removeClass('expanded');
         self.docTool.movePage(pageIndex, event);
+        var progressedEvent = self.docTool.createXAPIEventTemplate('progressed'); // Using the parent documentation tool to create xapi template
+        progressedEvent.data.statement.object.definition.extensions['http://id.tincanapi.com/extension/ending-point'] = pageIndex;
+        self.trigger(progressedEvent);
       });
 
       $('<span>', {
@@ -139,4 +146,4 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
 
   return NavigationMenu;
 
-}(H5P.jQuery));
+}(H5P.jQuery, H5P.EventDispatcher));
