@@ -11,6 +11,10 @@
   "embedTypes": [
     "iframe"
   ],
+  "coreApi": {
+    "majorVersion": 1,
+    "minorVersion": 15
+  },
   "preloadedCss": [
     {
       "path": "navigation-menu.css"
