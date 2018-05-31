@@ -90,6 +90,7 @@
   border-bottom: 1px solid #ccc;
   justify-content: space-between;
   padding: 0.5em 0;
+  outline: none; /* Override focus effect */
 }
 
 .h5p-documentation-tool-page .page-title {
