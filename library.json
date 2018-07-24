@@ -47,17 +47,17 @@
     {
       "machineName": "H5P.GoalsPage",
       "majorVersion": 1,
-      "minorVersion": 5
+      "minorVersion": 4
     },
     {
       "machineName": "H5P.GoalsAssessmentPage",
       "majorVersion": 1,
-      "minorVersion": 4
+      "minorVersion": 3
     },
     {
       "machineName": "H5P.DocumentExportPage",
       "majorVersion": 1,
-      "minorVersion": 4
+      "minorVersion": 3
     },
     {
       "machineName": "FontAwesome",
