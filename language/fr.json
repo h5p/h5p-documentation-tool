@@ -4,29 +4,29 @@
       "label": "Eléments",
       "widgets": [
         {
-          "label": "Default"
+          "label": "Par défaut"
         }
       ],
       "entity": "page",
       "field": {
-        "label": "Page type",
-        "description": "Library for this slide."
+        "label": "Type de Page",
+        "description": "Bibliothèque pour cette page."
       }
     },
     {
-      "label": "Localize documentation tool buttons",
+      "label": "Traduire les boutons de l'outil de documentation",
       "fields": [
         {
-          "label": "Previous button label",
-          "default": "Previous"
+          "label": "Etiquette du bouton Précédent",
+          "default": "Précédent"
         },
         {
-          "label": "Next button label",
-          "default": "Next"
+          "label": "Etiquette du bouton Suivant",
+          "default": "Suivant"
         },
         {
-          "label": "Close button label",
-          "default": "Close"
+          "label": "Etiquette du bouton Fermer",
+          "default": "Fermer"
         }
       ]
     }
