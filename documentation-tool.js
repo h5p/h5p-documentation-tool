@@ -13,6 +13,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
    * Initialize module.
    * @param {Object} params Behavior settings
    * @param {Number} id Content identification
+   * @param {Object} extras Task specific content data
    * @returns {Object} DocumentationTool DocumentationTool instance
    */
   function DocumentationTool(params, id, extras) {
@@ -36,6 +37,32 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
     if (params.taskDescription === undefined && params.navMenuLabel !== undefined) {
       this.params.taskDescription = params.navMenuLabel;
     }
+
+    if (extras !== undefined && extras.previousState !== undefined) {
+      this.previousState = extras.previousState;
+    }
+
+    /**
+     * Implements resume (save content state)
+     *
+     * @method getCurrentState
+     * @public
+     * @returns [array] array containing states of children instances
+     */
+    this.getCurrentState = function () {
+      var instances = this.pageInstances,
+          state = [];
+
+      instances.forEach(function (instance, index) {
+        state[index] = false;
+
+        if (typeof instance['getCurrentState'] === 'function') {
+          state[index] = instance.getCurrentState();
+        }
+      });
+
+      return state;
+    };
 
     EventDispatcher.call(this);
 
@@ -177,6 +204,10 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
       singlePage.attach($pageInstance);
       self.createFooter(i !== 0, i < (numPages - 1)).appendTo($pageInstance);
       self.pageInstances.push(singlePage);
+
+      if (typeof singlePage['setPreviousState'] === 'function' && self.previousState) {
+        singlePage.setPreviousState(self.previousState[i]);
+      }
 
       singlePage.on('resize', function () {
         self.trigger('resize');
