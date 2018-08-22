@@ -1,11 +1,6 @@
 {
   "semantics": [
     {
-      "label": "Título",
-      "default": "Ferramenta de documentação",
-      "description": "Título da ferramenta de documentação"
-    },
-    {
       "label": "Elementos",
       "widgets": [
         {
