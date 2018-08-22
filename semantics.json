@@ -21,19 +21,19 @@
       "options": [
         {
           "name": "H5P.StandardPage 1.4",
-          "hasmetadata": false
+          "hasMetadata": false
         },
         {
           "name": "H5P.GoalsPage 1.4",
-          "hasmetadata": false
+          "hasMetadata": false
         },
         {
           "name": "H5P.GoalsAssessmentPage 1.3",
-          "hasmetadata": false
+          "hasMetadata": false
         },
         {
           "name": "H5P.DocumentExportPage 1.3",
-          "hasmetadata": false
+          "hasMetadata": false
         }
       ]
     }
