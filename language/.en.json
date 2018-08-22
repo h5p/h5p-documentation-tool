@@ -1,0 +1,34 @@
+{
+  "semantics": [
+    {
+      "label": "Elements",
+      "widgets": [
+        {
+          "label": "Default"
+        }
+      ],
+      "entity": "page",
+      "field": {
+        "label": "Page type",
+        "description": "Library for this slide."
+      }
+    },
+    {
+      "label": "Localize documentation tool buttons",
+      "fields": [
+        {
+          "label": "Previous button label",
+          "default": "Previous"
+        },
+        {
+          "label": "Next button label",
+          "default": "Next"
+        },
+        {
+          "label": "Close button label",
+          "default": "Close"
+        }
+      ]
+    }
+  ]
+}
