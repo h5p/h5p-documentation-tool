@@ -1,6 +1,11 @@
 {
   "semantics": [
     {
+      "label": "Heading",
+      "default": "Documentation tool",
+      "description": "Title for the documentation tool."
+    },
+    {
       "label": "Osat",
       "widgets": [
         {

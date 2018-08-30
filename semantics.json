@@ -1,5 +1,14 @@
 [
   {
+    "name": "taskDescription",
+    "label": "Heading",
+    "importance": "high",
+    "type": "text",
+    "default": "Documentation tool",
+    "description": "Title for the documentation tool.",
+    "optional": true
+  },
+  {
     "name": "pagesList",
     "label": "Elements",
     "importance": "high",

@@ -1,5 +1,3 @@
-var H5P = H5P || {};
-
 /**
  * Documentation tool module
  * @external {jQuery} $ H5P.jQuery
@@ -25,7 +23,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
     this.extras = extras;
 
     // Set default behavior.
-    this.params = $.extend({}, {
+    this.params = $.extend({
       taskDescription: (this.extras.metadata && this.extras.metadata.title) ? this.extras.metadata.title : 'Documentation Tool',
       pagesList: [],
       l10n: {
@@ -73,7 +71,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
    * @param {jQuery} $container The container which will be appended to.
    */
   DocumentationTool.prototype.attach = function ($container) {
-  
+
     var self = this;
     this.pageInstances = [];
     this.currentPageIndex = 0;

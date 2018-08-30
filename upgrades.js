@@ -11,9 +11,6 @@ H5PUpgrades['H5P.DocumentationTool'] = (function () {
         };
         extras.metadata = metadata;
 
-        // Remove old parameter
-        delete parameters.taskDescription;
-
         finished(null, parameters, extras);
       }
     }
