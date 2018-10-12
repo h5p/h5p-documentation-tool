@@ -183,7 +183,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
       singlePage.on('export-page-opened', self.hide, self);
       singlePage.on('export-page-closed', self.show, self);
       singlePage.on('open-help-dialog', self.showHelpDialog, self);
-      singlePage.on('submitted', function() {
+      singlePage.on('submitted', function () {
         self.triggerAnsweredEvents();
         /*
          * There's no score attached to Documentation Tool, but
@@ -279,7 +279,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
    * Moves the documentation tool to the specified page
    * @param {Number} toPageIndex Move to this page index
    */
-  DocumentationTool.prototype.movePage = function (toPageIndex, event) {
+  DocumentationTool.prototype.movePage = function (toPageIndex) {
     var self = this;
 
     // Invalid value
@@ -355,7 +355,8 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
 
     if (pageInstance.libraryInfo.machineName === 'H5P.GoalsAssessmentPage') {
       self.setGoals(self.pageInstances, newGoals);
-    } else if (pageInstance.libraryInfo.machineName === 'H5P.DocumentExportPage') {
+    }
+    else if (pageInstance.libraryInfo.machineName === 'H5P.DocumentExportPage') {
 
       // Check if all required input fields are filled
       var allRequiredInputsAreFilled = self.checkIfAllRequiredInputsAreFilled(self.pageInstances);
@@ -553,7 +554,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
    * therefore, we have to trigger all of them simultaneously with one function.
    */
   DocumentationTool.prototype.triggerAnsweredEvents = function () {
-    this.pageInstances.forEach(function(page) {
+    this.pageInstances.forEach(function (page) {
       if (page.triggerAnsweredEvents) {
         page.triggerAnsweredEvents();
       }
@@ -597,7 +598,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
 
     var children = [];
 
-    this.pageInstances.forEach(function(page) {
+    this.pageInstances.forEach(function (page) {
       if (page.getXAPIData) {
         children.push(page.getXAPIData());
       }
