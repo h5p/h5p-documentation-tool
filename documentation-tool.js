@@ -185,7 +185,13 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
       singlePage.on('open-help-dialog', self.showHelpDialog, self);
       singlePage.on('submitted', function() {
         self.triggerAnsweredEvents();
-        self.triggerXAPI('completed');
+        /*
+         * There's no score attached to Documentation Tool, but
+         * it may be used in Column which needs a score that's not null.
+         */
+        var completedEvent = self.createXAPIEventTemplate('completed');
+        completedEvent.setScoredResult(0, 0);
+        self.trigger(completedEvent);
       });
     }
 
