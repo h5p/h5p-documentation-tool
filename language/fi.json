@@ -1,9 +1,9 @@
 {
   "semantics": [
     {
-      "label": "Otsikko",
-      "default": "Projektityöskentelyn dokumentointi ja arviointi",
-      "description": "Kokonaisuuden otsikko"
+      "label": "Heading",
+      "default": "Documentation tool",
+      "description": "Title for the documentation tool."
     },
     {
       "label": "Osat",

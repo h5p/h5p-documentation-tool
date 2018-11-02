@@ -72,7 +72,8 @@ H5P.DocumentationTool.NavigationMenu = (function ($, EventDispatcher) {
       // Try to get page title
       try {
         pageTitle = page.getTitle();
-      } catch (e) {
+      }
+      catch (e) {
         throw new Error('Page does not have a getTitle() function - ' + e);
       }
 
@@ -115,7 +116,8 @@ H5P.DocumentationTool.NavigationMenu = (function ($, EventDispatcher) {
     this.$navigationMenuEntries.children().each(function (entryIndex) {
       if (currentPageIndex === entryIndex) {
         $(this).addClass('current');
-      } else {
+      }
+      else {
         $(this).removeClass('current');
       }
     });
@@ -136,7 +138,8 @@ H5P.DocumentationTool.NavigationMenu = (function ($, EventDispatcher) {
       });
       // Add responsive class
       this.$documentationToolContaner.addClass('responsive');
-    } else {
+    }
+    else {
       // Remove click action and remove responsive classes
       this.$navigationMenuHeader.unbind('click');
       this.$documentationToolContaner.removeClass('expanded');
