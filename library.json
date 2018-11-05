@@ -2,7 +2,7 @@
   "title": "Documentation Tool",
   "description": "Documentation tool for educational assessment.",
   "majorVersion": 1,
-  "minorVersion": 6,
+  "minorVersion": 7,
   "patchVersion": 2,
   "runnable": 1,
   "author": "Joubel",
@@ -13,7 +13,7 @@
   ],
   "coreApi": {
     "majorVersion": 1,
-    "minorVersion": 15
+    "minorVersion": 19
   },
   "preloadedCss": [
     {
@@ -39,26 +39,6 @@
     }
   ],
   "preloadedDependencies": [
-    {
-      "machineName": "H5P.StandardPage",
-      "majorVersion": 1,
-      "minorVersion": 3
-    },
-    {
-      "machineName": "H5P.GoalsPage",
-      "majorVersion": 1,
-      "minorVersion": 4
-    },
-    {
-      "machineName": "H5P.GoalsAssessmentPage",
-      "majorVersion": 1,
-      "minorVersion": 3
-    },
-    {
-      "machineName": "H5P.DocumentExportPage",
-      "majorVersion": 1,
-      "minorVersion": 3
-    },
     {
       "machineName": "FontAwesome",
       "majorVersion": 4,
