@@ -96,6 +96,17 @@
   color:  #333;
 }
 
+/* Incomplete entry */
+.h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry.required-inputs-not-filled:before {
+  background: #fff;
+  box-shadow: 0 0 0 5px red;
+}
+
+.h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry.required-inputs-not-filled:hover:before {
+  background: #fff;
+  box-shadow: 0 0 0 5px #880000;
+}
+
 /* -------------------------- Responsive layout ------------------------------*/
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-navigation-menu .h5p-navigation-menu-header span {
