@@ -24,6 +24,7 @@ H5P.DocumentationTool.NavigationMenu = (function ($, EventDispatcher) {
     var self = this;
     this.$ = $(this);
     this.docTool = docTool;
+    this.highlightIncompletePages = false;
     this.navMenuLabel = navMenuLabel;
 
     // Hide menu if body is clicked
@@ -115,10 +116,20 @@ H5P.DocumentationTool.NavigationMenu = (function ($, EventDispatcher) {
   NavigationMenu.prototype.updateNavigationMenu = function (currentPageIndex) {
     const self = this;
 
+    if (this.highlightIncompletePages === false) {
+      if (self.docTool.pageInstances[currentPageIndex].libraryInfo.machineName === 'H5P.DocumentExportPage') {
+        this.highlightIncompletePages = true;
+      }
+    }
+
     // Get Ids of pages that contain required fields that are not filled
     const incompletePageIds = this.docTool.getIncompletePages().map(function (page) {
       return self.docTool.pageInstances.indexOf(page);
     });
+
+    if (incompletePageIds.length === 0) {
+      this.highlightIncompletePages = false;
+    }
 
     this.$navigationMenuEntries.children().each(function (entryIndex) {
       // Mark currently activated menu entry
@@ -130,10 +141,8 @@ H5P.DocumentationTool.NavigationMenu = (function ($, EventDispatcher) {
       }
 
       // Highlight menu entries that contain required fields not filled
-      if (self.docTool.pageInstances[currentPageIndex].libraryInfo.machineName === 'H5P.DocumentExportPage') {
-        if (incompletePageIds.indexOf(entryIndex) !== -1) {
-          $(this).addClass('required-inputs-not-filled');
-        }
+      if (self.highlightIncompletePages && incompletePageIds.indexOf(entryIndex) !== -1) {
+        $(this).addClass('required-inputs-not-filled');
       }
       else {
         $(this).removeClass('required-inputs-not-filled');
