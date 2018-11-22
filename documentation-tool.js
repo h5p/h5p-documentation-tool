@@ -520,6 +520,9 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
       if (page.libraryInfo.machineName === 'H5P.DocumentExportPage') {
         page.updateRequiredInputsFilled(titlesPagesIncomplete);
       }
+      else if (page.libraryInfo.machineName === 'H5P.StandardPage') {
+        page.markRequiredInputFields();
+      }
     });
   };
 
