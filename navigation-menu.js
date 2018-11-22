@@ -113,12 +113,30 @@ H5P.DocumentationTool.NavigationMenu = (function ($, EventDispatcher) {
    * @param {Number} currentPageIndex Current page index
    */
   NavigationMenu.prototype.updateNavigationMenu = function (currentPageIndex) {
+    const self = this;
+
+    // Get Ids of pages that contain required fields that are not filled
+    const incompletePageIds = this.docTool.getIncompletePages().map(function (page) {
+      return self.docTool.pageInstances.indexOf(page);
+    });
+
     this.$navigationMenuEntries.children().each(function (entryIndex) {
+      // Mark currently activated menu entry
       if (currentPageIndex === entryIndex) {
         $(this).addClass('current');
       }
       else {
         $(this).removeClass('current');
+      }
+
+      // Highlight menu entries that contain required fields not filled
+      if (self.docTool.pageInstances[currentPageIndex].libraryInfo.machineName === 'H5P.DocumentExportPage') {
+        if (incompletePageIds.indexOf(entryIndex) !== -1) {
+          $(this).addClass('required-inputs-not-filled');
+        }
+      }
+      else {
+        $(this).removeClass('required-inputs-not-filled');
       }
     });
   };

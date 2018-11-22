@@ -507,13 +507,30 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
 
   /**
    * Sets the required inputs filled boolean in all document export pages
-   * @param {boolean} isRequiredInputsFilled True if all required inputs are filled
+   * @param {object[]} pageInstances All page instances.
    */
-  DocumentationTool.prototype.setRequiredInputsFilled  = function (pageInstances, isRequiredInputsFilled) {
+  DocumentationTool.prototype.setRequiredInputsFilled  = function (pageInstances) {
+    // Get titles of pages that contain required fields that are not filled
+    const titlesPagesIncomplete = this.getIncompletePages().map(function (page) {
+      return page.getTitle();
+    });
+
+    // Update document export page
     pageInstances.forEach(function (page) {
       if (page.libraryInfo.machineName === 'H5P.DocumentExportPage') {
-        page.updateRequiredInputsFilled(isRequiredInputsFilled);
+        page.updateRequiredInputsFilled(titlesPagesIncomplete);
       }
+    });
+  };
+
+  /**
+   * Get page instances with required fields that are not filled.
+   * @return {object[]} Page instances with required fields that are not filled.
+   */
+  DocumentationTool.prototype.getIncompletePages = function () {
+    return this.pageInstances.filter(function (page) {
+      return page.libraryInfo.machineName === 'H5P.StandardPage' &&
+        !page.requiredInputsIsFilled();
     });
   };
 

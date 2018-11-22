@@ -30,6 +30,9 @@
   position: relative;
   top: -2px;
 }
+.h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry.required-inputs-not-filled span {
+  color: red;
+}
 
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry:before {
   content: "";
