@@ -133,6 +133,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
 
     var $navButton = $('<div>', {
       'class': 'joubel-simple-rounded-button h5p-documentation-tool-nav-button ' + type,
+      'aria-label': navigationLabel,
       'title': navigationLabel,
       'aria-disabled': !enabled,
       'tabindex': enabled ? 0 : undefined,
