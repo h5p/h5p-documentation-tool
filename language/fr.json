@@ -1,40 +1,39 @@
 {
   "semantics": [
     {
-      "label": "Type de graphique",
-      "options": [
-        {
-          "label": "Camambert"
-        },
-        {
-          "label": "Graphique en barre"
-        }
-      ]
+      "label": "En-tête",
+      "default": "Outil de documentation",
+      "description": "Titre de l'outil de documentation."
     },
     {
-      "label": "Données",
-      "entity": "option",
+      "label": "Eléments",
+      "widgets": [
+        {
+          "label": "Par défaut"
+        }
+      ],
+      "entity": "page",
       "field": {
-        "label": "Données",
-        "fields": [
-          {
-            "label": "Nom"
-          },
-          {
-            "label": "Valeur"
-          },
-          {
-            "label": "Couleur"
-          },
-          {
-            "label": "Couleur de la police"
-          }
-        ]
+        "label": "Type de Page",
+        "description": "Bibliothèque pour cette page."
       }
     },
     {
-      "label": "Texte lu par l'orateur et qui définit la figure comme étant un graphique.",
-      "default": "Graphique"
+      "label": "Traduire les boutons de l'outil de documentation",
+      "fields": [
+        {
+          "label": "Etiquette du bouton Précédent",
+          "default": "Précédent"
+        },
+        {
+          "label": "Etiquette du bouton Suivant",
+          "default": "Suivant"
+        },
+        {
+          "label": "Etiquette du bouton Fermer",
+          "default": "Fermer"
+        }
+      ]
     }
   ]
 }
