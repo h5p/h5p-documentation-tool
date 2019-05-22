@@ -1,39 +1,40 @@
 {
   "semantics": [
     {
-      "label": "Heading",
-      "default": "Documentation tool",
-      "description": "Title for the documentation tool."
+      "label": "Type de graphique",
+      "options": [
+        {
+          "label": "Camambert"
+        },
+        {
+          "label": "Graphique en barre"
+        }
+      ]
     },
     {
-      "label": "Eléments",
-      "widgets": [
-        {
-          "label": "Par défaut"
-        }
-      ],
-      "entity": "page",
+      "label": "Données",
+      "entity": "option",
       "field": {
-        "label": "Type de Page",
-        "description": "Bibliothèque pour cette page."
+        "label": "Données",
+        "fields": [
+          {
+            "label": "Nom"
+          },
+          {
+            "label": "Valeur"
+          },
+          {
+            "label": "Couleur"
+          },
+          {
+            "label": "Couleur de la police"
+          }
+        ]
       }
     },
     {
-      "label": "Traduire les boutons de l'outil de documentation",
-      "fields": [
-        {
-          "label": "Etiquette du bouton Précédent",
-          "default": "Précédent"
-        },
-        {
-          "label": "Etiquette du bouton Suivant",
-          "default": "Suivant"
-        },
-        {
-          "label": "Etiquette du bouton Fermer",
-          "default": "Fermer"
-        }
-      ]
+      "label": "Texte lu par l'orateur et qui définit la figure comme étant un graphique.",
+      "default": "Graphique"
     }
   ]
 }
