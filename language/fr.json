@@ -1,9 +1,9 @@
 {
   "semantics": [
     {
-      "label": "Heading",
-      "default": "Documentation tool",
-      "description": "Title for the documentation tool."
+      "label": "En-tête",
+      "default": "Outil de documentation",
+      "description": "Titre de l'outil de documentation."
     },
     {
       "label": "Eléments",
