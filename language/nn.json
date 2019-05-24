@@ -23,15 +23,15 @@
       "fields": [
         {
           "label": "Previous button label",
-          "default": "Previous"
+          "default": "Forrige"
         },
         {
           "label": "Next button label",
-          "default": "Next"
+          "default": "Neste"
         },
         {
           "label": "Close button label",
-          "default": "Close"
+          "default": "Lukk"
         }
       ]
     }
