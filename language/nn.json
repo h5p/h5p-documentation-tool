@@ -23,7 +23,7 @@
       "fields": [
         {
           "label": "Previous button label",
-          "default": "Forrige"
+          "default": "Førre"
         },
         {
           "label": "Next button label",
