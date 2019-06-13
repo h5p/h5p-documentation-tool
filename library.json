@@ -2,8 +2,8 @@
   "title": "Documentation Tool",
   "description": "Documentation tool for educational assessment.",
   "majorVersion": 1,
-  "minorVersion": 5,
-  "patchVersion": 2,
+  "minorVersion": 8,
+  "patchVersion": 1,
   "runnable": 1,
   "author": "Joubel",
   "license": "MIT",
@@ -11,6 +11,10 @@
   "embedTypes": [
     "iframe"
   ],
+  "coreApi": {
+    "majorVersion": 1,
+    "minorVersion": 19
+  },
   "preloadedCss": [
     {
       "path": "navigation-menu.css"
@@ -35,26 +39,6 @@
     }
   ],
   "preloadedDependencies": [
-    {
-      "machineName": "H5P.StandardPage",
-      "majorVersion": 1,
-      "minorVersion": 2
-    },
-    {
-      "machineName": "H5P.GoalsPage",
-      "majorVersion": 1,
-      "minorVersion": 3
-    },
-    {
-      "machineName": "H5P.GoalsAssessmentPage",
-      "majorVersion": 1,
-      "minorVersion": 2
-    },
-    {
-      "machineName": "H5P.DocumentExportPage",
-      "majorVersion": 1,
-      "minorVersion": 2
-    },
     {
       "machineName": "FontAwesome",
       "majorVersion": 4,

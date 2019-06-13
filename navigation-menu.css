@@ -30,6 +30,11 @@
   position: relative;
   top: -2px;
 }
+.h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry.required-inputs-not-filled span {
+  color: red;
+  border-bottom: 1px solid red;
+  display: block;
+}
 
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry:before {
   content: "";
@@ -121,14 +126,11 @@
   left: 15px;
 }
 
-.h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-navigation-menu .h5p-navigation-menu-entry span {
-  visibility: hidden;
-}
-
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-navigation-menu .h5p-navigation-menu-header {
   padding: 0.75em 0 0.5em 0;
   cursor: pointer;
   margin-left: 7px;
+  color: #666;
 }
 
 /* Hover effect header */

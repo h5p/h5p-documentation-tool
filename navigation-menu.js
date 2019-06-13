@@ -5,7 +5,13 @@ H5P.DocumentationTool = H5P.DocumentationTool || {};
  * Naivgation Menu module
  * @external {jQuery} $ H5P.jQuery
  */
-H5P.DocumentationTool.NavigationMenu = (function ($) {
+H5P.DocumentationTool.NavigationMenu = (function ($, EventDispatcher) {
+
+  /**
+   * @private
+   * @type {number}
+   */
+  var numInstances = 0;
 
   /**
    * Initialize module.
@@ -14,16 +20,23 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
    * @returns {Object} NavigationMenu NavigationMenu instance
    */
   function NavigationMenu(docTool, navMenuLabel) {
+    EventDispatcher.call(this);
     var self = this;
     this.$ = $(this);
     this.docTool = docTool;
+    this.highlightIncompletePages = false;
     this.navMenuLabel = navMenuLabel;
 
     // Hide menu if body is clicked
     $('body').click(function () {
       self.$documentationToolContaner.removeClass('expanded');
     });
+
+    numInstances++;
   }
+
+  NavigationMenu.prototype = Object.create(EventDispatcher.prototype);
+  NavigationMenu.prototype.constructor = NavigationMenu;
 
   /**
    * Attach function called by H5P framework to insert H5P content into page.
@@ -38,8 +51,10 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
       'class': 'h5p-navigation-menu'
     }).prependTo($container);
 
+    var menuHeaderId = 'h5p-navigation-menu-' + numInstances;
     var $navigationMenuHeader = $('<div>', {
-      'class': 'h5p-navigation-menu-header'
+      'class': 'h5p-navigation-menu-header',
+      'id': menuHeaderId
     }).appendTo($navigationMenu);
 
     $('<span>', {
@@ -47,7 +62,9 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
     }).appendTo($navigationMenuHeader);
 
     var $navigationMenuEntries = $('<div>', {
-      'class': 'h5p-navigation-menu-entries'
+      'class': 'h5p-navigation-menu-entries',
+      role: 'menu',
+      'aria-labelledby': menuHeaderId
     }).appendTo($navigationMenu);
 
     this.docTool.pageInstances.forEach(function (page, pageIndex) {
@@ -56,28 +73,25 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
       // Try to get page title
       try {
         pageTitle = page.getTitle();
-      } catch (e) {
+      }
+      catch (e) {
         throw new Error('Page does not have a getTitle() function - ' + e);
       }
 
       // Create page entry
       var $navigationMenuEntry = $('<div/>', {
         'class': 'h5p-navigation-menu-entry',
-        'title': pageTitle,
-        'role': 'button',
+        'role': 'menuitem',
         'tabindex': '0'
-      }).click(function () {
-        self.docTool.movePage(pageIndex);
-        $(this).blur();
-      }).keydown(function (e) {
-        var keyPressed = e.which;
-        // 32 - space
-        if (keyPressed === 32) {
-          $(this).click();
-          e.preventDefault();
-        }
-      }).data('pageTitle', pageTitle)
-        .appendTo($navigationMenuEntries);
+      }).appendTo($navigationMenuEntries);
+
+      H5P.DocumentationTool.handleButtonClick($navigationMenuEntry, function (event) {
+        self.$documentationToolContaner.removeClass('expanded');
+        self.docTool.movePage(pageIndex, event);
+        var progressedEvent = self.docTool.createXAPIEventTemplate('progressed'); // Using the parent documentation tool to create xapi template
+        progressedEvent.data.statement.object.definition.extensions['http://id.tincanapi.com/extension/ending-point'] = pageIndex;
+        self.trigger(progressedEvent);
+      });
 
       $('<span>', {
         'html': pageTitle
@@ -87,6 +101,7 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
       if (pageIndex === 0) {
         $navigationMenuEntry.addClass('current');
       }
+
     });
 
     this.$navigationMenuHeader = $navigationMenuHeader;
@@ -99,11 +114,38 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
    * @param {Number} currentPageIndex Current page index
    */
   NavigationMenu.prototype.updateNavigationMenu = function (currentPageIndex) {
+    const self = this;
+
+    if (this.highlightIncompletePages === false) {
+      if (self.docTool.pageInstances[currentPageIndex].libraryInfo.machineName === 'H5P.DocumentExportPage') {
+        this.highlightIncompletePages = true;
+      }
+    }
+
+    // Get Ids of pages that contain required fields that are not filled
+    const incompletePageIds = this.docTool.getIncompletePages().map(function (page) {
+      return self.docTool.pageInstances.indexOf(page);
+    });
+
+    if (incompletePageIds.length === 0) {
+      this.highlightIncompletePages = false;
+    }
+
     this.$navigationMenuEntries.children().each(function (entryIndex) {
+      // Mark currently activated menu entry
       if (currentPageIndex === entryIndex) {
         $(this).addClass('current');
-      } else {
+      }
+      else {
         $(this).removeClass('current');
+      }
+
+      // Highlight menu entries that contain required fields not filled
+      if (self.highlightIncompletePages && incompletePageIds.indexOf(entryIndex) !== -1) {
+        $(this).addClass('required-inputs-not-filled');
+      }
+      else {
+        $(this).removeClass('required-inputs-not-filled');
       }
     });
   };
@@ -123,7 +165,8 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
       });
       // Add responsive class
       this.$documentationToolContaner.addClass('responsive');
-    } else {
+    }
+    else {
       // Remove click action and remove responsive classes
       this.$navigationMenuHeader.unbind('click');
       this.$documentationToolContaner.removeClass('expanded');
@@ -133,4 +176,4 @@ H5P.DocumentationTool.NavigationMenu = (function ($) {
 
   return NavigationMenu;
 
-}(H5P.jQuery));
+}(H5P.jQuery, H5P.EventDispatcher));

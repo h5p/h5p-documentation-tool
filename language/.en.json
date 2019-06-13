@@ -6,16 +6,16 @@
       "description": "Title for the documentation tool."
     },
     {
-      "label": "Innholdselementer",
+      "label": "Elements",
       "widgets": [
         {
           "label": "Default"
         }
       ],
-      "entity": "Element",
+      "entity": "page",
       "field": {
-        "label": "Innholdstype",
-        "description": "Bibliotek som brukes for dette elementet."
+        "label": "Page type",
+        "description": "Library for this slide."
       }
     },
     {
@@ -23,15 +23,15 @@
       "fields": [
         {
           "label": "Previous button label",
-          "default": "Forrige"
+          "default": "Previous"
         },
         {
           "label": "Next button label",
-          "default": "Neste"
+          "default": "Next"
         },
         {
           "label": "Close button label",
-          "default": "Lukk"
+          "default": "Close"
         }
       ]
     }
