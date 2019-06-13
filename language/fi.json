@@ -2,8 +2,8 @@
   "semantics": [
     {
       "label": "Otsikko",
-      "default": "Dokumentaatio työkalu",
-      "description": "Dokumentaatio työkalun otsikko"
+      "default": "Dokumentaatiotyökalu",
+      "description": "Dokumentaatiotyökalun otsikko"
     },
     {
       "label": "Osat",
