@@ -1,9 +1,9 @@
 {
   "semantics": [
     {
-      "label": "Heading",
-      "default": "Documentation tool",
-      "description": "Title for the documentation tool."
+      "label": "Otsikko",
+      "default": "Dokumentaatio työkalu",
+      "description": "Dokumentaatio työkalun otsikko"
     },
     {
       "label": "Osat",
