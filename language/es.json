@@ -12,7 +12,7 @@
           "label": "Por defecto"
         }
       ],
-      "entity": "page",
+      "entity": "página",
       "field": {
         "label": "Tipo de página",
         "description": "Librería para esta diapositiva."
