@@ -2,7 +2,7 @@
   "semantics": [
     {
       "label": "Heading",
-      "default": "Documentation tool",
+      "default": "Dokumentasjonsverktøy",
       "description": "Title for the documentation tool."
     },
     {
