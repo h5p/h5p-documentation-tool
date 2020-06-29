@@ -26,7 +26,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
     this.params = $.extend({
       taskDescription: (this.extras.metadata && this.extras.metadata.title) ? this.extras.metadata.title : 'Documentation Tool',
       pagesList: [],
-      l10n: {
+      i10n: {
         nextLabel: 'Next',
         previousLabel: 'Previous',
         closeLabel: 'Close'
@@ -125,10 +125,10 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
   DocumentationTool.prototype.createNavigationButton = function (moveDirection, enabled) {
     var self = this;
     var type = 'next';
-    var navigationLabel = this.params.l10n.nextLabel;
+    var navigationLabel = this.params.i10n.nextLabel;
     if (moveDirection === -1) {
       type = 'prev';
-      navigationLabel = this.params.l10n.previousLabel;
+      navigationLabel = this.params.i10n.previousLabel;
     }
 
     var $navButton = $('<div>', {
@@ -249,7 +249,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
 
     self.untabalize();
 
-    var helpTextDialog = new H5P.JoubelUI.createHelpTextDialog(event.data.title, event.data.helpText, self.params.l10n.closeLabel);
+    var helpTextDialog = new H5P.JoubelUI.createHelpTextDialog(event.data.title, event.data.helpText, self.params.i10n.closeLabel);
 
     // Handle closing of the dialog
     helpTextDialog.on('closed', function () {
