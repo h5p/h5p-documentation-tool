@@ -40,6 +40,16 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
     EventDispatcher.call(this);
 
     this.on('resize', self.resize, self);
+
+    // Determine if an answer can be submitted or not
+    this.isTask = false;
+    if (H5PIntegration.reportingIsEnabled) {// TODO: Never use H5PIntegration directly in a content type.
+      for (var i = 0; i < params.pagesList.length; i++) {
+        if (params.pagesList[i].library.split(' ')[0] === 'H5P.DocumentExportPage') {
+          this.isTask = true;
+        }
+      }
+    }
   }
 
   DocumentationTool.prototype = Object.create(EventDispatcher.prototype);
@@ -172,7 +182,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
       });
       if (singlePage.libraryInfo.machineName === 'H5P.DocumentExportPage') {
         singlePage.setExportTitle(self.params.taskDescription);
-        singlePage.setSumbitEnabled(H5PIntegration.reportingIsEnabled);
+        singlePage.setSumbitEnabled(H5PIntegration.reportingIsEnabled); // TODO: Never use H5PIntegration directly in a content type.
       }
       singlePage.attach($pageInstance);
       self.createFooter(i !== 0, i < (numPages - 1)).appendTo($pageInstance);
