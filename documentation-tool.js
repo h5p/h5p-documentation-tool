@@ -44,8 +44,8 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
     // Determine if an answer can be submitted or not
     this.isTask = false;
     if (H5PIntegration.reportingIsEnabled) {// TODO: Never use H5PIntegration directly in a content type.
-      for (var i = 0; i < params.pagesList.length; i++) {
-        if (params.pagesList[i].library.split(' ')[0] === 'H5P.DocumentExportPage') {
+      for (var i = 0; i < this.params.pagesList.length; i++) {
+        if (this.params.pagesList[i].library.split(' ')[0] === 'H5P.DocumentExportPage') {
           this.isTask = true;
         }
       }
