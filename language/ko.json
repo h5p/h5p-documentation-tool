@@ -2,7 +2,7 @@
   "semantics": [
     {
       "label": "머릿말",
-      "default": "문서화 도구,
+      "default": "문서화 도구",
       "description": "문서화 도구에 대한 제목."
     },
     {
