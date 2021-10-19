@@ -1,4 +1,3 @@
-var H5P = H5P || {};
 /**
  * Documentation tool module
  * @external {jQuery} $ H5P.jQuery
