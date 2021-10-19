@@ -22,6 +22,12 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
 
     this.extras = extras;
 
+    this.isSubmitButtonEnabled = false;
+    // TODO: Never use H5PIntegration directly in a content type.
+    if (H5PIntegration.reportingIsEnabled || this.extras.isReportingEnabled) {
+      this.isSubmitButtonEnabled = true;
+    }
+
     // Set default behavior.
     this.params = $.extend({
       taskDescription: (this.extras.metadata && this.extras.metadata.title) ? this.extras.metadata.title : 'Documentation Tool',
@@ -45,8 +51,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
     this.isTask = false;
     // Validate extra reporting active flag is available and
     // undefined for org users
-    if (H5P.isExtraReportingActive === undefined 
-      || H5P.isExtraReportingActive) {
+    if (this.isSubmitButtonEnabled) {
       for (var i = 0; i < this.params.pagesList.length; i++) {
         if (this.params.pagesList[i].library.split(' ')[0] === 'H5P.DocumentExportPage') {
           this.isTask = true;
@@ -185,8 +190,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
       });
       if (singlePage.libraryInfo.machineName === 'H5P.DocumentExportPage') {
         singlePage.setExportTitle(self.params.taskDescription);
-        singlePage.setSumbitEnabled(H5P.isExtraReportingActive === undefined
-          || H5P.isExtraReportingActive);
+        singlePage.setSumbitEnabled(this.isSubmitButtonEnabled);
       }
       singlePage.attach($pageInstance);
       self.createFooter(i !== 0, i < (numPages - 1)).appendTo($pageInstance);
