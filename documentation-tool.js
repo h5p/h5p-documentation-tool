@@ -1,3 +1,4 @@
+var H5P = H5P || {};
 /**
  * Documentation tool module
  * @external {jQuery} $ H5P.jQuery
@@ -43,7 +44,10 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
 
     // Determine if an answer can be submitted or not
     this.isTask = false;
-    if (H5PIntegration.reportingIsEnabled) {// TODO: Never use H5PIntegration directly in a content type.
+    // Validate extra reporting active flag is available and
+    // undefined for org users
+    if (H5P.isExtraReportingActive === undefined 
+      || H5P.isExtraReportingActive) {
       for (var i = 0; i < this.params.pagesList.length; i++) {
         if (this.params.pagesList[i].library.split(' ')[0] === 'H5P.DocumentExportPage') {
           this.isTask = true;
@@ -182,7 +186,8 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
       });
       if (singlePage.libraryInfo.machineName === 'H5P.DocumentExportPage') {
         singlePage.setExportTitle(self.params.taskDescription);
-        singlePage.setSumbitEnabled(H5PIntegration.reportingIsEnabled); // TODO: Never use H5PIntegration directly in a content type.
+        singlePage.setSumbitEnabled(H5P.isExtraReportingActive === undefined
+          || H5P.isExtraReportingActive);
       }
       singlePage.attach($pageInstance);
       self.createFooter(i !== 0, i < (numPages - 1)).appendTo($pageInstance);
