@@ -23,9 +23,11 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
     this.extras = extras;
 
     this.isSubmitButtonEnabled = false;
-    // TODO: Never use H5PIntegration directly in a content type.
-    if (H5PIntegration.reportingIsEnabled || this.extras.isReportingEnabled) {
-      this.isSubmitButtonEnabled = true;
+    if (this.extras.isReportingEnabled !== undefined) {
+      this.isSubmitButtonEnabled = this.extras.isReportingEnabled;
+    }
+    else if (H5PIntegration.reportingIsEnabled !== undefined) { // (Never use H5PIntegration directly in a content type. It's only here for backwards compatibility)
+      this.isSubmitButtonEnabled = H5PIntegration.reportingIsEnabled;
     }
 
     // Set default behavior.
