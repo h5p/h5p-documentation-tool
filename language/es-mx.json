@@ -1,7 +1,7 @@
 {
   "semantics": [
     {
-      "label": "Título",
+      "label": "Encabezado",
       "default": "Herramienta de documentación",
       "description": "Título para la herramienta de documentación."
     },
@@ -9,7 +9,7 @@
       "label": "Elementos",
       "widgets": [
         {
-          "label": "Por defecto"
+          "label": "Predeterminado"
         }
       ],
       "entity": "página",
@@ -19,7 +19,7 @@
       }
     },
     {
-      "label": "Traducir los botones de la herramienta",
+      "label": "Traducir los botones de la herramienta de documentación",
       "fields": [
         {
           "label": "Etiqueta del botón anterior",
