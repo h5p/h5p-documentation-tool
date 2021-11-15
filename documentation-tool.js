@@ -513,8 +513,18 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
    */
   DocumentationTool.prototype.setDocumentExportGoals  = function (pageInstances, newGoals) {
     var assessmentPageTitle = '';
+
+    // If no goals assessment page or no goals are assessed,
+    // use the title from the Goals Page instead
+    const pagetoGetTitleFrom = newGoals.some(function (page) {
+      return page.some(function (goal) {
+        return goal.goalAnswer() !== -1;
+      });
+    }) ? 'H5P.GoalsAssessmentPage' : 'H5P.GoalsPage';
+
+
     pageInstances.forEach(function (page) {
-      if (page.libraryInfo.machineName === 'H5P.GoalsAssessmentPage') {
+      if (page.libraryInfo.machineName === pagetoGetTitleFrom) {
         assessmentPageTitle = page.getTitle();
       }
     });
