@@ -22,6 +22,14 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
 
     this.extras = extras;
 
+    this.isSubmitButtonEnabled = false;
+    if (this.extras.isReportingEnabled !== undefined) {
+      this.isSubmitButtonEnabled = this.extras.isReportingEnabled;
+    }
+    else if (H5PIntegration.reportingIsEnabled !== undefined) { // (Never use H5PIntegration directly in a content type. It's only here for backwards compatibility)
+      this.isSubmitButtonEnabled = H5PIntegration.reportingIsEnabled;
+    }
+
     // Set default behavior.
     this.params = $.extend({
       taskDescription: (this.extras.metadata && this.extras.metadata.title) ? this.extras.metadata.title : 'Documentation Tool',
@@ -43,7 +51,9 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
 
     // Determine if an answer can be submitted or not
     this.isTask = false;
-    if (H5PIntegration.reportingIsEnabled) {// TODO: Never use H5PIntegration directly in a content type.
+    // Validate extra reporting active flag is available and
+    // undefined for org users
+    if (this.isSubmitButtonEnabled) {
       for (var i = 0; i < this.params.pagesList.length; i++) {
         if (this.params.pagesList[i].library.split(' ')[0] === 'H5P.DocumentExportPage') {
           this.isTask = true;
@@ -182,7 +192,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
       });
       if (singlePage.libraryInfo.machineName === 'H5P.DocumentExportPage') {
         singlePage.setExportTitle(self.params.taskDescription);
-        singlePage.setSumbitEnabled(H5PIntegration.reportingIsEnabled); // TODO: Never use H5PIntegration directly in a content type.
+        singlePage.setSumbitEnabled(this.isSubmitButtonEnabled);
       }
       singlePage.attach($pageInstance);
       self.createFooter(i !== 0, i < (numPages - 1)).appendTo($pageInstance);
@@ -503,8 +513,18 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
    */
   DocumentationTool.prototype.setDocumentExportGoals  = function (pageInstances, newGoals) {
     var assessmentPageTitle = '';
+
+    // If no goals assessment page or no goals are assessed,
+    // use the title from the Goals Page instead
+    const pagetoGetTitleFrom = newGoals.some(function (page) {
+      return page.some(function (goal) {
+        return goal.goalAnswer() !== -1;
+      });
+    }) ? 'H5P.GoalsAssessmentPage' : 'H5P.GoalsPage';
+
+
     pageInstances.forEach(function (page) {
-      if (page.libraryInfo.machineName === 'H5P.GoalsAssessmentPage') {
+      if (page.libraryInfo.machineName === pagetoGetTitleFrom) {
         assessmentPageTitle = page.getTitle();
       }
     });
