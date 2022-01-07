@@ -13,6 +13,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
    * Initialize module.
    * @param {Object} params Behavior settings
    * @param {Number} id Content identification
+   * @param {object} [extras] Saved state, metadata, etc.
    * @returns {Object} DocumentationTool DocumentationTool instance
    */
   function DocumentationTool(params, id, extras) {
@@ -43,6 +44,10 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
 
     if (params.taskDescription === undefined && params.navMenuLabel !== undefined) {
       this.params.taskDescription = params.navMenuLabel;
+    }
+
+    if (extras !== undefined && typeof extras.previousState === 'object' && Object.keys(extras.previousState).length) {
+      this.previousState = extras.previousState;
     }
 
     EventDispatcher.call(this);
@@ -116,6 +121,10 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
 
     this.navigationMenu = navigationMenu;
 
+    if (this.previousState && this.previousState.previousPage && this.previousState.previousPage !== 0) {
+      this.movePage(this.previousState.previousPage);
+    }
+
     self.resize();
   };
 
@@ -187,9 +196,12 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
         'class': PAGE_INSTANCE
       }).appendTo($pagesContainer);
 
-      var singlePage = H5P.newRunnable(page, self.id, undefined, undefined, {
-        parent: self // Set the parent for xapi context
-      });
+      const childExtras = { parent: self };
+      if (this.previousState) {
+        childExtras.previousState = this.previousState.childrenStates[i]
+      }
+
+      var singlePage = H5P.newRunnable(page, self.id, undefined, undefined, childExtras);
       if (singlePage.libraryInfo.machineName === 'H5P.DocumentExportPage') {
         singlePage.setExportTitle(self.params.taskDescription);
         singlePage.setSumbitEnabled(this.isSubmitButtonEnabled);
@@ -681,6 +693,24 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
    */
   DocumentationTool.prototype.getTitle = function () {
     return H5P.createTitle((this.extras.metadata && this.extras.metadata.title) ? this.extras.metadata.title : 'Documentation Tool');
+  };
+
+  /**
+   * Answer call to return the current state.
+   *
+   * @return {object} Current state.
+   */
+  DocumentationTool.prototype.getCurrentState = function () {
+    const childrenStates = this.pageInstances.map(function (instance) {
+      return (typeof instance.getCurrentState === 'function') ?
+        instance.getCurrentState() :
+        undefined;
+    });
+
+    return {
+      childrenStates: childrenStates,
+      previousPage: this.currentPageIndex
+    };
   };
 
   return DocumentationTool;
