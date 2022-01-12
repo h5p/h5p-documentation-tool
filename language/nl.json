@@ -22,16 +22,16 @@
       "label": "Lokaliseer documentatie tool knoppen",
       "fields": [
         {
-          "label": "Vorige knop label",
+          "label": "Label van \"Vorige\"-knop",
           "default": "Vorige"
         },
         {
-          "label": "Volgende knop label",
+          "label": "Label van \"Volgende\"-knop",
           "default": "Volgende"
         },
         {
-          "label": "Sluiten knop label",
-          "default": "Sluiten"
+          "label": "Label van \"Sluiten\"-knop",
+          "default": "Afsluiten"
         }
       ]
     }
