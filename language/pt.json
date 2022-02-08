@@ -1,36 +1,36 @@
 {
   "semantics": [
     {
-      "label": "Heading",
-      "default": "Documentation tool",
-      "description": "Title for the documentation tool."
+      "label": "Título",
+      "default": "Ferramenta de documentação",
+      "description": "Título da ferramenta de documentação."
     },
     {
       "label": "Elementos",
       "widgets": [
         {
-          "label": "Por defeito"
+          "label": "Padrão"
         }
       ],
       "entity": "página",
       "field": {
-        "label": "Título da página",
-        "description": "Biblioteca para esta página"
+        "label": "Tipo de página",
+        "description": "Biblioteca para esta página."
       }
     },
     {
       "label": "Tradução para os botões da ferramenta de documentação",
       "fields": [
         {
-          "label": "Etiqueta do botão Anterior",
+          "label": "Rótulo do botão Anterior",
           "default": "Anterior"
         },
         {
-          "label": "Etiqueta do botão Seguinte",
+          "label": "Rótulo do botão Seguinte",
           "default": "Seguinte"
         },
         {
-          "label": "Etiqueta do botão Fechar",
+          "label": "Rótulo do botão Fechar",
           "default": "Fechar"
         }
       ]
