@@ -65,6 +65,19 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
         }
       }
     }
+
+    /**
+     * Initialize Goal assessment state
+     * @param {H5P.GoalsAssessmentPage} instance Goal assesment instance
+     */
+    self.setGoalAssesmentState = function (instance) {
+      var assessmentGoals = self.getGoalAssessments(self.pageInstances);
+      var newGoals = self.getGoals(self.pageInstances);
+      assessmentGoals.forEach(function (assessmentPage) {
+        newGoals = self.mergeGoals(newGoals, assessmentPage);
+      });
+      self.setGoals(self.pageInstances, newGoals);
+    };
   }
 
   DocumentationTool.prototype = Object.create(EventDispatcher.prototype);
@@ -122,6 +135,10 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
     this.navigationMenu = navigationMenu;
 
     if (this.previousState && this.previousState.previousPage && this.previousState.previousPage !== 0) {
+      const goalAssesmentPageIndex = self.pageInstances.findIndex(pageInstance => pageInstance.libraryInfo.machineName === 'H5P.GoalsAssessmentPage');
+      if (goalAssesmentPageIndex > -1){
+        self.setGoalAssesmentState(goalAssesmentPageIndex);
+      }
       this.movePage(this.previousState.previousPage);
     }
 
