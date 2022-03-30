@@ -20,6 +20,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
     var self = this;
     this.$ = $(this);
     this.id = id;
+    this.pageInstances = [];
 
     this.extras = extras;
 
@@ -66,6 +67,8 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
       }
     }
 
+    this.$pagesContainer = self.createPages();
+
     /**
      * Initialize Goal assessment state
      * @param {H5P.GoalsAssessmentPage} instance Goal assesment instance
@@ -111,7 +114,6 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
   DocumentationTool.prototype.attach = function ($container) {
 
     var self = this;
-    this.pageInstances = [];
     this.currentPageIndex = 0;
 
     this.$inner = $container.addClass(MAIN_CONTAINER);
@@ -121,8 +123,8 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
     }).appendTo(this.$inner);
 
     // Create pages
-    var $pagesContainer = self.createPages().appendTo(this.$mainContent);
-    self.$pagesArray = $pagesContainer.children();
+    self.$pagesContainer.appendTo(this.$mainContent);
+    self.$pagesArray = self.$pagesContainer.children();
 
     // Create navigation menu
     var navigationMenu = new NavigationMenu(self, this.params.taskDescription);
