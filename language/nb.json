@@ -1,7 +1,7 @@
 {
   "semantics": [
     {
-      "label": "Heading",
+      "label": "Overskrift",
       "default": "Documentation tool",
       "description": "Title for the documentation tool."
     },
@@ -9,7 +9,7 @@
       "label": "Innholdselementer",
       "widgets": [
         {
-          "label": "Default"
+          "label": "Standard"
         }
       ],
       "entity": "Element",
