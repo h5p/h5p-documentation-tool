@@ -1,7 +1,7 @@
 {
   "semantics": [
     {
-      "label": "Título",
+      "label": "Cabeçalho",
       "default": "Ferramenta de documentação",
       "description": "Título para a ferramenta de documentação."
     },
