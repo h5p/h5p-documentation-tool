@@ -185,6 +185,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
       'title': navigationLabel,
       'aria-disabled': !enabled,
       'tabindex': enabled ? 0 : undefined,
+      'role': 'button',
       'html': '<span class="joubel-simple-rounded-button-text"></span>'
     });
 
