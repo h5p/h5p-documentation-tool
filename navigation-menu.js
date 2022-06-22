@@ -69,10 +69,12 @@ H5P.DocumentationTool.NavigationMenu = (function ($, EventDispatcher) {
 
     this.docTool.pageInstances.forEach(function (page, pageIndex) {
       var pageTitle = '';
+      var screenReaderFriendlyTitle = '';
 
       // Try to get page title
       try {
         pageTitle = page.getTitle();
+        screenReaderFriendlyTitle = page.getTitle(false);
       }
       catch (e) {
         throw new Error('Page does not have a getTitle() function - ' + e);
@@ -82,7 +84,8 @@ H5P.DocumentationTool.NavigationMenu = (function ($, EventDispatcher) {
       var $navigationMenuEntry = $('<div/>', {
         'class': 'h5p-navigation-menu-entry',
         'role': 'menuitem',
-        'tabindex': '0'
+        'tabindex': '0',
+        'aria-label': screenReaderFriendlyTitle
       }).appendTo($navigationMenuEntries);
 
       H5P.DocumentationTool.handleButtonClick($navigationMenuEntry, function (event) {
