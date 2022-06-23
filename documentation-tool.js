@@ -37,8 +37,8 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
       taskDescription: (this.extras.metadata && this.extras.metadata.title) ? this.extras.metadata.title : 'Documentation Tool',
       pagesList: [],
       i10n: {
-        nextLabel: 'Next',
-        previousLabel: 'Previous',
+        nextLabel: 'Next page',
+        previousLabel: 'Previous page',
         closeLabel: 'Close'
       }
     }, params);

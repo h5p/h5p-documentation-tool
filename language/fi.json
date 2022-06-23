@@ -23,11 +23,11 @@
       "fields": [
         {
           "label": "Painikkeen Edellinen teksti",
-          "default": "Edellinen"
+          "default": "Edellinen sivun"
         },
         {
           "label": "Painikkeen Seuraava teksti",
-          "default": "Seuraava"
+          "default": "Seuraava sivun"
         },
         {
           "label": "Painikkeen Sulje teksti",

@@ -23,11 +23,11 @@
       "fields": [
         {
           "label": "Label van \"Vorige\"-knop",
-          "default": "Vorige"
+          "default": "Vorige page"
         },
         {
           "label": "Label van \"Volgende\"-knop",
-          "default": "Volgende"
+          "default": "Volgende page"
         },
         {
           "label": "Label van \"Sluiten\"-knop",

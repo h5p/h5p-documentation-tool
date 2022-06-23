@@ -23,11 +23,11 @@
       "fields": [
         {
           "label": "Vorige knoppie etiket",
-          "default": "Vorige"
+          "default": "Vorige bladsy"
         },
         {
           "label": "Volgende knoppie etiket",
-          "default": "Volgende"
+          "default": "Volgende bladsy"
         },
         {
           "label": "Maak toe knoppie etiket",

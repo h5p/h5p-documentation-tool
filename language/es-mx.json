@@ -23,11 +23,11 @@
       "fields": [
         {
           "label": "Etiqueta del botón anterior",
-          "default": "Anterior"
+          "default": "Anterior página"
         },
         {
           "label": "Etiqueta del botón siguiente",
-          "default": "Siguiente"
+          "default": "Siguiente página"
         },
         {
           "label": "Etiqueta del botón cerrar",

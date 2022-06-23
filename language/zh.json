@@ -23,11 +23,11 @@
       "fields": [
         {
           "label": "上一張投影片按鈕文字",
-          "default": "上一張"
+          "default": "上一張 page"
         },
         {
           "label": "下一張投影片按鈕文字",
-          "default": "下一張"
+          "default": "下一張 page"
         },
         {
           "label": "關閉投影片按鈕文字",

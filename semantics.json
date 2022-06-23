@@ -47,14 +47,14 @@
         "label": "Previous button label",
         "name": "previousLabel",
         "type": "text",
-        "default": "Previous",
+        "default": "Previous page",
         "importance": "low"
       },
       {
         "label": "Next button label",
         "name": "nextLabel",
         "type": "text",
-        "default": "Next",
+        "default": "Next page",
         "importance": "low"
       },
       {

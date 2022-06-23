@@ -23,11 +23,11 @@
       "fields": [
         {
           "label": "Etiqueta del botó \"Anterior\"",
-          "default": "Anterior"
+          "default": "Anterior pàgina"
         },
         {
           "label": "Etiqueta del botó següent",
-          "default": "Següent"
+          "default": "Següent pàgina"
         },
         {
           "label": "Etiqueta del botó de tancar",

@@ -24,11 +24,11 @@
       "fields": [
         {
           "label": "Previous button label",
-          "default": "មុន"
+          "default": "មុន page"
         },
         {
           "label": "Next button label",
-          "default": "បន្ទាប់"
+          "default": "បន្ទាប់ page"
         },
         {
           "label": "Close button label",

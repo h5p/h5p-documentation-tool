@@ -23,11 +23,11 @@
       "fields": [
         {
           "label": "Etichetta del pulsante Precedente",
-          "default": "Precedente"
+          "default": "Precedente pagina"
         },
         {
           "label": "Etichetta del pulsante Prossimo",
-          "default": "Prossimo"
+          "default": "Prossimo pagina"
         },
         {
           "label": "Etichetta del pulsante Chiudi",

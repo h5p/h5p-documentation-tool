@@ -23,11 +23,11 @@
       "fields": [
         {
           "label": "Popisek tlačítka Předchozí",
-          "default": "Předchozí"
+          "default": "Předchozí stránka"
         },
         {
           "label": "Popisek tlačítka Další",
-          "default": "Další"
+          "default": "Další stránka"
         },
         {
           "label": "Popisek tlačítka Zavřít",
