@@ -23,11 +23,11 @@
       "fields": [
         {
           "label": "Previous button label",
-          "default": "Førre page"
+          "default": "Førre documentation step"
         },
         {
           "label": "Next button label",
-          "default": "Neste page"
+          "default": "Neste documentation step"
         },
         {
           "label": "Close button label",

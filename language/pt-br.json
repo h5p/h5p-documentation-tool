@@ -23,11 +23,11 @@
       "fields": [
         {
           "label": "Rótulo do botão Anterior",
-          "default": "Anterior página"
+          "default": "Anterior documentation step"
         },
         {
           "label": "Rótulo do botão Próximo",
-          "default": "Próximo página"
+          "default": "Próximo documentation step"
         },
         {
           "label": "Rótulo do botão Fechar",

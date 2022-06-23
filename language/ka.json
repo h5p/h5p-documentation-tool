@@ -23,11 +23,11 @@
       "fields": [
         {
           "label": "უკან დაბრუნების ღილაკის დასახელება",
-          "default": "უკან გვერდი"
+          "default": "უკან documentation step"
         },
         {
           "label": "გაგრძელების ღილაკის დასახელება",
-          "default": "შემდეგი გვერდი"
+          "default": "შემდეგი documentation step"
         },
         {
           "label": "დახურვის ღილაკის დასახელება",

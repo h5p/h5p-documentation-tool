@@ -23,11 +23,11 @@
       "fields": [
         {
           "label": "Previous button label",
-          "default": "Previous page"
+          "default": "Previous documentation step"
         },
         {
           "label": "Next button label",
-          "default": "Next page"
+          "default": "Next documentation step"
         },
         {
           "label": "Close button label",

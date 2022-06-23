@@ -47,14 +47,14 @@
         "label": "Previous button label",
         "name": "previousLabel",
         "type": "text",
-        "default": "Previous page",
+        "default": "Previous documentation step",
         "importance": "low"
       },
       {
         "label": "Next button label",
         "name": "nextLabel",
         "type": "text",
-        "default": "Next page",
+        "default": "Next documentation step",
         "importance": "low"
       },
       {

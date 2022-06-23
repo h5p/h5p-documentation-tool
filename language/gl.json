@@ -23,11 +23,11 @@
       "fields": [
         {
           "label": "Etiqueta para o botón anterior",
-          "default": "Anterior páxina"
+          "default": "Anterior documentation step"
         },
         {
           "label": "Etiqueta para o botón seguinte",
-          "default": "Seguinte páxina"
+          "default": "Seguinte documentation step"
         },
         {
           "label": "Etiqueta para o botón pechar",

@@ -22,12 +22,12 @@
       "label": "Lokalizēt dokumentācijas rīka pogas",
       "fields": [
         {
-          "default": "Iepriekšējais page",
+          "default": "Iepriekšējais documentation step",
           "label": "Pogas \"Iepriekšējais\" birka"
         },
         {
           "label": "Pogas \"Nākamais\" birka",
-          "default": "Nākamais page"
+          "default": "Nākamais documentation step"
         },
         {
           "label": "Pogas \"Aizvērt\" birka",

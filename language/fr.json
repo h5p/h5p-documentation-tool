@@ -23,11 +23,11 @@
       "fields": [
         {
           "label": "Etiquette du bouton Précédent",
-          "default": "Précédent page"
+          "default": "Précédent documentation step"
         },
         {
           "label": "Etiquette du bouton Suivant",
-          "default": "Suivant page"
+          "default": "Suivant documentation step"
         },
         {
           "label": "Etiquette du bouton Fermer",

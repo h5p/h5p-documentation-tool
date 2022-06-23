@@ -23,11 +23,11 @@
       "fields": [
         {
           "label": "Besedilo za gumb \"Nazaj\"",
-          "default": "Nazaj page"
+          "default": "Nazaj documentation step"
         },
         {
           "label": "Besedilo za gumb \"Naprej\"",
-          "default": "Naprej page"
+          "default": "Naprej documentation step"
         },
         {
           "label": "Besedilo za gumb \"Zapri\"",

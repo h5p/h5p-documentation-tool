@@ -23,11 +23,11 @@
       "fields": [
         {
           "label": "Aurreko botoiaren etiketa",
-          "default": "Aurrekoa orri"
+          "default": "Aurrekoa documentation step"
         },
         {
           "label": "Hurrengo botoiaren etiketa",
-          "default": "Hurrengoa orri"
+          "default": "Hurrengoa documentation step"
         },
         {
           "label": "Itxi botoiaren etiketa",
