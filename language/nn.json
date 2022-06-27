@@ -23,11 +23,11 @@
       "fields": [
         {
           "label": "Previous button label",
-          "default": "Førre"
+          "default": "Førre documentation step"
         },
         {
           "label": "Next button label",
-          "default": "Neste"
+          "default": "Neste documentation step"
         },
         {
           "label": "Close button label",

@@ -23,11 +23,11 @@
       "fields": [
         {
           "label": "Popisek tlačítka Předchozí",
-          "default": "Předchozí"
+          "default": "Předchozí documentation step"
         },
         {
           "label": "Popisek tlačítka Další",
-          "default": "Další"
+          "default": "Další documentation step"
         },
         {
           "label": "Popisek tlačítka Zavřít",

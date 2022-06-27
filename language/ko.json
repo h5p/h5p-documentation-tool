@@ -23,11 +23,11 @@
       "fields": [
         {
           "label": "이전 버튼 레이블",
-          "default": "이전"
+          "default": "이전 documentation step"
         },
         {
           "label": "다음 버튼 레이블",
-          "default": "다음"
+          "default": "다음 documentation step"
         },
         {
           "label": "닫기 버튼 레이블",

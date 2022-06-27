@@ -23,11 +23,11 @@
       "fields": [
         {
           "label": "Название кнопки возвращения",
-          "default": "Назад"
+          "default": "Назад documentation step"
         },
         {
           "label": "Название кнопки дальше",
-          "default": "Дальше"
+          "default": "Дальше documentation step"
         },
         {
           "label": "Название кнопки Закрыть",

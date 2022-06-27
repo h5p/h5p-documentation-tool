@@ -23,11 +23,11 @@
       "fields": [
         {
           "label": "Label van \"Vorige\"-knop",
-          "default": "Vorige"
+          "default": "Vorige documentation step"
         },
         {
           "label": "Label van \"Volgende\"-knop",
-          "default": "Volgende"
+          "default": "Volgende documentation step"
         },
         {
           "label": "Label van \"Sluiten\"-knop",

@@ -23,11 +23,11 @@
       "fields": [
         {
           "label": "Painikkeen Edellinen teksti",
-          "default": "Edellinen"
+          "default": "Edellinen documentation step"
         },
         {
           "label": "Painikkeen Seuraava teksti",
-          "default": "Seuraava"
+          "default": "Seuraava documentation step"
         },
         {
           "label": "Painikkeen Sulje teksti",

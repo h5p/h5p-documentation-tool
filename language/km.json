@@ -24,11 +24,11 @@
       "fields": [
         {
           "label": "Previous button label",
-          "default": "មុន"
+          "default": "មុន documentation step"
         },
         {
           "label": "Next button label",
-          "default": "បន្ទាប់"
+          "default": "បន្ទាប់ documentation step"
         },
         {
           "label": "Close button label",

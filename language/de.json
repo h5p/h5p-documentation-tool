@@ -23,11 +23,11 @@
       "fields": [
         {
           "label": "Beschriftung des \"Zurück\"-Buttons",
-          "default": "Zurück"
+          "default": "Zurück documentation step"
         },
         {
           "label": "Beschriftung des \"Weiter\"-Buttons",
-          "default": "Weiter"
+          "default": "Weiter documentation step"
         },
         {
           "label": "Beschriftung des \"Schließen\"-Buttons",

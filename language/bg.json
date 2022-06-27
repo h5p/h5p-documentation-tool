@@ -23,11 +23,11 @@
       "fields": [
         {
           "label": "Етикет на бутона предишна страница",
-          "default": "Предешна"
+          "default": "Предешна documentation step"
         },
         {
           "label": "Бутон за следваща",
-          "default": "Следваща"
+          "default": "Следваща documentation step"
         },
         {
           "label": "Бутон за затваряне",

@@ -23,11 +23,11 @@
       "fields": [
         {
           "label": "Eelmine nupu silt",
-          "default": "Eelmine"
+          "default": "Eelmine documentation step"
         },
         {
           "label": "Järgmine nupu silt",
-          "default": "Järgmine"
+          "default": "Järgmine documentation step"
         },
         {
           "label": "Sulge nupu silt",
