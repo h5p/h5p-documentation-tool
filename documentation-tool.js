@@ -143,6 +143,9 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
       }
       this.movePage(this.previousState.previousPage);
     }
+    else {
+      self.pageInstances[self.currentPageIndex].resize();
+    }
 
     self.resize();
   };
