@@ -165,8 +165,3 @@
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-documentation-tool-page-container {
   margin-left: 2.2em;
 }
-
-/* Accordion Specific */
-.h5p-documentation-tool-page-container .h5p-documentation-tool-page.h5p-accordion .h5p-panel-title {
-  padding: 0.8em 0.8em 0.8em 2.25em;
-}
