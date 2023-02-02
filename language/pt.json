@@ -1,7 +1,7 @@
 {
   "semantics": [
     {
-      "label": "Título",
+      "label": "Heading",
       "default": "Ferramenta de documentação",
       "description": "Título da ferramenta de documentação."
     },
@@ -9,7 +9,7 @@
       "label": "Elementos",
       "widgets": [
         {
-          "label": "Padrão"
+          "label": "Default"
         }
       ],
       "entity": "página",
