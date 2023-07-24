@@ -23,11 +23,11 @@
       "fields": [
         {
           "label": "Etiqueta del botón anterior",
-          "default": "Anterior documentation step"
+          "default": "Paso de documentación anterior"
         },
         {
           "label": "Etiqueta del botón siguiente",
-          "default": "Siguiente documentation step"
+          "default": "Paso de documentación siguiente"
         },
         {
           "label": "Etiqueta del botón cerrar",
