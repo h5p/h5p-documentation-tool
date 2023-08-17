@@ -141,7 +141,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
       if (goalAssesmentPageIndex > -1){
         self.setGoalAssesmentState(goalAssesmentPageIndex);
       }
-      this.movePage(this.previousState.previousPage);
+      this.movePage(this.previousState.previousPage, true);
     }
 
     self.resize();
@@ -189,8 +189,8 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
       'html': '<span class="joubel-simple-rounded-button-text"></span>'
     });
 
-    DocumentationTool.handleButtonClick($navButton, function (event) {
-      self.movePage(self.currentPageIndex + moveDirection, event);
+    DocumentationTool.handleButtonClick($navButton, function () {
+      self.movePage(self.currentPageIndex + moveDirection);
     });
 
     return $navButton;
@@ -332,8 +332,9 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
   /**
    * Moves the documentation tool to the specified page
    * @param {Number} toPageIndex Move to this page index
+   * @param {boolean} [skipFocus] If true, do not focus page moved to.
    */
-  DocumentationTool.prototype.movePage = function (toPageIndex) {
+  DocumentationTool.prototype.movePage = function (toPageIndex, skipFocus) {
     var self = this;
 
     // Invalid value
@@ -362,7 +363,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
 
     // Set focus on the new page after navigating to it
     var pageInstance = self.pageInstances[toPageIndex];
-    if (pageInstance.focus) {
+    if (pageInstance.focus && !skipFocus) {
       // Trigger focus on text tick
       setTimeout(function () {
         pageInstance.focus();
