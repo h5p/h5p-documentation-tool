@@ -730,7 +730,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
 
     return {
       childrenStates: childrenStates,
-      previousPage: this.currentPageIndex
+      previousPage: this.currentPageIndex || null
     };
   };
 
