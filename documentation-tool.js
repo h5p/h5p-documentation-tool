@@ -24,8 +24,6 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
 
     this.extras = extras;
 
-    this.progressed = false;
-
     this.isSubmitButtonEnabled = false;
     if (this.extras.isReportingEnabled !== undefined) {
       this.isSubmitButtonEnabled = this.extras.isReportingEnabled;
@@ -374,7 +372,6 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
     // Trigger xAPI event
     var progressedEvent = self.createXAPIEventTemplate('progressed');
     progressedEvent.data.statement.object.definition.extensions['http://id.tincanapi.com/extension/ending-point'] = toPageIndex;
-    this.progressed = true;
     self.trigger(progressedEvent);
 
     self.trigger('resize');
@@ -729,10 +726,6 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
         instance.getCurrentState() :
         undefined;
     });
-
-    if (!this.progressed && !this.previousState) {
-      return;
-    }
 
     return {
       childrenStates: childrenStates,
