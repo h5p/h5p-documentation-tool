@@ -734,5 +734,13 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
     };
   };
 
+  DocumentationTool.prototype.resetTask = function () {
+    this.pageInstances.forEach(function (instance) {
+      typeof instance.resetTask === 'function' && instance.resetTask();
+    });
+
+    this.movePage(0);
+  };
+
   return DocumentationTool;
 }(H5P.jQuery, H5P.DocumentationTool.NavigationMenu, H5P.JoubelUI, H5P.EventDispatcher));
