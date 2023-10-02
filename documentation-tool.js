@@ -136,12 +136,11 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
 
     this.navigationMenu = navigationMenu;
 
-    const moveTo = this?.previousState?.previousPage || 0;
     const goalAssesmentPageIndex = self.pageInstances.findIndex(pageInstance => pageInstance.libraryInfo.machineName === 'H5P.GoalsAssessmentPage');
     if (goalAssesmentPageIndex > -1) {
       self.setGoalAssesmentState(goalAssesmentPageIndex);
     }
-    this.movePage(moveTo, true);
+    this.movePage(this.previousState?.previousPage || 0, true);
 
     self.resize();
   };
