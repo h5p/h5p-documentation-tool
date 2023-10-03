@@ -736,8 +736,10 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
     this.pageInstances.forEach(function (instance) {
       typeof instance.resetTask === 'function' && instance.resetTask();
     });
-
-    this.movePage(0);
+    
+    if (this.$pagesArray) { // only reset DOM if loaded
+      this.movePage(0);
+    }
   };
 
   return DocumentationTool;
