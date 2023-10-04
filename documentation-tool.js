@@ -136,14 +136,11 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
 
     this.navigationMenu = navigationMenu;
 
-    if (this.previousState && this.previousState.previousPage && this.previousState.previousPage !== 0) {
-      const goalAssesmentPageIndex = self.pageInstances.findIndex(pageInstance => pageInstance.libraryInfo.machineName === 'H5P.GoalsAssessmentPage');
-      if (goalAssesmentPageIndex > -1){
-        self.setGoalAssesmentState(goalAssesmentPageIndex);
-      }
-      this.movePage(this.previousState.previousPage, true);
-      this.updatePage(this.previousState.previousPage, this.previousState.childrenStates);
+    const goalAssesmentPageIndex = self.pageInstances.findIndex(pageInstance => pageInstance.libraryInfo.machineName === 'H5P.GoalsAssessmentPage');
+    if (goalAssesmentPageIndex > -1) {
+      self.setGoalAssesmentState(goalAssesmentPageIndex);
     }
+    this.movePage(this.previousState?.previousPage || 0, true);
 
     self.resize();
   };
@@ -741,8 +738,10 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
     this.pageInstances.forEach(function (instance) {
       typeof instance.resetTask === 'function' && instance.resetTask();
     });
-
-    this.movePage(0);
+    
+    if (this.$pagesArray) { // only reset DOM if loaded
+      this.movePage(0);
+    }
   };
 
   return DocumentationTool;
