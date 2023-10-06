@@ -612,6 +612,9 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
    * Adjusts navigation menu minimum height
    */
   DocumentationTool.prototype.adjustNavBarHeight = function () {
+    if (!this.$navigationMenuHeader) {
+      return;
+    }
     var headerHeight = this.navigationMenu.$navigationMenuHeader.get(0).getBoundingClientRect().height +
         parseFloat(this.navigationMenu.$navigationMenuHeader.css('margin-top')) +
         parseFloat(this.navigationMenu.$navigationMenuHeader.css('margin-bottom'));
@@ -624,6 +627,9 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
    * Resizes navigation menu depending on task width
    */
   DocumentationTool.prototype.adjustDocumentationToolWidth = function () {
+    if (!this.$inner) {
+      return;
+    }
     // Show responsive design when width relative to font size is less than static threshold
     var staticResponsiveLayoutThreshold = 40;
     var relativeWidthOfContainer = this.$inner.width() / parseInt(this.$inner.css('font-size'), 10);
