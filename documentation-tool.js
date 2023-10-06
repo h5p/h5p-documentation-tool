@@ -362,7 +362,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
     // Set focus on the new page after navigating to it
     var pageInstance = self.pageInstances[toPageIndex];
     if (pageInstance.focus && !skipFocus) {
-      if (this instanceof H5P.CoursePresentation) {
+      if (this instanceof H5P.DocumentationTool) {
         // Trigger focus on text tick
         setTimeout(function () {
           pageInstance.focus();
