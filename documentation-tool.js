@@ -362,10 +362,12 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
     // Set focus on the new page after navigating to it
     var pageInstance = self.pageInstances[toPageIndex];
     if (pageInstance.focus && !skipFocus) {
-      // Trigger focus on text tick
-      setTimeout(function () {
-        pageInstance.focus();
-      }, 0);
+      if (this.isRoot()) {
+        // Trigger focus on text tick
+        setTimeout(function () {
+          pageInstance.focus();
+        }, 0);
+      }
     }
 
     // Trigger xAPI event
