@@ -1,21 +1,21 @@
 {
   "semantics": [
     {
-      "label": "Heading",
-      "default": "Documentation tool",
-      "description": "Title for the documentation tool."
+      "label": "Antraštė",
+      "default": "Dokumentacijos įrankis",
+      "description": "Pavadinimas dokumentacijos įrankiui."
     },
     {
-      "label": "Elements",
+      "label": "Elementai",
       "widgets": [
         {
-          "label": "Default"
+          "label": "Numatytasis"
         }
       ],
-      "entity": "page",
+      "entity": "puslapis",
       "field": {
-        "label": "Page type",
-        "description": "Library for this slide."
+        "label": "Puslapio tipas",
+        "description": "Šios skaidrės biblioteka."
       }
     },
     {
@@ -26,10 +26,10 @@
         },
         {
           "label": "Next button label",
-          "default": "Next documentation step"
+          "default": "Kitas dokumentacijos etapas"
         },
         {
-          "default": "Close",
+          "default": "Uždaryti",
           "label": "Close button label"
         }
       ],

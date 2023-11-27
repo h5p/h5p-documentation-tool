@@ -3,7 +3,7 @@
     {
       "label": "Überschrift",
       "default": "Dokumentationswerkzeug",
-      "description": "Titel des Dokumentationswerkzeugs"
+      "description": "Titel des Dokumentationswerkzeugs."
     },
     {
       "label": "Elemente",
