@@ -136,13 +136,11 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
 
     this.navigationMenu = navigationMenu;
 
-    if (this.previousState && this.previousState.previousPage && this.previousState.previousPage !== 0) {
-      const goalAssesmentPageIndex = self.pageInstances.findIndex(pageInstance => pageInstance.libraryInfo.machineName === 'H5P.GoalsAssessmentPage');
-      if (goalAssesmentPageIndex > -1){
-        self.setGoalAssesmentState(goalAssesmentPageIndex);
-      }
-      this.movePage(this.previousState.previousPage);
+    const goalAssesmentPageIndex = self.pageInstances.findIndex(pageInstance => pageInstance.libraryInfo.machineName === 'H5P.GoalsAssessmentPage');
+    if (goalAssesmentPageIndex > -1) {
+      self.setGoalAssesmentState(goalAssesmentPageIndex);
     }
+    this.movePage(this.previousState?.previousPage || 0, true);
 
     self.resize();
   };
@@ -189,8 +187,8 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
       'html': '<span class="joubel-simple-rounded-button-text"></span>'
     });
 
-    DocumentationTool.handleButtonClick($navButton, function (event) {
-      self.movePage(self.currentPageIndex + moveDirection, event);
+    DocumentationTool.handleButtonClick($navButton, function () {
+      self.movePage(self.currentPageIndex + moveDirection);
     });
 
     return $navButton;
@@ -332,8 +330,9 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
   /**
    * Moves the documentation tool to the specified page
    * @param {Number} toPageIndex Move to this page index
+   * @param {boolean} [skipFocus] If true, do not focus page moved to.
    */
-  DocumentationTool.prototype.movePage = function (toPageIndex) {
+  DocumentationTool.prototype.movePage = function (toPageIndex, skipFocus) {
     var self = this;
 
     // Invalid value
@@ -362,11 +361,13 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
 
     // Set focus on the new page after navigating to it
     var pageInstance = self.pageInstances[toPageIndex];
-    if (pageInstance.focus) {
-      // Trigger focus on text tick
-      setTimeout(function () {
-        pageInstance.focus();
-      }, 0);
+    if (pageInstance.focus && !skipFocus) {
+      if (this.isRoot()) {
+        // Trigger focus on text tick
+        setTimeout(function () {
+          pageInstance.focus();
+        }, 0);
+      }
     }
 
     // Trigger xAPI event
@@ -613,6 +614,9 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
    * Adjusts navigation menu minimum height
    */
   DocumentationTool.prototype.adjustNavBarHeight = function () {
+    if (!this.$navigationMenuHeader) {
+      return;
+    }
     var headerHeight = this.navigationMenu.$navigationMenuHeader.get(0).getBoundingClientRect().height +
         parseFloat(this.navigationMenu.$navigationMenuHeader.css('margin-top')) +
         parseFloat(this.navigationMenu.$navigationMenuHeader.css('margin-bottom'));
@@ -625,6 +629,9 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
    * Resizes navigation menu depending on task width
    */
   DocumentationTool.prototype.adjustDocumentationToolWidth = function () {
+    if (!this.$inner) {
+      return;
+    }
     // Show responsive design when width relative to font size is less than static threshold
     var staticResponsiveLayoutThreshold = 40;
     var relativeWidthOfContainer = this.$inner.width() / parseInt(this.$inner.css('font-size'), 10);
@@ -729,8 +736,18 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
 
     return {
       childrenStates: childrenStates,
-      previousPage: this.currentPageIndex
+      previousPage: this.currentPageIndex || null
     };
+  };
+
+  DocumentationTool.prototype.resetTask = function () {
+    this.pageInstances.forEach(function (instance) {
+      typeof instance.resetTask === 'function' && instance.resetTask();
+    });
+    
+    if (this.$pagesArray) { // only reset DOM if loaded
+      this.movePage(0);
+    }
   };
 
   return DocumentationTool;
