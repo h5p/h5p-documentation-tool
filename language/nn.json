@@ -1,36 +1,36 @@
 {
   "semantics": [
     {
-      "label": "Heading",
+      "label": "Overskrift",
       "default": "Dokumentasjonsverktøy",
-      "description": "Title for the documentation tool."
+      "description": "Tittel som er synleg i verktøyet"
     },
     {
       "label": "Innhaldselement",
       "widgets": [
         {
-          "label": "Default"
+          "label": "Standard"
         }
       ],
-      "entity": "Element",
+      "entity": "side",
       "field": {
         "label": "Innhaldstype",
-        "description": "Bibliotek som vert brukt for dette elementet."
+        "description": "Bibliotek for denne sida"
       }
     },
     {
-      "label": "Localize documentation tool buttons",
+      "label": "Tilpass tekst på knappar i verktøyet",
       "fields": [
         {
-          "label": "Previous button label",
-          "default": "Førre documentation step"
+          "label": "Tekst på \"Førre steg\"-knapp",
+          "default": "Førre steg"
         },
         {
-          "label": "Next button label",
-          "default": "Neste documentation step"
+          "label": "Tekst på \"Neste steg\"-knapp",
+          "default": "Neste steg"
         },
         {
-          "label": "Close button label",
+          "label": "Tekst på \"Lukk\"-knapp",
           "default": "Lukk"
         }
       ]
