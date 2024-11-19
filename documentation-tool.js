@@ -4,7 +4,7 @@
  */
 H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher) {
   // CSS Classes:
-  var MAIN_CONTAINER = 'h5p-documentation-tool';
+  var MAIN_CONTAINER = 'h5p-documentation-tool h5p-theme';
   var PAGES_CONTAINER = 'h5p-documentation-tool-page-container';
   var PAGE_INSTANCE = 'h5p-documentation-tool-page';
   var FOOTER = 'h5p-documentation-tool-footer';
@@ -170,15 +170,15 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
    */
   DocumentationTool.prototype.createNavigationButton = function (moveDirection, enabled) {
     var self = this;
-    var type = 'next';
+    var type = 'h5p-theme-next next';
     var navigationLabel = this.params.i10n.nextLabel;
     if (moveDirection === -1) {
-      type = 'prev';
+      type = 'h5p-theme-previous prev';
       navigationLabel = this.params.i10n.previousLabel;
     }
 
     var $navButton = $('<div>', {
-      'class': 'joubel-simple-rounded-button h5p-documentation-tool-nav-button ' + type,
+      'class': 'joubel-simple-rounded-button h5p-documentation-tool-nav-button h5p-theme-nav-button ' + type,
       'aria-label': navigationLabel,
       'title': navigationLabel,
       'aria-disabled': !enabled,
