@@ -26,8 +26,16 @@
           "default": "Zurück documentation step"
         },
         {
+          "label": "Previous",
+          "default": "Previous"
+        },
+        {
           "label": "Beschriftung des \"Weiter\"-Buttons",
           "default": "Weiter documentation step"
+        },
+        {
+          "label": "Next",
+          "default": "Next"
         },
         {
           "label": "Beschriftung des \"Schließen\"-Buttons",

@@ -26,8 +26,16 @@
           "default": "Aurrekoa documentation step"
         },
         {
+          "label": "Previous",
+          "default": "Previous"
+        },
+        {
           "label": "Hurrengo botoiaren etiketa",
           "default": "Hurrengoa documentation step"
+        },
+        {
+          "label": "Next",
+          "default": "Next"
         },
         {
           "label": "Itxi botoiaren etiketa",

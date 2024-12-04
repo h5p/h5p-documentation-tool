@@ -26,8 +26,16 @@
           "default": "Anterior documentation step"
         },
         {
+          "label": "Previous",
+          "default": "Previous"
+        },
+        {
           "label": "Rótulo do botão Próximo",
           "default": "Próximo documentation step"
+        },
+        {
+          "label": "Next",
+          "default": "Next"
         },
         {
           "label": "Rótulo do botão Fechar",

@@ -38,7 +38,9 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
       pagesList: [],
       i10n: {
         nextLabel: 'Next documentation step',
+        next: 'Next',
         previousLabel: 'Previous documentation step',
+        previous: 'Previous',
         closeLabel: 'Close'
       }
     }, params);
@@ -154,11 +156,11 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
       'class': FOOTER
     });
 
-    // Next page button
-    this.createNavigationButton(1, enableNext).appendTo($footer);
-
     // Previous page button
     this.createNavigationButton(-1, enablePrevious).appendTo($footer);
+
+    // Next page button
+    this.createNavigationButton(1, enableNext).appendTo($footer);
 
     return $footer;
   };
@@ -172,9 +174,12 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
     var self = this;
     var type = 'h5p-button h5p-theme-next h5p-theme-nav-button';
     var navigationLabel = this.params.i10n.nextLabel;
+    let btnText = this.params.i10n.next;
+
     if (moveDirection === -1) {
       type = 'h5p-button h5p-theme-previous h5p-theme-nav-button';
       navigationLabel = this.params.i10n.previousLabel;
+      btnText = this.params.i10n.previous;
     }
 
     var $navButton = $('<div>', {
@@ -184,7 +189,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
       'aria-disabled': !enabled,
       'tabindex': enabled ? 0 : undefined,
       'role': 'button',
-      'html': '<span class="joubel-simple-rounded-button-text">Previous</span>'
+      'html': `<span class="joubel-simple-rounded-button-text">${btnText}</span>`
     });
 
     DocumentationTool.handleButtonClick($navButton, function () {

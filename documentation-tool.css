@@ -33,7 +33,7 @@
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  background-color: var(--ui-base);
+  background-color: var(--h5p-theme-ui-base);
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content:before {

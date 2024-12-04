@@ -26,8 +26,16 @@
           "default": "上一張 documentation step"
         },
         {
+          "label": "Previous",
+          "default": "Previous"
+        },
+        {
           "label": "下一張投影片按鈕文字",
           "default": "下一張 documentation step"
+        },
+        {
+          "label": "Next",
+          "default": "Next"
         },
         {
           "label": "關閉投影片按鈕文字",

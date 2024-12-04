@@ -2,7 +2,7 @@
 
 .h5p-documentation-tool .h5p-navigation-menu {
   width: 300px;
-  vertical-align: top;
+  overflow: hidden;
   background-color: var(--h5p-theme-alternative-light);
   color: var(--h5p-theme-text-third);
   font-size: var(--h5p-theme-font-size-m);
@@ -17,22 +17,25 @@
 }
 
 /* ----------------------------- Entries -------------------------------------------- */
+.h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entries {
+  height: 100%;
+}
+
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry {
-
-  overflow: hidden;
-  text-overflow: ellipsis;
-
-  cursor: pointer;
   position: relative;
-  padding: 16px 0;
-  padding-left: 18px;
+  padding: 16px 1em 16px 3em;
+  cursor: pointer;
   background-color: var(--h5p-theme-alternative-light);
+}
+
+.h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry:last-child {
+  height: 100%;
 }
 
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry span {
   position: relative;
-  padding-left: 15px;
 }
+
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry.required-inputs-not-filled span {
   color: var(--h5p-theme-feedback-incorrect-main);
   border:solid 1px var(--h5p-theme-feedback-incorrect-third);
@@ -43,13 +46,12 @@
 
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry:before {
   content: "";
-  top: 0;
-  position: relative;
-  z-index: 10;
-
+  position: absolute;
+  left: 17.5px;
+  top: 20px;
+  z-index: 1;
   height: 15px;
   width: 15px;
-
   background: var(--h5p-theme-alternative-light);
   border-radius: 50%;
   box-shadow: 0 0 0px 6px var(--h5p-theme-alternative-light);
@@ -111,12 +113,11 @@
 
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry:hover {
   color: var(--h5p-theme-text-secondary);
-  
 }
 
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry:hover:before{
   background: var(--h5p-theme-ui-base);
-    box-shadow: 0 0 0 8px color-mix(in srgb, var(--h5p-theme-main-cta-base), transparent 60%);
+  box-shadow: 0 0 0 8px color-mix(in srgb, var(--h5p-theme-main-cta-base), transparent 60%);
 }
 
 /* -------------------------- Responsive layout ------------------------------*/
@@ -151,7 +152,7 @@
   padding: 0.75em 0 0.5em 0;
   cursor: pointer;
   margin-left: 7px;
-   color: var(--h5p-theme-text-third);
+  color: var(--h5p-theme-text-third);
 }
 
 /* Hover effect header */
@@ -192,7 +193,7 @@
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive.expanded .h5p-navigation-menu .h5p-navigation-menu-header span {
-  color: color: var(--h5p-theme-text-third);
+  color: var(--h5p-theme-text-third);
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive.expanded .h5p-navigation-menu .h5p-navigation-menu-header:hover,

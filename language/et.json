@@ -26,8 +26,16 @@
           "default": "Eelmine documentation step"
         },
         {
+          "label": "Previous",
+          "default": "Previous"
+        },
+        {
           "label": "Järgmine nupu silt",
           "default": "Järgmine documentation step"
+        },
+        {
+          "label": "Next",
+          "default": "Next"
         },
         {
           "label": "Sulge nupu silt",

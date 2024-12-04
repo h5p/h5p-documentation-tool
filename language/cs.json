@@ -26,8 +26,16 @@
           "default": "Předchozí documentation step"
         },
         {
+          "label": "Previous",
+          "default": "Previous"
+        },
+        {
           "label": "Popisek tlačítka Další",
           "default": "Další documentation step"
+        },
+        {
+          "label": "Next",
+          "default": "Next"
         },
         {
           "label": "Popisek tlačítka Zavřít",
