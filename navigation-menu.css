@@ -35,7 +35,8 @@
 }
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry.required-inputs-not-filled span {
   color: var(--h5p-theme-feedback-incorrect-main);
-  border: 1px solid var(--h5p-theme-feedback-incorrect-main);
+  border:solid 1px var(--h5p-theme-feedback-incorrect-third);
+  background-color: var(--h5p-theme-feedback-incorrect-secondary);
   padding: var(--h5p-theme-spacing-xxs);
   border-radius: var(--h5p-theme-border-radius-medium);
 }
