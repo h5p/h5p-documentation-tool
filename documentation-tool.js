@@ -170,21 +170,21 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
    */
   DocumentationTool.prototype.createNavigationButton = function (moveDirection, enabled) {
     var self = this;
-    var type = 'h5p-theme-next next';
+    var type = 'h5p-button h5p-theme-next h5p-theme-nav-button';
     var navigationLabel = this.params.i10n.nextLabel;
     if (moveDirection === -1) {
-      type = 'h5p-theme-previous prev';
+      type = 'h5p-button h5p-theme-previous h5p-theme-nav-button';
       navigationLabel = this.params.i10n.previousLabel;
     }
 
     var $navButton = $('<div>', {
-      'class': 'joubel-simple-rounded-button h5p-documentation-tool-nav-button h5p-theme-nav-button ' + type,
+      'class': 'h5p-theme-nav-button ' + type,
       'aria-label': navigationLabel,
       'title': navigationLabel,
       'aria-disabled': !enabled,
       'tabindex': enabled ? 0 : undefined,
       'role': 'button',
-      'html': '<span class="joubel-simple-rounded-button-text"></span>'
+      'html': '<span class="joubel-simple-rounded-button-text">Previous</span>'
     });
 
     DocumentationTool.handleButtonClick($navButton, function () {

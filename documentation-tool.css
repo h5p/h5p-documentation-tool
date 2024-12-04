@@ -33,7 +33,7 @@
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  background-color: #fff;
+  background-color: var(--ui-base);
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content:before {
@@ -48,7 +48,7 @@
   position: relative;
   min-height: 500px;
   width: 100%;
-  color: #333;
+  color: var(--h5p-theme-text-secondary);
   padding-bottom: 1.5em;
 }
 
@@ -87,7 +87,7 @@
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  border-bottom: 1px solid #ccc;
+  border-bottom: solid 1px var(--h5p-theme-stroke-1);
   justify-content: space-between;
   padding: 0.5em 0;
   outline: none; /* Override focus effect */
@@ -95,7 +95,7 @@
 
 .h5p-documentation-tool-page .page-title {
   font-size: 18px;
-  color: #333;
+  color: var(--h5p-theme-text-primary);
 }
 
 .h5p-documentation-tool-page .page-help-text {
@@ -111,10 +111,10 @@
 .h5p-documentation-tool .h5p-documentation-tool-footer {
   display: block;
   position: absolute;
-  height: 2.25em;
   left: 0;
   right: 0;
   bottom: 0;
+  text-align: right;
 }
 
 /* ------ Documentation Tool Buttons --------------- */
@@ -137,6 +137,10 @@
   position: relative;
   right: -0.375em;
   line-height: 28px;
+}
+
+.h5p-theme-nav-button.h5p-button.h5p-theme-previous.h5p-theme-nav-button{
+  margin-left: 0.5rem;
 }
 
 /* Active state */
