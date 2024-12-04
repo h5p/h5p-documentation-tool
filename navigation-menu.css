@@ -34,9 +34,10 @@
   padding-left: 15px;
 }
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry.required-inputs-not-filled span {
-  color: red;
-  border: 1px solid red;
-  padding: 0.5rem;
+  color: var(--h5p-theme-feedback-incorrect-main);
+  border: 1px solid var(--h5p-theme-feedback-incorrect-main);
+  padding: var(--h5p-theme-spacing-xxs);
+  border-radius: var(--h5p-theme-border-radius-medium);
 }
 
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry:before {
@@ -109,6 +110,12 @@
 
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry:hover {
   color: var(--h5p-theme-text-secondary);
+  
+}
+
+.h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry:hover:before{
+  background: var(--h5p-theme-ui-base);
+    box-shadow: 0 0 0 8px color-mix(in srgb, var(--h5p-theme-main-cta-base), transparent 60%);
 }
 
 /* -------------------------- Responsive layout ------------------------------*/
