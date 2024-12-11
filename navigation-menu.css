@@ -2,6 +2,7 @@
 
 .h5p-documentation-tool .h5p-navigation-menu {
   width: 300px;
+  height: calc(100% - var(--h5p-theme-spacing-l));
   overflow: hidden;
   background-color: var(--h5p-theme-alternative-light);
   color: var(--h5p-theme-text-third);

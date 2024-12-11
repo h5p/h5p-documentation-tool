@@ -182,14 +182,14 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
       btnText = this.params.i10n.previous;
     }
 
-    var $navButton = $('<div>', {
+    var $navButton = $('<button>', {
       'class': 'h5p-theme-nav-button ' + type,
       'aria-label': navigationLabel,
       'title': navigationLabel,
       'aria-disabled': !enabled,
       'tabindex': enabled ? 0 : undefined,
       'role': 'button',
-      'html': `<span class="joubel-simple-rounded-button-text">${btnText}</span>`
+      'html': `<span class="joubel-simple-rounded-button-text h5p-theme-label">${btnText}</span>`
     });
 
     DocumentationTool.handleButtonClick($navButton, function () {

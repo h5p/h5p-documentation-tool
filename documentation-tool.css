@@ -53,18 +53,15 @@
 }
 
 .h5p-documentation-tool-page-container .h5p-documentation-tool-page {
-  display: flex;
-  height: 100%;
-  margin-bottom: var(--h5p-theme-spacing-s);
   display: none;
-}
-
-.h5p-documentation-tool-page-container .h5p-documentation-tool-page > * {
-  
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  margin-bottom: var(--h5p-theme-spacing-s);
 }
 
 .h5p-documentation-tool-page-container .h5p-documentation-tool-page.current {
-  display: block;
+  display: flex;
 }
 
 .h5p-documentation-tool-page-container .h5p-documentation-tool-page * {
@@ -101,77 +98,34 @@
 
 
 .h5p-documentation-tool-page .page-help-text {
-  color: var(--h5p-theme-ui-base);
-  cursor: pointer;
-}
-.h5p-documentation-tool-page .page-help-text:before {
   color: var(--h5p-theme-main-cta-base);
   cursor: pointer;
+}
+
+.h5p-documentation-tool-page .page-help-text:before {
   font-family: 'h5p-theme';
   content: "\e917";
   margin-right: 0.5rem;
   display: inline-block;
 }
 
-.h5p-documentation-tool-page .page-help-text:hover {
-  color: var(--h5p-theme-ui-base);
-}
-
 .h5p-documentation-tool .h5p-documentation-tool-footer {
-  display: block;
-  position: absolute;
-  left: var(--h5p-theme-spacing-s);
-  right: var(--h5p-theme-spacing-s);
-  bottom: var(--h5p-theme-spacing-s);
   text-align: right;
+  margin-top: auto;
+
+  container-type: inline-size;
+  container-name: h5p-navigation;
 }
 
 /* ------ Documentation Tool Buttons --------------- */
 /* Rounded button css in 'H5P.JoubelUI' library      */
 
-.h5p-documentation-tool .h5p-documentation-tool-nav-button {
-  position: absolute;
-  right: var(--h5p-theme-spacing-s);
-  padding: 0;
-  width: 30px;
-  height: 30px;
-  line-height: 24px;
+.h5p-documentation-tool .h5p-theme-nav-button {
+  box-sizing: border-box;
 }
 
-.h5p-documentation-tool-nav-button:before {
-  font-family: "H5PFontAwesome4";
-  content: "\f104";
-  color: var(--h5p-theme-ui-base);
-  font-size: 24px;
-  position: relative;
-  right: -0.375em;
-  line-height: 28px;
-}
-
-.h5p-theme-nav-button.h5p-button.h5p-theme-previous.h5p-theme-nav-button{
+.h5p-theme-nav-button.h5p-button.h5p-theme-previous.h5p-theme-nav-button {
   margin-right: 0.5rem;
-}
-
-/* Active state */
-.h5p-documentation-tool-nav-button:active:before {
-  top: 2px;
-}
-
-.h5p-documentation-tool-nav-button.prev {
-  margin-right: 3em;
-}
-
-.h5p-documentation-tool-nav-button.next:before {
-  content: "\f105";
-  color: var(--h5p-theme-ui-base);
-  right: -0.5em;
-}
-
-/* Disable prev button for first page and next button for last page */
-.h5p-documentation-tool-nav-button[aria-disabled="true"] {
-  background-color: #ccc;
-  cursor: default;
-  pointer-events: none;
 }
 
 /* ---------------------------- Responsive view ----------------------------- */
