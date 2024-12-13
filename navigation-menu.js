@@ -96,6 +96,10 @@ H5P.DocumentationTool.NavigationMenu = (function ($, EventDispatcher) {
         self.trigger(progressedEvent);
       });
 
+      $('<div>', {
+        'class': 'dot'
+      }).appendTo($navigationMenuEntry);
+
       $('<span>', {
         'html': pageTitle
       }).appendTo($navigationMenuEntry);
@@ -104,7 +108,6 @@ H5P.DocumentationTool.NavigationMenu = (function ($, EventDispatcher) {
       if (pageIndex === 0) {
         $navigationMenuEntry.addClass('current');
       }
-
     });
 
     this.$navigationMenuHeader = $navigationMenuHeader;
