@@ -12,8 +12,8 @@
 /* --------------------------- Header ---------------------------------------------- */
 
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-header {
-  padding: 0.85em 1em 0;
-  margin-bottom: 1em;
+  padding: var(--h5p-theme-spacing-xs) var(--h5p-theme-spacing-s) 0;
+  margin-bottom: var(--h5p-theme-spacing-s);
 }
 
 /* ----------------------------- Entries -------------------------------------------- */
@@ -23,7 +23,7 @@
 
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry {
   display: flex;
-  gap: 10px;
+  gap: 16px;
   position: relative;
   padding: var(--h5p-theme-spacing-s);
   cursor: pointer;
@@ -121,6 +121,12 @@
   box-shadow: 0 0 0 var(--h5p-theme-spacing-xxs) color-mix(in srgb, var(--h5p-theme-main-cta-base), transparent 60%);
 }
 
+.h5p-documentation-tool .h5p-navigation-menu-entry:focus{
+  z-index: 3000;
+  outline: 2px ridge var(--h5p-theme-main-cta-base);
+  outline-offset: 2px;
+}
+
 /* -------------------------- Responsive layout ------------------------------*/
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-navigation-menu {
@@ -151,7 +157,7 @@
   padding: 0.75em 0 0.5em 0;
   cursor: pointer;
   margin-left: 7px;
-  color: var(--h5p-theme-text-third);
+  color:var(--h5p-theme-main-cta-base);
 }
 
 /* Hover effect header */
@@ -160,9 +166,9 @@
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-navigation-menu .h5p-navigation-menu-header:before {
-  font-family: "H5PFontAwesome4";
-  content: "\f0c9";
-  font-size: 1.5em;
+  font-family: "h5p-theme";
+  content: "\e913";
+  font-size: var(--h5p-theme-font-size-xl);
 }
 
 /* ---------------------- Responsive layout expanded -------------------------*/
@@ -172,14 +178,14 @@
   width: auto;
   max-width: 80%;
   z-index: 1;
-  padding-right: 1em;
+  padding-right: var(--h5p-theme-spacing-s);
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive.expanded .h5p-navigation-menu .h5p-navigation-menu-header span {
   display: inline-block;
   position: relative;
-  margin-left: 1em;
-  font-size: 1.2em;
+  margin-left: var(--h5p-theme-spacing-s);
+  font-size: var(--h5p-theme-font-size-l);
   bottom: 0.1em;
 }
 

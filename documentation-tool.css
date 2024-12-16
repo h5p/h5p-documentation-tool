@@ -49,7 +49,7 @@
   width: 100%;
   display: flex;
   color: var(--h5p-theme-text-secondary);
-  padding: var(--h5p-theme-spacing-s);
+  padding: var(--h5p-theme-spacing-m);
 }
 
 .h5p-documentation-tool-page-container .h5p-documentation-tool-page {
@@ -105,8 +105,16 @@
 .h5p-documentation-tool-page .page-help-text:before {
   font-family: 'h5p-theme';
   content: "\e917";
-  margin-right: 0.5rem;
+  margin-right: var(--h5p-theme-spacing-xxs);
+  margin-left: var(--h5p-theme-spacing-xxs);
   display: inline-block;
+}
+.h5p-documentation-tool-page .page-help-text:focus {
+  background-color: var(--h5p-theme-ui-base);
+  z-index: 3000;
+  outline: 2px ridge var(--h5p-theme-main-cta-base);
+  outline-offset: 2px;
+  border-radius: 20px;
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-footer {
@@ -125,7 +133,7 @@
 }
 
 .h5p-theme-nav-button.h5p-button.h5p-theme-previous.h5p-theme-nav-button {
-  margin-right: 0.5rem;
+  margin-right: var(--h5p-theme-spacing-xxs);
 }
 
 /* ---------------------------- Responsive view ----------------------------- */
