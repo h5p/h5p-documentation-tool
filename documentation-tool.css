@@ -111,7 +111,6 @@
 }
 .h5p-documentation-tool-page .page-help-text:focus {
   background-color: var(--h5p-theme-ui-base);
-  z-index: 3000;
   outline: 2px ridge var(--h5p-theme-main-cta-base);
   outline-offset: 2px;
   border-radius: 20px;

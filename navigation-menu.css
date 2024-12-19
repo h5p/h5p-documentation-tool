@@ -122,7 +122,6 @@
 }
 
 .h5p-documentation-tool .h5p-navigation-menu-entry:focus{
-  z-index: 3000;
   outline: 2px ridge var(--h5p-theme-main-cta-base);
   outline-offset: 2px;
 }
