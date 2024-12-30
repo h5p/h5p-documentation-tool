@@ -61,7 +61,7 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
     // undefined for org users
     if (this.isSubmitButtonEnabled) {
       for (var i = 0; i < this.params.pagesList.length; i++) {
-        if (this.params.pagesList[i]?.library?.split(' ')[0] === 'H5P.DocumentExportPage') {
+        if (this.params.pagesList[i].library?.split(' ')[0] === 'H5P.DocumentExportPage') {
           this.isTask = true;
         }
       }
