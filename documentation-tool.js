@@ -216,13 +216,17 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
 
       const childExtras = { parent: self };
       if (this.previousState) {
-        childExtras.previousState = this.previousState.childrenStates[i]
+        childExtras.previousState = this.previousState.childrenStates[i];
       }
 
-      var singlePage = H5P.newRunnable(page, self.id, undefined, undefined, childExtras);
+      if (!page.library) {
+        continue;
+      }
+
+      var singlePage = H5P.newRunnable(page, undefined, undefined, undefined, childExtras);
 
       if (!singlePage) {
-        return $pagesContainer;
+        continue;
       }
       if (singlePage.libraryInfo.machineName === 'H5P.DocumentExportPage') {
         singlePage.setExportTitle(self.params.taskDescription);
