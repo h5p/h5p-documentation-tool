@@ -118,7 +118,10 @@ H5P.DocumentationTool.NavigationMenu = (function ($, EventDispatcher) {
    */
   NavigationMenu.prototype.updateNavigationMenu = function (currentPageIndex) {
     const self = this;
-
+    
+    if (!self.docTool.pageInstances[currentPageIndex]) {
+      return;
+    }
     if (this.highlightIncompletePages === false) {
       if (self.docTool.pageInstances[currentPageIndex].libraryInfo.machineName === 'H5P.DocumentExportPage') {
         this.highlightIncompletePages = true;
