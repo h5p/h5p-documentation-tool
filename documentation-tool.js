@@ -343,6 +343,10 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
   DocumentationTool.prototype.movePage = function (toPageIndex, skipFocus) {
     var self = this;
 
+    if (!toPageIndex) {
+      return;
+    }
+
     // Invalid value
     if ((toPageIndex + 1 > this.$pagesArray.length) || (toPageIndex < 0)) {
       return;
