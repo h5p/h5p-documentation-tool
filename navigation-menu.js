@@ -92,6 +92,9 @@ H5P.DocumentationTool.NavigationMenu = (function ($, EventDispatcher) {
         self.$documentationToolContaner.removeClass('expanded');
         self.docTool.movePage(pageIndex, event);
         var progressedEvent = self.docTool.createXAPIEventTemplate('progressed'); // Using the parent documentation tool to create xapi template
+        if (progressedEvent.data.statement.object.definition.extensions === undefined) {
+          return;
+        }
         progressedEvent.data.statement.object.definition.extensions['http://id.tincanapi.com/extension/ending-point'] = pageIndex;
         self.trigger(progressedEvent);
       });
