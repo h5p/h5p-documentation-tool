@@ -121,9 +121,9 @@
   box-shadow: 0 0 0 var(--h5p-theme-spacing-xxs) color-mix(in srgb, var(--h5p-theme-main-cta-base), transparent 60%);
 }
 
-.h5p-documentation-tool .h5p-navigation-menu-entry:focus{
+.h5p-documentation-tool .h5p-navigation-menu-entry:focus {
   outline: 2px ridge var(--h5p-theme-main-cta-base);
-  outline-offset: 2px;
+  outline-offset: -2px;
 }
 
 /* -------------------------- Responsive layout ------------------------------*/
@@ -198,6 +198,10 @@
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive.expanded .h5p-navigation-menu .h5p-navigation-menu-header span {
   color: var(--h5p-theme-text-third);
+}
+
+.h5p-documentation-tool .h5p-documentation-tool-main-content.responsive.expanded .h5p-navigation-menu .h5p-navigation-menu-header::before {
+  content: "\e916";
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive.expanded .h5p-navigation-menu .h5p-navigation-menu-header:hover,

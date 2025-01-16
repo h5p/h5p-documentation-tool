@@ -110,6 +110,11 @@ H5P.DocumentationTool.NavigationMenu = (function ($, EventDispatcher) {
       }
     });
 
+    // Create trailing line 
+    $('<div/>', {
+      'class': 'h5p-navigation-menu-entry'
+    }).appendTo($navigationMenuEntries);
+
     this.$navigationMenuHeader = $navigationMenuHeader;
     this.$navigationMenu = $navigationMenu;
     this.$navigationMenuEntries = $navigationMenuEntries;
