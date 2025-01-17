@@ -383,6 +383,9 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
 
     // Trigger xAPI event
     var progressedEvent = self.createXAPIEventTemplate('progressed');
+    if (progressedEvent.data.statement.object.definition.extensions === undefined) {
+      return;
+    }
     progressedEvent.data.statement.object.definition.extensions['http://id.tincanapi.com/extension/ending-point'] = toPageIndex;
     self.trigger(progressedEvent);
 
