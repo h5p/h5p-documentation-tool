@@ -133,7 +133,6 @@
   position: absolute;
   width: calc(var(--h5p-theme-font-size-m) + 2 * var(--h5p-theme-spacing-xxs) + 4px);
   height: calc(100% - var(--h5p-theme-spacing-l));
-box-shadow: 10px 10px 20px 5px rgba(0, 0, 0, 0.08);
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-navigation-menu .h5p-navigation-menu-header span {
@@ -179,6 +178,8 @@ box-shadow: 10px 10px 20px 5px rgba(0, 0, 0, 0.08);
   max-width: 80%;
   z-index: 1;
   padding-right: var(--h5p-theme-spacing-s);
+  box-shadow: 10px 10px 20px 5px rgba(0, 0, 0, 0.08); 
+
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive.expanded .h5p-navigation-menu .h5p-navigation-menu-header span {
