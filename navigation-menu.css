@@ -4,7 +4,7 @@
   width: 300px;
   overflow: hidden;
   background-color: var(--h5p-theme-alternative-light);
-  color: var(--h5p-theme-text-third);
+  color: var(--h5p-theme-text-secondary);
   font-size: var(--h5p-theme-font-size-m);
   font-weight: 600;
 }
@@ -124,6 +124,7 @@
 .h5p-documentation-tool .h5p-navigation-menu-entry:focus {
   outline: 2px ridge var(--h5p-theme-main-cta-base);
   outline-offset: -2px;
+  border-radius: var(--h5p-theme-border-radius-medium);
 }
 
 /* -------------------------- Responsive layout ------------------------------*/
@@ -132,7 +133,7 @@
   position: absolute;
   width: calc(var(--h5p-theme-font-size-m) + 2 * var(--h5p-theme-spacing-xxs) + 4px);
   height: calc(100% - var(--h5p-theme-spacing-l));
-  border-right: 1px solid #eee;
+box-shadow: 10px 10px 20px 5px rgba(0, 0, 0, 0.08);
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-navigation-menu .h5p-navigation-menu-header span {
@@ -161,7 +162,7 @@
 
 /* Hover effect header */
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-navigation-menu .h5p-navigation-menu-header:hover {
-  color: #333;
+  color: var(--h5p-theme-text-primary);
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-navigation-menu .h5p-navigation-menu-header:before {
@@ -193,11 +194,11 @@
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive.expanded .h5p-navigation-menu .h5p-navigation-menu-header {
-  color: #ccc;
+  color: var(--h5p-theme-text-secondary);
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive.expanded .h5p-navigation-menu .h5p-navigation-menu-header span {
-  color: var(--h5p-theme-text-third);
+  color: var(--h5p-theme-text-secondary);
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive.expanded .h5p-navigation-menu .h5p-navigation-menu-header::before {
@@ -206,5 +207,5 @@
 
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive.expanded .h5p-navigation-menu .h5p-navigation-menu-header:hover,
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive.expanded .h5p-navigation-menu .h5p-navigation-menu-header:hover span {
-  color: #333;
+  color: var(--h5p-theme-text-secondary);
 }
