@@ -131,7 +131,7 @@
   box-sizing: border-box;
 }
 
-.h5p-theme-nav-button.h5p-button.h5p-theme-previous.h5p-theme-nav-button {
+.h5p-theme-previous {
   margin-right: var(--h5p-theme-spacing-xxs);
 }
 
