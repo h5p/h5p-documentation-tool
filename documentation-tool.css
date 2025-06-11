@@ -139,3 +139,13 @@
 .h5p-documentation-tool .h5p-documentation-tool-main-content.responsive .h5p-documentation-tool-page-container {
   margin-left: calc(var(--h5p-theme-spacing-s)*2.2);
 }
+
+.h5p-documentation-tool .h5p-theme-label {
+  display: inline;
+}
+.h5p-documentation-tool .h5p-theme-next:after {
+  margin-left: var(--h5p-theme-spacing-xxs);
+}
+.h5p-documentation-tool .h5p-theme-previous:before {
+  margin-right: var(--h5p-theme-spacing-xxs);
+}
