@@ -92,6 +92,9 @@ H5P.DocumentationTool.NavigationMenu = (function ($, EventDispatcher) {
         self.$documentationToolContaner.removeClass('expanded');
         self.docTool.movePage(pageIndex, event);
         var progressedEvent = self.docTool.createXAPIEventTemplate('progressed'); // Using the parent documentation tool to create xapi template
+        if (progressedEvent.data.statement.object.definition.extensions === undefined) {
+          return;
+        }
         progressedEvent.data.statement.object.definition.extensions['http://id.tincanapi.com/extension/ending-point'] = pageIndex;
         self.trigger(progressedEvent);
       });
@@ -126,7 +129,10 @@ H5P.DocumentationTool.NavigationMenu = (function ($, EventDispatcher) {
    */
   NavigationMenu.prototype.updateNavigationMenu = function (currentPageIndex) {
     const self = this;
-
+    
+    if (!self.docTool.pageInstances[currentPageIndex]) {
+      return;
+    }
     if (this.highlightIncompletePages === false) {
       if (self.docTool.pageInstances[currentPageIndex].libraryInfo.machineName === 'H5P.DocumentExportPage') {
         this.highlightIncompletePages = true;
