@@ -19,21 +19,29 @@
       }
     },
     {
+      "label": "Localize documentation tool buttons",
       "fields": [
         {
           "label": "Previous button label",
           "default": "Previous documentation step"
         },
         {
+          "label": "Previous",
+          "default": "Previous"
+        },
+        {
           "label": "Next button label",
           "default": "Kitas dokumentacijos etapas"
         },
         {
-          "default": "Uždaryti",
-          "label": "Close button label"
+          "label": "Next",
+          "default": "Next"
+        },
+        {
+          "label": "Close button label",
+          "default": "Uždaryti"
         }
-      ],
-      "label": "Localize documentation tool buttons"
+      ]
     }
   ]
 }

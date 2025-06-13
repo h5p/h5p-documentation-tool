@@ -26,8 +26,16 @@
           "default": "Предешна documentation step"
         },
         {
+          "label": "Previous",
+          "default": "Previous"
+        },
+        {
           "label": "Бутон за следваща",
           "default": "Следваща documentation step"
+        },
+        {
+          "label": "Next",
+          "default": "Next"
         },
         {
           "label": "Бутон за затваряне",

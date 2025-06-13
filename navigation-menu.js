@@ -96,6 +96,10 @@ H5P.DocumentationTool.NavigationMenu = (function ($, EventDispatcher) {
         self.trigger(progressedEvent);
       });
 
+      $('<div>', {
+        'class': 'dot'
+      }).appendTo($navigationMenuEntry);
+
       $('<span>', {
         'html': pageTitle
       }).appendTo($navigationMenuEntry);
@@ -104,8 +108,12 @@ H5P.DocumentationTool.NavigationMenu = (function ($, EventDispatcher) {
       if (pageIndex === 0) {
         $navigationMenuEntry.addClass('current');
       }
-
     });
+
+    // Create trailing line 
+    $('<div/>', {
+      'class': 'h5p-navigation-menu-entry'
+    }).appendTo($navigationMenuEntries);
 
     this.$navigationMenuHeader = $navigationMenuHeader;
     this.$navigationMenu = $navigationMenu;

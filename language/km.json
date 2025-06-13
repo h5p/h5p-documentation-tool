@@ -1,4 +1,3 @@
-  
 {
   "semantics": [
     {
@@ -27,8 +26,16 @@
           "default": "មុន documentation step"
         },
         {
+          "label": "Previous",
+          "default": "Previous"
+        },
+        {
           "label": "Next button label",
           "default": "បន្ទាប់ documentation step"
+        },
+        {
+          "label": "Next",
+          "default": "Next"
         },
         {
           "label": "Close button label",

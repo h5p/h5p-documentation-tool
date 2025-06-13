@@ -26,8 +26,16 @@
           "default": "Paso de documentación anterior"
         },
         {
+          "label": "Previous",
+          "default": "Previous"
+        },
+        {
           "label": "Etiqueta del botón siguiente",
           "default": "Paso de documentación siguiente"
+        },
+        {
+          "label": "Next",
+          "default": "Next"
         },
         {
           "label": "Etiqueta del botón cerrar",

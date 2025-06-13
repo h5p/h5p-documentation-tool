@@ -26,8 +26,16 @@
           "default": "Anterior documentation step"
         },
         {
+          "label": "Previous",
+          "default": "Previous"
+        },
+        {
           "label": "Etiqueta del botó següent",
           "default": "Següent documentation step"
+        },
+        {
+          "label": "Next",
+          "default": "Next"
         },
         {
           "label": "Etiqueta del botó de tancar",

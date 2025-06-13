@@ -51,10 +51,24 @@
         "importance": "low"
       },
       {
+        "label": "Previous",
+        "name": "previous",
+        "type": "text",
+        "default": "Previous",
+        "importance": "low"
+      },
+      {
         "label": "Next button label",
         "name": "nextLabel",
         "type": "text",
         "default": "Next documentation step",
+        "importance": "low"
+      },
+      {
+        "label": "Next",
+        "name": "next",
+        "type": "text",
+        "default": "Next",
         "importance": "low"
       },
       {

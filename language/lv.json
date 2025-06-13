@@ -1,9 +1,9 @@
 {
   "semantics": [
     {
+      "label": "Virsraksts",
       "default": "Dokumentācijas rīks",
-      "description": "Dokumentācijas rīka nosaukums.",
-      "label": "Virsraksts"
+      "description": "Dokumentācijas rīka nosaukums."
     },
     {
       "label": "Elementi",
@@ -22,12 +22,20 @@
       "label": "Lokalizēt dokumentācijas rīka pogas",
       "fields": [
         {
-          "default": "Iepriekšējais documentation step",
-          "label": "Pogas \"Iepriekšējais\" birka"
+          "label": "Pogas \"Iepriekšējais\" birka",
+          "default": "Iepriekšējais documentation step"
+        },
+        {
+          "label": "Previous",
+          "default": "Previous"
         },
         {
           "label": "Pogas \"Nākamais\" birka",
           "default": "Nākamais documentation step"
+        },
+        {
+          "label": "Next",
+          "default": "Next"
         },
         {
           "label": "Pogas \"Aizvērt\" birka",

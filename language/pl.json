@@ -26,8 +26,16 @@
           "default": "Poprzedni etap dokumentacji"
         },
         {
+          "label": "Previous",
+          "default": "Previous"
+        },
+        {
           "label": "Etykieta przycisku Dalej",
           "default": "Następny etap dokumentacji"
+        },
+        {
+          "label": "Next",
+          "default": "Next"
         },
         {
           "label": "Etykieta przycisku zamknij",

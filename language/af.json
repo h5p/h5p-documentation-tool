@@ -26,8 +26,16 @@
           "default": "Vorige documentation step"
         },
         {
+          "label": "Previous",
+          "default": "Previous"
+        },
+        {
           "label": "Volgende knoppie etiket",
           "default": "Volgende documentation step"
+        },
+        {
+          "label": "Next",
+          "default": "Next"
         },
         {
           "label": "Maak toe knoppie etiket",

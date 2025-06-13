@@ -26,8 +26,16 @@
           "default": "Précédent documentation step"
         },
         {
+          "label": "Previous",
+          "default": "Previous"
+        },
+        {
           "label": "Etiquette du bouton Suivant",
           "default": "Suivant documentation step"
+        },
+        {
+          "label": "Next",
+          "default": "Next"
         },
         {
           "label": "Etiquette du bouton Fermer",

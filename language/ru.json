@@ -26,8 +26,16 @@
           "default": "Назад documentation step"
         },
         {
+          "label": "Previous",
+          "default": "Previous"
+        },
+        {
           "label": "Название кнопки дальше",
           "default": "Дальше documentation step"
+        },
+        {
+          "label": "Next",
+          "default": "Next"
         },
         {
           "label": "Название кнопки Закрыть",

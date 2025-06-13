@@ -26,8 +26,16 @@
           "default": "Forrige documentation step"
         },
         {
+          "label": "Forrige",
+          "default": "Forrige"
+        },
+        {
           "label": "Next button label",
           "default": "Neste documentation step"
+        },
+        {
+          "label": "Neste",
+          "default": "Neste"
         },
         {
           "label": "Close button label",

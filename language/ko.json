@@ -26,8 +26,16 @@
           "default": "이전 documentation step"
         },
         {
+          "label": "Previous",
+          "default": "Previous"
+        },
+        {
           "label": "다음 버튼 레이블",
           "default": "다음 documentation step"
+        },
+        {
+          "label": "Next",
+          "default": "Next"
         },
         {
           "label": "닫기 버튼 레이블",

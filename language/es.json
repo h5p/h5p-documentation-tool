@@ -26,8 +26,16 @@
           "default": "Anterior documentation step"
         },
         {
+          "label": "Previous",
+          "default": "Previous"
+        },
+        {
           "label": "Etiqueta del botón siguiente",
           "default": "Siguiente documentation step"
+        },
+        {
+          "label": "Next",
+          "default": "Next"
         },
         {
           "label": "Etiqueta del botón cerrar",

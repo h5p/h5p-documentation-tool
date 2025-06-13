@@ -3,7 +3,7 @@
   "description": "Documentation tool for educational assessment.",
   "majorVersion": 1,
   "minorVersion": 8,
-  "patchVersion": 24,
+  "patchVersion": 30,
   "runnable": 1,
   "author": "Joubel",
   "license": "MIT",
@@ -48,6 +48,11 @@
       "machineName": "H5P.JoubelUI",
       "majorVersion": 1,
       "minorVersion": 3
+    },
+    {
+      "machineName": "H5P.Components",
+      "majorVersion": 1,
+      "minorVersion": 0
     }
   ]
 }

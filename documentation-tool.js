@@ -2,9 +2,9 @@
  * Documentation tool module
  * @external {jQuery} $ H5P.jQuery
  */
-H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher) {
+H5P.DocumentationTool = (function ($, NavigationMenu, EventDispatcher) {
   // CSS Classes:
-  var MAIN_CONTAINER = 'h5p-documentation-tool';
+  var MAIN_CONTAINER = 'h5p-documentation-tool h5p-theme';
   var PAGES_CONTAINER = 'h5p-documentation-tool-page-container';
   var PAGE_INSTANCE = 'h5p-documentation-tool-page';
   var FOOTER = 'h5p-documentation-tool-footer';
@@ -38,7 +38,9 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
       pagesList: [],
       i10n: {
         nextLabel: 'Next documentation step',
+        next: 'Next',
         previousLabel: 'Previous documentation step',
+        previous: 'Previous',
         closeLabel: 'Close'
       }
     }, params);
@@ -154,11 +156,11 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
       'class': FOOTER
     });
 
-    // Next page button
-    this.createNavigationButton(1, enableNext).appendTo($footer);
-
     // Previous page button
-    this.createNavigationButton(-1, enablePrevious).appendTo($footer);
+    $footer[0].appendChild(this.createNavigationButton(-1, enablePrevious));
+
+    // Next page button
+    $footer[0].appendChild(this.createNavigationButton(1, enableNext));
 
     return $footer;
   };
@@ -170,28 +172,27 @@ H5P.DocumentationTool = (function ($, NavigationMenu, JoubelUI, EventDispatcher)
    */
   DocumentationTool.prototype.createNavigationButton = function (moveDirection, enabled) {
     var self = this;
-    var type = 'next';
+    var icon = 'next';
     var navigationLabel = this.params.i10n.nextLabel;
+    let btnText = this.params.i10n.next;
+
     if (moveDirection === -1) {
-      type = 'prev';
+      icon = 'previous';
       navigationLabel = this.params.i10n.previousLabel;
+      btnText = this.params.i10n.previous;
     }
 
-    var $navButton = $('<div>', {
-      'class': 'joubel-simple-rounded-button h5p-documentation-tool-nav-button ' + type,
-      'aria-label': navigationLabel,
-      'title': navigationLabel,
-      'aria-disabled': !enabled,
-      'tabindex': enabled ? 0 : undefined,
-      'role': 'button',
-      'html': '<span class="joubel-simple-rounded-button-text"></span>'
+    const navButton = H5P.Components.Button({
+      label: btnText,
+      ariaLabel: navigationLabel,
+      tooltip: navigationLabel,
+      styleType: 'nav',
+      icon: icon,
+      onClick: () => self.movePage(self.currentPageIndex + moveDirection),
+      disabled: !enabled,
     });
 
-    DocumentationTool.handleButtonClick($navButton, function () {
-      self.movePage(self.currentPageIndex + moveDirection);
-    });
-
-    return $navButton;
+    return navButton;
   };
 
   /**

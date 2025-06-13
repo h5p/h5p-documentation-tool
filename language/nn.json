@@ -26,8 +26,16 @@
           "default": "Førre documentation step"
         },
         {
+          "label": "Previous",
+          "default": "Previous"
+        },
+        {
           "label": "Next button label",
           "default": "Neste documentation step"
+        },
+        {
+          "label": "Next",
+          "default": "Next"
         },
         {
           "label": "Close button label",
