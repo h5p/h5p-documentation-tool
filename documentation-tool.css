@@ -3,7 +3,7 @@
 }
 
 /* Resets buttons styling */
-.h5p-documentation-tool-main-content button {
+.h5p-documentation-tool-main-content .page-help-text {
   font-family: var(--h5p-theme-font-name);
   font-size: var(--h5p-theme-font-size-m);
   background: none;
@@ -14,7 +14,8 @@
      -moz-user-select: none;
       -ms-user-select: none;
 }
-.h5p-documentation-tool button::-moz-focus-inner {
+
+.h5p-documentation-tool .page-help-text::-moz-focus-inner {
   border: 0;
   padding: 0;
 }
