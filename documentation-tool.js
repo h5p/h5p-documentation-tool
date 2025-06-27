@@ -224,11 +224,8 @@ H5P.DocumentationTool = (function ($, NavigationMenu, EventDispatcher) {
         continue;
       }
 
-      var singlePage = H5P.newRunnable(page, undefined, undefined, undefined, childExtras);
+      var singlePage = H5P.newRunnable(page, self.id, undefined, undefined, childExtras);
 
-      if (!singlePage) {
-        continue;
-      }
       if (singlePage.libraryInfo.machineName === 'H5P.DocumentExportPage') {
         singlePage.setExportTitle(self.params.taskDescription);
         singlePage.setSumbitEnabled(this.isSubmitButtonEnabled);
