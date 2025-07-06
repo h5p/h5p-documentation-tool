@@ -156,8 +156,8 @@
     display: none;
   }
 
-  .h5p-documentation-tool .h5p-theme-next:after,
-  .h5p-documentation-tool .h5p-theme-previous:before {
+  .h5p-documentation-tool .h5p-theme-next::after,
+  .h5p-documentation-tool .h5p-theme-previous::before {
     margin: 0;
   }
 }
