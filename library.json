@@ -3,7 +3,7 @@
   "description": "Documentation tool for educational assessment.",
   "majorVersion": 1,
   "minorVersion": 8,
-  "patchVersion": 32,
+  "patchVersion": 33,
   "runnable": 1,
   "author": "Joubel",
   "license": "MIT",
@@ -21,6 +21,12 @@
     },
     {
       "path": "documentation-tool.css"
+    },
+    {
+      "path": "@legacy/navigation-menu.css"
+    },
+    {
+      "path": "@legacy/documentation-tool.css"
     }
   ],
   "preloadedJs": [
@@ -29,6 +35,12 @@
     },
     {
       "path": "documentation-tool.js"
+    },
+    {
+      "path": "@legacy/navigation-menu.js"
+    },
+    {
+      "path": "@legacy/documentation-tool.js"
     }
   ],
   "editorDependencies": [
