@@ -150,3 +150,14 @@
 .h5p-documentation-tool .h5p-theme-previous:before {
   margin-right: var(--h5p-theme-spacing-xxs);
 }
+
+@container h5p-navigation (max-width: 400px) {
+  .h5p-documentation-tool .h5p-theme-label {
+    display: none;
+  }
+
+  .h5p-documentation-tool .h5p-theme-next::after,
+  .h5p-documentation-tool .h5p-theme-previous::before {
+    margin: 0;
+  }
+}
