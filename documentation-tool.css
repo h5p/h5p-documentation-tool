@@ -99,7 +99,7 @@
 
 
 .h5p-documentation-tool-page .page-help-text {
-  color: var(--h5p-theme-main-cta-base);
+  color: var(--h5p-theme-contrast-cta-white);
   cursor: pointer;
 }
 
