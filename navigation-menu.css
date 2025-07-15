@@ -52,7 +52,7 @@
   margin-top: 4px;
   border-radius: 50%;
   box-shadow: 0 0 0px 6px var(--h5p-theme-alternative-light);
-  outline: solid 2px var(--h5p-theme-main-cta-base);
+  outline: solid 2px var(--h5p-theme-contrast-cta-white);
   background-color: var(--h5p-theme-alternative-light);
   transition: box-shadow 0.1s ease-in-out;
   z-index: 1;
@@ -92,7 +92,7 @@
 
 /* Current entry */
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry.current .dot {
-  background: var(--h5p-theme-main-cta-base);
+  background: var(--h5p-theme-contrast-cta-white);
   box-shadow: 0 0 0 var(--h5p-theme-spacing-xxs)  color-mix(in srgb, var(--h5p-theme-main-cta-base), transparent 80%); 
 }
 
