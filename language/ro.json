@@ -1,0 +1,47 @@
+{
+  "semantics": [
+    {
+      "label": "Titlu",
+      "default": "Instrument de documentare",
+      "description": "Titlu pentru instrumentul de documentare."
+    },
+    {
+      "label": "Elemente",
+      "widgets": [
+        {
+          "label": "Implicit"
+        }
+      ],
+      "entity": "pagină",
+      "field": {
+        "label": "Tip de pagină",
+        "description": "Bibliotecă pentru acest diapozitiv."
+      }
+    },
+    {
+      "label": "Localizează butoanele instrumentului de documentare",
+      "fields": [
+        {
+          "label": "Eticheta butonului Anterior",
+          "default": "Pasul anterior de documentare"
+        },
+        {
+          "label": "Anterior",
+          "default": "Anterior"
+        },
+        {
+          "label": "Eticheta butonului Următorul",
+          "default": "Pasul următor de documentare"
+        },
+        {
+          "label": "Următorul",
+          "default": "Următorul"
+        },
+        {
+          "label": "Eticheta butonului Închide",
+          "default": "Închide"
+        }
+      ]
+    }
+  ]
+}
