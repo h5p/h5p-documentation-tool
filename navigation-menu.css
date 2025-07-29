@@ -93,7 +93,7 @@
 /* Current entry */
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry.current .dot {
   background: var(--h5p-theme-contrast-cta-white);
-  box-shadow: 0 0 0 var(--h5p-theme-spacing-xxs)  color-mix(in srgb, var(--h5p-theme-main-cta-base), transparent 80%); 
+  box-shadow: 0 0 0 var(--h5p-theme-spacing-xxs)  color-mix(in srgb, var(--h5p-theme-contrast-cta-white), transparent 80%); 
 }
 
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry.current {
@@ -103,13 +103,13 @@
 /* Hover over selected entry */
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry.current:hover .dot {
   background: var(--h5p-theme-main-cta-base);
-  box-shadow: 0 0 0 var(--h5p-theme-spacing-xxs)  color-mix(in srgb, var(--h5p-theme-main-cta-base), transparent 60%); 
+  box-shadow: 0 0 0 var(--h5p-theme-spacing-xxs)  color-mix(in srgb, var(--h5p-theme-contrast-cta-white), transparent 60%); 
 }
 
 /* Hover entry */
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry:hover .dot {
   background: var(--h5p-theme-ui-base);
-  box-shadow: 0 0 0 var(--h5p-theme-spacing-xxs)  color-mix(in srgb, var(--h5p-theme-main-cta-base), transparent 60%); 
+  box-shadow: 0 0 0 var(--h5p-theme-spacing-xxs)  color-mix(in srgb, var(--h5p-theme-contrast-cta-white), transparent 60%); 
 }
 
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry:hover {
@@ -118,7 +118,7 @@
 
 .h5p-documentation-tool .h5p-navigation-menu .h5p-navigation-menu-entry:hover .dot {
   background: var(--h5p-theme-ui-base);
-  box-shadow: 0 0 0 var(--h5p-theme-spacing-xxs) color-mix(in srgb, var(--h5p-theme-main-cta-base), transparent 60%);
+  box-shadow: 0 0 0 var(--h5p-theme-spacing-xxs) color-mix(in srgb, var(--h5p-theme-contrast-cta-white), transparent 60%);
 }
 
 .h5p-documentation-tool .h5p-navigation-menu-entry:focus {
