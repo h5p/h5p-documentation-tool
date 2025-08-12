@@ -373,7 +373,10 @@ H5P.DocumentationTool = (function ($, NavigationMenu, EventDispatcher) {
 
     // Trigger xAPI event
     var progressedEvent = self.createXAPIEventTemplate('progressed');
-    progressedEvent.data.statement.object.definition.extensions['http://id.tincanapi.com/extension/ending-point'] = toPageIndex;
+    if (progressedEvent?.data?.statement?.object?.definition?.extensions?.['http://id.tincanapi.com/extension/ending-point']) {
+      progressedEvent.data.statement.object.definition.extensions['http://id.tincanapi.com/extension/ending-point'] = toPageIndex;
+    }
+
     self.trigger(progressedEvent);
 
     self.trigger('resize');
