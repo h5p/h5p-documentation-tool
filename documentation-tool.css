@@ -110,9 +110,9 @@
   margin-left: var(--h5p-theme-spacing-xxs);
   display: inline-block;
 }
-.h5p-documentation-tool-page .page-help-text:focus {
+.h5p-documentation-tool-page .page-help-text:focus-visible {
   background-color: var(--h5p-theme-ui-base);
-  outline: 2px ridge var(--h5p-theme-main-cta-base);
+  outline: 2px ridge var(--h5p-theme-contrast-cta-white);
   outline-offset: 2px;
   border-radius: 20px;
 }
