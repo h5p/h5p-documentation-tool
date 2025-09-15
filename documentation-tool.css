@@ -118,6 +118,9 @@
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
   text-align: right;
   margin-top: auto;
 
