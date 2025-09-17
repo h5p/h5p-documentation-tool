@@ -118,10 +118,10 @@
 }
 
 .h5p-documentation-tool .h5p-documentation-tool-footer {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  gap: var(--h5p-theme-spacing-xxs);
+  justify-content: flex-end;
 
-  text-align: right;
   margin-top: auto;
 
   container-type: inline-size;
@@ -133,10 +133,6 @@
 
 .h5p-documentation-tool .h5p-theme-nav-button {
   box-sizing: border-box;
-}
-
-.h5p-theme-previous {
-  margin-right: var(--h5p-theme-spacing-xxs);
 }
 
 /* ---------------------------- Responsive view ----------------------------- */
