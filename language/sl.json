@@ -26,16 +26,16 @@
           "default": "Nazaj documentation step"
         },
         {
-          "label": "Previous",
-          "default": "Previous"
+          "label": "Nazaj",
+          "default": "Nazaj"
         },
         {
           "label": "Besedilo za gumb \"Naprej\"",
           "default": "Naprej documentation step"
         },
         {
-          "label": "Next",
-          "default": "Next"
+          "label": "Naprej",
+          "default": "Naprej"
         },
         {
           "label": "Besedilo za gumb \"Zapri\"",
