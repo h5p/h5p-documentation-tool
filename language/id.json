@@ -1,0 +1,47 @@
+{
+  "semantics": [
+    {
+      "label": "Judul",
+      "default": "Alat dokumentasi",
+      "description": "Judul untuk alat dokumentasi."
+    },
+    {
+      "label": "Elemen",
+      "widgets": [
+        {
+          "label": "Bawaan"
+        }
+      ],
+      "entity": "halaman",
+      "field": {
+        "label": "Jenis halaman",
+        "description": "Pustaka untuk salindia ini."
+      }
+    },
+    {
+      "label": "Tombol lokalisasikan alat dokumentasi",
+      "fields": [
+        {
+          "label": "Label tombol sebelumnya",
+          "default": "Langkah dokumentasi sebelumnya"
+        },
+        {
+          "label": "Sebelumnya",
+          "default": "Sebelumnya"
+        },
+        {
+          "label": "Label tombol selanjutnya",
+          "default": "Langkah dokumentasi selanjutnya"
+        },
+        {
+          "label": "Selanjutnya",
+          "default": "Selanjutnya"
+        },
+        {
+          "label": "Label tombol tutup",
+          "default": "Tutup"
+        }
+      ]
+    }
+  ]
+}
