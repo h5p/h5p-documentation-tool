@@ -27,6 +27,7 @@
       "label": "Page type",
       "importance": "high",
       "description": "Library for this slide.",
+      "showDescriptionAsTooltip": false,
       "options": [
         "H5P.StandardPage 1.5",
         "H5P.GoalsPage 1.5",
